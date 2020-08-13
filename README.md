@@ -3,6 +3,10 @@ Trabajo Integrador DH
 Descripción de la oferta:
   1.- Venta de Objetos en stock, producidos mediante impresiones 3d.
   2.- Producción de objetos a pedido, producidos mediante impresiones 3d.
+ 
+Publico objetivo:
+  El mercado objetivo son aquellos individuos mayores de edad que pretendan andquirir modelos funcionales, articulos artisticos y auto-fabricacion
+  o personalizacion de objetos en material plastico.
   
 Integrantes del equipo:
   .- Martín Jerez, Mariano: 26 años, Diseñador Gráfico. 
