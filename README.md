@@ -9,7 +9,7 @@ Vamos a diseñar y desarrollar un ecommerce cuyos objetivos serán:
 
 ##   Público Objetivo
 
-. El mercado objetivo son aquellos individuos mayores de edad que pretendan adquirir modelos funcionales, artículos artísticos y auto-fabricación o  personalizacion de objetos en material plástico.
+. El mercado objetivo son aquellos individuos mayores a partir de 18 años de edad que pretendan adquirir modelos funcionales, artículos artísticos y auto-fabricación o  personalizacion de objetos en material plástico.
 
 ## Integrantes
 
@@ -26,3 +26,7 @@ Hemos analizado diferentes páginas dedicadas a impresiones 3d y hemos tomado a 
 - **[I.Materialize](https://i.materialise.com)**
 - **[Z-Lab](https://www.z-lab.com.ar)**
 - **[3D Print.me](https://3dprint.me)**
+
+## Seguimiento de tareas Trello:
+
+En el siguiente link https://trello.com/b/jnZOHulq/grupo43dz se encuentra el seguimiento de tareas por sprint
