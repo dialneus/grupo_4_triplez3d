@@ -13,7 +13,7 @@ Vamos a diseñar y desarrollar un ecommerce cuyos objetivos serán:
 
 ## Integrantes
 
-- Martín Jerez, Mariano: 26 años, Diseñador Gráfico. 
+- Martín Jerez, Mariano: 26 años, Artista 3D, Diseñador Gráfico. 
 - Neustadt, Alejandro: 48 años, Contador Público. Trabaja en el área de finanzas de un medio de comunicación.
 - Schild, Kevin: 26 años, Ingeniero Químico.
 
