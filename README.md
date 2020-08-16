@@ -29,4 +29,5 @@ Hemos analizado diferentes páginas dedicadas a impresiones 3d y hemos tomado a 
 
 ## Seguimiento de tareas Trello:
 
-En el siguiente link https://trello.com/b/jnZOHulq/grupo43dz se encuentra el seguimiento de tareas por sprint
+En el siguiente link https://trello.com/b/jnZOHulq/grupo43dz se encuentra el seguimiento de tareas por sprint, donde tambien
+adjuntamos imágenes de progreso de las mismas.
