@@ -1,4 +1,4 @@
-# grupo_4_triplez3d - eCommerce para Trabajo Integrador DH-WFS
+# grupo_4_3dzimpresiones - eCommerce para Trabajo Integrador DH-WFS
 
 ## Lineamientos Generales
 
