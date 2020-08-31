@@ -1,0 +1,83 @@
+/*CONFIGURACION INICIAL DIMENSIONES CONTENEDORES*/
+.containerheader{
+  width: 1800px;  
+}
+
+
+.logo{
+  float: left;
+  height: 100px;
+  width: 100px;
+  padding: 20px;
+}
+img{
+  width: 100%;
+}
+/*ESTILOS MENU OPCIONES*/
+.menu {
+  float: right;
+  padding: 20px;
+}
+.menu ul{
+  list-style: none;
+  margin: 0;
+}
+.opciones li{
+  float: left;
+  padding: 5px;
+}
+.opciones li a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  border: 2px solid rgb(139, 139, 139);
+  background: grey;
+}
+.login li a{
+  margin:600;
+  /*padding-left: 400px;
+ padding-right: -400px;
+  padding-bottom: 100px;*/
+  color:grey;
+  text-decoration: none;
+ /* float: right;*/ 
+}
+.opciones li a:hover {
+  background: #7e0101;
+  color: white;
+}
+body{
+  background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg" );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+/*ESTILOS CARRUSEL PRODUCTOS*/
+.productosslider{
+  width: 95%;
+  margin:auto;
+}
+.productosslider ul{
+  display: flex;
+  padding:0;
+  width: 100%;
+}
+.productosslider li{
+  width: 20%;
+  padding: 18px;
+  list-style:none;
+  background: #cccccc;  
+}
+.productosslider img{
+  width: 100%;  
+}
+/*BANNER FRASE*/
+.banner{
+  background: white;
+  margin: 0;
+  padding:0;
+}
+
+
+
