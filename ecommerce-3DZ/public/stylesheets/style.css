@@ -79,5 +79,6 @@ body{
   padding:0;
 }
 
-
-
+body#LogIn {
+  background-color: pink;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/login_register.css">
+  <!--Fuentes Google-->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <!--Iconos Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <title><%= title %></title>
+</head>
+<body class="LogIn">
+  <header class="LogIn">
+    <section class="LogIn">
+      <img class="LogIn" src="/images/LOGO/LOGOPNG.png">
+    </section>
+    <section class="LogIn">
+      <h3>Iniciar Sesión</h3>
+    </section>
+  </header>
+  <main class="LogIn">
+    <form class="LogIn FormLogIn" action="" method="">
+      <label for="user"><i class="far fa-user"></i></label>
+      <input type="text" name="user" id="user" placeholder="Ingrese su usuario o email">
+      <label for="password"><i class="fas fa-unlock-alt"></i></label>
+      <input type="password" name="password" id="password" placeholder="Ingrese su contraseña">
+    </form>
+    <section class="LogIn Recordarme">
+      <input type="checkbox" name="recordarme" id="recordar" value="recordarme">
+      <label for="recordar">Recordarme</label>
+    </section>
+    <section class="LogIn Forgot">
+      <a class="LogIn Forgot" href="">¿Oldidó su Contraseña?</a>
+    </section>
+    <section class="LogIn">
+      <button type="submit">Ingresar</button>
+    </section>
+    <section class="LogIn SocialNet">
+      <button type="submit"><i class="fab fa-google"></i><p> Ingresar con Google</p></button>
+      <button type="submit"><i class="fab fa-facebook"></i><p> Ingresar con Facebook</p></button>
+    </section>
+  </main>
+
+  <footer class="LogIn">
+    <section class="LogIn Register">
+      <a class="LogIn Register" href="">REGISTRESE</a>
+    </section>
+  </footer>
+
+</body>
+</html>
