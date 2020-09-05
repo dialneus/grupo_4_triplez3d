@@ -16,4 +16,9 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Registrate en 3DZ impresiones' });
 });
 
+/* GET Register page. */
+router.get('/productos', function(req, res, next) {
+  res.render('productos', { title: 'Catalogo de productos' });
+});
+
 module.exports = router;
