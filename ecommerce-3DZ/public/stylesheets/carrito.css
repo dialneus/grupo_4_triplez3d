@@ -43,25 +43,6 @@ main section article {
   margin-bottom: 10px;
 }
 
-/* --- Estilos Encabezados --- 
-
-main section.header_chart {
-  display: flex;
-  justify-content: flex-end;
-}
-
-
-main section.header_chart article.header_chart_price {
-  width: 20%;
-  text-align: center;
-}
-
-main section.header_chart article.header_chart_qty {
-  width: 15%;
-  text-align: center;
-}
-
-*/
 /* --- Estilos de Productos --- */
 
 main section article.prd_image {
