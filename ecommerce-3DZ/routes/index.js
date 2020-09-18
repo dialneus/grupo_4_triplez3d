@@ -21,4 +21,10 @@ router.get('/productos', function(req, res, next) {
   res.render('productos', { title: 'Catalogo de productos' });
 });
 
+/* GET chart page. */
+router.get('/carrito', function(req, res, next) {
+  res.render('carrito', { title: 'Carrito de Compras 3DZ' });
+});
+
+
 module.exports = router;

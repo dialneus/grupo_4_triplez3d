@@ -1,16 +1,94 @@
 <!DOCTYPE html>
-<html lang="es ">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/login_register.css">
+  <link rel="stylesheet" href="stylesheets/register.css">
   <!--Fuentes Google-->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <!--Iconos Fontawesome-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <title>%= title %></title>
+  <title><%= title %></title>
 </head>
-<body class="Register">
-  <p>Register</p>
+<body>
+  <header>
+    <section>
+      <img src="/images/LOGO/LOGOPNG.png">
+    </section>
+    <section>
+      <h3>Registro</h3>
+    </section>
+  </header>
+  <main>
+    <form action="" method="" autocomplete="off">
+      <ul>
+        <li>
+          <span class="iconForm">
+            <i class="far fa-user"></i>
+          </span>
+          <label for="name"></label>
+          <input type="text" name="name" id="user" placeholder="Ingrese su nombre y apellido">
+        </li>
+        <li>
+          <span class="iconForm">
+            <i class="far fa-envelope"></i>
+          </span>
+          <label for="email"></label>
+          <input type="email" name="email" id="email" placeholder="Ingrese su email">
+        </li>
+        <li>
+          <span class="iconForm">
+            <i class="fas fa-unlock-alt"></i>
+          </span>
+          <label for="password"></label>
+          <input type="password" name="password" id="password" placeholder="Ingrese su contraseña">
+        </li>
+        <li>
+          <span class="iconForm">
+            <i class="fas fa-lock"></i>
+          </span>
+          <label for="password"></label>
+          <input type="password" name="password" id="password" placeholder="Confirme su contraseña">
+        </li>
+      </ul>
+    </form>
+    <section class="registrar">
+      <button type="submit">Registrarme</button>
+    </section>
+    <section class="registro">
+      <h3>Registrate con</h3>
+    </section>
+    <section class="redes_sociales">
+      <div class="logo_redes_sociales">
+        <button type="submit">
+          <img src="/images/Google.ico" alt="">
+        </button>
+      </div>
+      <div class="logo_redes_sociales">
+        <button type="submit">
+          <img src="/images/twitter.ico" alt="">
+        </button>
+      </div>
+      <div class="logo_redes_sociales">
+        <button type="submit">
+          <img src="/images/facebook.ico" alt="">
+        </button>
+      </div>
+      <div class="logo_redes_sociales">
+        <button type="submit">
+          <img src="/images/instagram.ico" alt="">
+        </button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section>
+      <p>Ya tenés una cuenta?</p>
+      <div>
+        <i class="fas fa-sign-in-alt"></i>
+        <a href="/login">Iniciar Sesión</a>
+      </div>
+    </section>
+  </footer>
 </body>
 </html>
