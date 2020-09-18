@@ -14,12 +14,16 @@ header {
   display: flex;
   justify-content: flex-start;
   background-color: rgb(235,236,240);
+  border-radius: 8px 8px 0px 0px;
 }
 
 header img {
   width: 12%;
+  margin: 3px;
+  padding: 3px;
 }
 
+/*Estilos Main*/
 
 main {
   display: flex;
@@ -159,10 +163,16 @@ main section article.money_chart_button button {
   font-size: small;
   color: white;
   background-color:rgb(172, 47, 53);
-  border-radius: 40px;
+  border-radius: 8px;
   border: none;
   width: 80%;
   height: 20px;
+}
+
+main section article.money_chart_button button:hover {
+  background-color: rgb(236,40,55);
+  box-shadow: 0 4px 16px rgb(172,47,53);
+  transition: all 0.2s ease;
 }
 
 /*Responsive*/
@@ -181,28 +191,3 @@ main section article.money_chart_button button {
     background-color: gray;
   }
 }
-/*
-@media (min-width:769px) {
-  body {
-    width: fit-content;
-    max-width: 1000px;
-  }
-  
-  main section {
-    width: 70%;
-    height: 30%;
-  }
-
-  main section article.product_chart {
-    flex-direction: row;
-  }
-
-  main section.money_chart {
-    flex-direction: column;
-    background-color:white;
-    width: 30%;
-    max-width: 200px;
-    border-radius: 8px;
-    margin-left: auto;
-  }
-}*/
