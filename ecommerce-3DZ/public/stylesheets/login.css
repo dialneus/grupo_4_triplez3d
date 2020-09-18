@@ -1,5 +1,3 @@
-
-
 /*Estilos Body*/
 
 body {
@@ -47,7 +45,7 @@ input[type="text"], input[type="password"] {
   width: 80%;
   padding: 5px;
   margin: 5px 0px;
-  border-radius: 40px;
+  border-radius: 8px;
   border-bottom: lightblue 1px solid;
 }
 
@@ -80,7 +78,7 @@ main section.ingresar button {
   font-size: medium;
   color: white;
   background-color:rgb(172, 47, 53);
-  border-radius: 40px;
+  border-radius: 8px;
   border: none;
   width: 95%;
   height: 35px;
@@ -91,39 +89,6 @@ main section.ingresar button:hover {
   box-shadow: 0 4px 16px rgb(172,47,53);
   transition: all 0.2s ease;
 }
-/*
-main section.redes_sociales {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-main section.redes_sociales button{
-  display: flex;
-  width: 60%;
-  line-height: 8px;
-  margin: 5px 0px;
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  background-color: white;
-  border: solid 1px rgb(189,189,189);
-  border-radius: 40px;
-}
-
-main section.redes_sociales button:hover {
-  color: rgb(172, 47, 53) !important;
-  box-shadow: 0 4px 12px rgb(236,40,55);
-  transition: all 0.2s ease;
-}
-
-
-.logo_redes_sociales {
-  width: 25%;
-  justify-content: center;
-}*/
-
-/* Agregado logos redes sociales*/
 
 main section.ingreso  {
   display: flex;
@@ -167,10 +132,6 @@ main section.redes_sociales div.logo_redes_sociales button:hover {
   width: 25%;
   justify-content: center;
 }
-
-
-/*Fin area logos redes sociales*/
-
 
 
 .img_button {
