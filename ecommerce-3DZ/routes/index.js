@@ -26,5 +26,9 @@ router.get('/carrito', function(req, res, next) {
   res.render('carrito', { title: 'Carrito de Compras 3DZ' });
 });
 
+router.get('/formulario', function(req, res, next) {
+  res.render('formularioProductos', { title: 'Formulario de productos' });
+});
+
 
 module.exports = router;
