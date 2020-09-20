@@ -34,11 +34,12 @@ main {
 main section {
   display: flex;
   flex-direction: row;
+  /*background-color: rgb(235,236,240);
+  border-radius: 0px;*/
 }
 
 main section article {
   background-color: rgb(235,236,240);
-  /*border: solid 1px green;*/
   word-wrap: break-word;
   margin-bottom: 10px;
 }
@@ -155,6 +156,11 @@ main section article.money_chart_button button:hover {
   box-shadow: 0 4px 16px rgb(172,47,53);
   transition: all 0.2s ease;
 }
+
+main section article.continue_shop {
+  justify-content: center;
+}
+
 
 /*Responsive*/
 
