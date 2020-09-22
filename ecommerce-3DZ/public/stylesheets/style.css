@@ -1,50 +1,73 @@
 /*CONFIGURACION INICIAL DIMENSIONES CONTENEDORES*/
-.containerheader{
-  width: 1800px;  
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
 }
 
 
-.logo{
-  float: left;
-  height: 100px;
-  width: 100px;
-  padding: 20px;
+header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
 }
-img{
+
+.nav-container input,.nav-container .fa-bars,.nav-container .fa-times{
+  display: none;
+}
+
+.logo img{
+  max-width: 100px;
+  max-height: 100px;
+}
+.linea{
+  display: flex;
+  align-items: center;
   width: 100%;
 }
-/*ESTILOS MENU OPCIONES*/
-.menu {
-  float: right;
-  padding: 20px;
+.linea img{
+  width: 100%;
 }
-.menu ul{
-  list-style: none;
-  margin: 0;
+
+.nav-container{
+  display: flex;
+  align-self: center;
 }
-.opciones li{
-  float: left;
-  padding: 5px;
+.opciones{
+  align-self: center;
+  display: flex;
+  align-items: center;
 }
-.opciones li a {
+.opciones li a{
   color: black;
-  padding: 10px;
   text-decoration: none;
-  border: 2px solid rgb(139, 139, 139);
-  background: grey;
+  border: 2px solid lightgrey;
+  background: lightgrey;
+  margin-left: 10px;
 }
-.login li a{
-  margin:600;
-  /*padding-left: 400px;
- padding-right: -400px;
-  padding-bottom: 100px;*/
-  color:grey;
-  text-decoration: none;
- /* float: right;*/ 
+.opciones li:last-child a{
+  background: white;
+  border: none;
+  font-size: 35px;
+  margin-left: 25px;
 }
-.opciones li a:hover {
-  background: #7e0101;
-  color: white;
+
+
+#login{
+  align-self: center;
+  margin-left: 10px;
+  font-size: 35px;
 }
 body{
   background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg" );
@@ -81,4 +104,57 @@ body{
 
 body#LogIn {
   background-color: pink;
+}
+.contacto{
+  flex-direction: column;
+  
+}
+.contacto-i{
+  margin-top: 8px;
+}
+.redes{
+  background-color: rgba(208, 31, 31, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+.redes-i a{
+  font-size: 25px;
+  color: white;
+  text-decoration: none;
+  height: 25px;
+}
+.redes i:last-child{
+  margin-top: 10px;
+  margin-left: 15px;
+}
+.contacto{
+  background-color: rgb(45, 40, 40);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  padding-left: 3vw;
+  padding-bottom: 10px;
+}
+.contacto-i{
+  display: flex;
+}
+.contacto-i p{
+  margin-left: 10px;
+}
+.copyright{
+  background-color: rgb(45, 40, 40);
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 6px solid  rgba(208, 31, 31, 1);
 }
