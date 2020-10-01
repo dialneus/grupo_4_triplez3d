@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,8 @@
     <title>Productos</title>
 </head>
 <body>
+  <%-include('./partials/header')%>
+<!--
     <header class="headersup">
         <div class = "logo">
           <img src="/images/logo/LOGOPNG.png" alt="logo">
@@ -32,6 +34,7 @@
           </nav>
         </div>
     </header>
+-->
     <main>
       <div class="formulario">
         <h3>(*)nombre del producto</h3>
@@ -42,6 +45,8 @@
         <button class="submit" id="submit">AÑADIR AL CARRITO</button>
       </div>
     </main>
+    <%-include('./partials/footer')%>
+<!--
     <footer>
         <div class="redes">
           <h2>Seguinos!</h2>
@@ -64,5 +69,6 @@
     
         <p class="copyright">Copyright @ 2020 3DZ Todos Los Derechos Reservados</p>
       </footer>
+-->
 </body>
 </html>
