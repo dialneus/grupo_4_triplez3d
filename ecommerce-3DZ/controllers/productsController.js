@@ -20,7 +20,12 @@ const productsController = {
     },
     store : function(req,res,next){
         let newProduct = req.body;
-        newProduct.id = Number(req.body.id);
+        if(products.length > 0){
+            let ultimoID = products[products.length-1].id;
+            newProduct.id = Number(ultimoID + 1);
+        } else {
+            newProduct.id = 1;
+        }
         newProduct.price = Number(req.body.price);
         //objeto para tomar la imagen de multer: (si files no funciona es porque olvidaste el encType en el formulario de carga)
         newProduct.image = req.files[0].filename;
@@ -49,11 +54,11 @@ const productsController = {
             if (product.id == req.params.id){
                 //OJO QUE EL POST ES CON BODY Y EL GET CON PARAMS
                 product.name = req.body.name;
-                product.description = req.body.description;
+                product.dimension = req.body.dimension;
                 product.price = req.body.price;
-                product.discount = req.body.discount;
+                product.Material = req.body.Material;
                 product.image = req.files[0].filename;
-                product.category = req.body.category;
+                product.pintado = req.body.pintado;
                 }
             });
             fs.writeFileSync(__dirname + '/../data/productsDataBase.json',JSON.stringify(products));

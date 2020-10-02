@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edicion de producto</title>
 </head>
 <body>
-    <h1>edit</h1>
+    <form action="/products/edit/<%=product.id%>" method="POST" enctype="multipart/form-data">
+        <label for="name">Nombre de producto</label>
+        <input type="text" name="name" value="<%= product.name %>"><br>
+        
+        <label for="dimension">Dimensiones</label>
+        <input type="text" name="dimension" value="<%= product.dimension %>"><br>
+
+        <label for="Material">Material</label>
+        <input type="text" name="Material"  value="<%= product.Material %>"><br>
+
+        <label for="pintado">Pintado</label>
+        <input type="text" name="pintado"  value="<%= product.pintado %>"><br>
+
+        <label for="price">Importe $</label>
+        <input type="text" name="price"  value="<%= product.price %>"><br>
+
+        <label for="image">Imagen de muestra</label>
+        <input type="file" name="image"  value="<%= product.image %>"><br>
+
+        <button type="submit">EDITAR</button>
+    </form>
 </body>
 </html>

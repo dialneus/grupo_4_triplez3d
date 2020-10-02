@@ -6,11 +6,26 @@
     <title>Crear producto</title>
 </head>
 <body>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="/products/create" method="POST" enctype="multipart/form-data">
+        <label for="name">Nombre de producto</label>
+        <input type="text" name="name"><br>
         
+        <label for="dimension">Dimensiones</label>
+        <input type="text" name="dimension"><br>
 
+        <label for="Material">Material</label>
+        <input type="text" name="Material"><br>
 
+        <label for="pintado">Pintado</label>
+        <input type="text" name="pintado"><br>
 
+        <label for="price">Importe $</label>
+        <input type="text" name="price"><br>
+
+        <label for="image">Imagen de muestra</label>
+        <input type="file" name="image"><br>
+
+        <button type="submit">CREAR</button>
     </form>
 </body>
 </html>
