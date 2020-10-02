@@ -57,7 +57,11 @@ const productsController = {
                 product.dimension = req.body.dimension;
                 product.price = req.body.price;
                 product.Material = req.body.Material;
-                product.image = req.files[0].filename;
+                if (typeof req.files[0] == 'undefined'){
+                    product.image = product.image;
+                }else{
+                    product.image = req.files[0].filename;
+                }
                 product.pintado = req.body.pintado;
                 }
             });
