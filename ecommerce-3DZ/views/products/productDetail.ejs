@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="../stylesheets/formularioProductos.css">
+    <title>Productos</title>
+</head>
+<body>
+  <%-include('../partials/header')%>
+    <main>
+      <% if (product) { %>
+        <img src="/images/<%=product.image%>" alt="<% product.name %>"> 
+        <div class="formulario">
+          <h3><%= product.name %></h3>
+          <p>Importe (AR$)</p><p class="monto"><%= product.price %></p><br>
+          <p class="cantidad">Cantidad</p>
+          <input type="number" id="quantity" name="quantity" min="1" max="5"><br>
+          <p>Importe Total $</p><p class="monto">xxx.xx</p><br>
+          <button class="submit" id="submit">AÑADIR AL CARRITO</button>
+        </div>
+      <% } %>
+    </main>
+    <%-include('../partials/footer')%>
+</body>
+</html>

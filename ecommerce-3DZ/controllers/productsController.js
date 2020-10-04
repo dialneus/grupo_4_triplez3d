@@ -7,9 +7,6 @@ const productsController = {
     vistaProducto : function(req,res,next){
         res.render('products/products',{products, toThousand});
     },
-    formulario : function(req,res,next){
-        res.render('products/formularioProductos');
-    },
     id : function(req,res,next){
         let product = products.find(element => element.id == req.params.id);
         if (product){
