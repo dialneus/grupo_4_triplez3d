@@ -7,5 +7,6 @@ router.get('/', indexController.homePage);
 
 /* GET chart page. */
 router.get('/carrito', indexController.carrito);
+router.get('/modelado',indexController.modelado);
 
 module.exports = router;

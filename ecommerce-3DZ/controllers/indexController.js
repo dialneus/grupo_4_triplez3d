@@ -8,6 +8,9 @@ const indexController = {
   formulario: function(req, res, next) {
     res.render('formularioProductos', { title: 'Formulario de productos' });
   },
+  modelado: function (req,res,next){
+    res.render('modelado',{title: 'Formulario de Servicio de modelado'})
+  }
 };
 
 module.exports = indexController;
