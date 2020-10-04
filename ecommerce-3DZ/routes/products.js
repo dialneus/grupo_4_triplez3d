@@ -32,6 +32,9 @@ router.post('/edit/:id',upload.any(),productsController.update);
 
 /*VER - 
 PONGO POR ULTIMO PORQUE EJECUTA DESDE ARRIBA HACIA ABAJO, SI TOMO UNA RUTA MUY GENERAL LA EJECUTA PRIMERO Y ARRUINA LO QUE ESTE MAS ABAJO*/
+/* GET Formulario page. */
+router.get('/formulario', productsController.formulario);
+
 router.get('/',productsController.vistaProducto);
 router.get('/:id',productsController.id);
 
