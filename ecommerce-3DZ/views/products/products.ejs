@@ -13,8 +13,21 @@
     <div class="texto-superior-producto">
       <h1>Nuestras Impresiones</h1>
       <h5>Ofrecemos impresiones de calidad en distinto formato y material: PLA, ABS, Nylon 12, entre otros.</h5>
-    </div>
+    </div>  
     <div class="imagenes-productos">
+      <% for (i=0; i < products.length; i++){ %>
+        <% if (products[i]) { %>
+        <div class="producto">
+          <img src="/images/<%=products[i].image%>" alt="<% products[i].name %>"> 
+          <a href="/products/formulario"><h5>COMPRAR</h5></a>
+          <p><%= products[i].name %></p>
+          <p>Medidas: <%= products[i].dimension %></p>
+          <p>Material: <%= products[i].Material %></p>
+          <p>Pintado: <%= products[i].pintado %></p>
+          <p>Precio: <%= products[i].price %> $ </p>
+        </div>
+        <% } %>
+      <% } %>
       <div class="producto">
         <img src="/images/IMAGENESEDITADAS/WALKERCIRCULAR.png" alt="Walker Juego PC">
         <h5>COMPRAR</h5>
