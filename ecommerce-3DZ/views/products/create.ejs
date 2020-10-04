@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/createproductos.css">
     <title>Crear producto</title>
 </head>
 <body>
-    <form action="/products/create" method="POST" enctype="multipart/form-data">
+    
+    <form class="formulario" action="/products/create" method="POST" enctype="multipart/form-data">
+        <img class="logo"src="/images/LOGO/LOGOPNG.png">
         <label for="name">Nombre de producto</label>
         <input type="text" name="name"><br>
         
@@ -22,10 +25,12 @@
         <label for="price">Importe $</label>
         <input type="text" name="price"><br>
 
-        <label for="image">Imagen de muestra</label>
+        <label for="image">Producto seleccionado</label>
         <input type="file" name="image"><br>
 
         <button type="submit">CREAR</button>
     </form>
+   
+
 </body>
 </html>
