@@ -7,6 +7,11 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
+  background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg" );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 li{
   list-style: none;
@@ -15,67 +20,6 @@ a{
   text-decoration: none;
 }
 
-
-header{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: white;
-}
-
-.nav-container input,.nav-container .fa-bars,.nav-container .fa-times{
-  display: none;
-}
-
-.logo img{
-  max-width: 100px;
-  max-height: 100px;
-}
-.linea{
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-.linea img{
-  width: 100%;
-}
-
-.nav-container{
-  display: flex;
-  align-self: center;
-}
-.opciones{
-  align-self: center;
-  display: flex;
-  align-items: center;
-}
-.opciones li a{
-  color: black;
-  text-decoration: none;
-  border: 2px solid lightgrey;
-  background: lightgrey;
-  margin-left: 10px;
-}
-.opciones li:last-child a{
-  background: white;
-  border: none;
-  font-size: 35px;
-  margin-left: 25px;
-}
-
-
-#login{
-  align-self: center;
-  margin-left: 10px;
-  font-size: 35px;
-}
-body{
-  background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg" );
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
 /*ESTILOS CARRUSEL PRODUCTOS*/
 .productosslider{
   width: 95%;
@@ -106,59 +50,12 @@ div.banner img {
   width: 100%;
 }
 
-body#LogIn {
-  background-color: pink;
+
+/*VISTA TELEFONO RESOLUCION MAXIMA 768PX*/
+@media(max-width:768px){
+body{
+  min-width: 600px;
 }
-.contacto{
-  flex-direction: column;
-  
+
 }
-.contacto-i{
-  margin-top: 8px;
-}
-.redes{
-  background-color: rgba(208, 31, 31, 1);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-size: 18px;
-}
-.redes-i a{
-  font-size: 25px;
-  color: white;
-  text-decoration: none;
-  height: 25px;
-}
-.redes i:last-child{
-  margin-top: 10px;
-  margin-left: 15px;
-}
-.contacto{
-  background-color: rgb(45, 40, 40);
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 10px;
-  padding-left: 3vw;
-  padding-bottom: 10px;
-}
-.contacto-i{
-  display: flex;
-}
-.contacto-i p{
-  margin-left: 10px;
-}
-.copyright{
-  background-color: rgb(45, 40, 40);
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-top: 6px solid  rgba(208, 31, 31, 1);
-}
+
