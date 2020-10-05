@@ -6,6 +6,10 @@ var path = require('path');
 /* GET products listing. */
 const productsController = require('../controllers/productsController');
 
+
+/* GET chart page. */
+router.get('/carrito', productsController.carrito);
+
 /*MULTER y Path. Luego de aplicar upload.any() a la ruta que lo necesite configuramos en el controller el objeto para tomar la imagen*/
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -35,5 +39,6 @@ PONGO POR ULTIMO PORQUE EJECUTA DESDE ARRIBA HACIA ABAJO, SI TOMO UNA RUTA MUY G
 /* GET Formulario page. */
 router.get('/',productsController.vistaProducto);
 router.get('/:id',productsController.id);
+
 
 module.exports = router;

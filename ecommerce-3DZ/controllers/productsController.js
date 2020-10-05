@@ -4,6 +4,9 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
 const productsController = {
+    carrito: function(req, res, next) {
+        res.render('products/carrito', { title: 'Carrito de Compras 3DZ' });
+    },
     vistaProducto : function(req,res,next){
         res.render('products/products',{products, toThousand});
     },
@@ -77,6 +80,6 @@ const productsController = {
         fs.writeFileSync(__dirname + '/../data/productsDataBase.json',JSON.stringify(newProducts));
         res.send('Eliminado exitosamente!');
     }
-}
+};
 
 module.exports = productsController;
