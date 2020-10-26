@@ -41,7 +41,7 @@ main form ul li {
   text-align: center;
 }
 
-input[type="text"], input[type="password"] {
+input[type="email"], input[type="password"] {
   width: 80%;
   padding: 5px;
   margin: 5px 0px;
@@ -49,7 +49,7 @@ input[type="text"], input[type="password"] {
   border-bottom: lightblue 1px solid;
 }
 
-input[type="text"]:hover, input[type="password"]:hover {
+input[type="email"]:hover, input[type="password"]:hover {
   background-color  : rgb(233,240,254);
   box-shadow: 0 4px 12px rgb(233,240,254);
   transition: all 0.2s ease;

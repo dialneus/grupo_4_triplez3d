@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Usuarios Activos</title>
+</head>
+<body>
+  <h1>Lista de Usuarios Registrados</h1>
+  <ul>
+    <% for(usuario of users) { %>
+      <li>
+        <a href='/users/detail/<%= usuario.id %>'>
+          <%= usuario.user_name + ', ' + usuario.user_email %>
+        </a>
+      </li>
+    <% } %> 
+  </ul>
+  <h2>Busqueda</h2>
+  <form action="/users/detail" method="GET">
+    <input type="text" name="consulta">
+    <input type="submit" value="Consultar">
+  </form>
+</body>
+</html>

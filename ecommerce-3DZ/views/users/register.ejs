@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <!--Iconos Fontawesome-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <title><%= title %></title>
+  <title>Registrate en 3DZ impresiones</title>
 </head>
 <body>
   <header>
@@ -20,14 +20,24 @@
     </section>
   </header>
   <main>
-    <form action="" method="" autocomplete="off">
+    <% if(typeof errors != 'undefined') { %>
+      <p>Errores detectados</p>
+      <ul>
+        <% for(let i = 0; i < errors.length; i++) {%> 
+          <li>
+            <%= errors[i].msg %> 
+          </li>
+          <% } %>
+      </ul>
+  <% } %>  
+    <form action="/users/register" method="POST" autocomplete="on">
       <ul>
         <li>
           <span class="iconForm">
             <i class="far fa-user"></i>
           </span>
-          <label for="name"></label>
-          <input type="text" name="name" id="user" placeholder="Ingrese su nombre y apellido">
+          <label for="userName"></label>
+          <input type="text" name="userName" id="user" placeholder="Ingrese su nombre y apellido">
         </li>
         <li>
           <span class="iconForm">
@@ -43,18 +53,21 @@
           <label for="password"></label>
           <input type="password" name="password" id="password" placeholder="Ingrese su contraseña">
         </li>
+<!--         
         <li>
           <span class="iconForm">
             <i class="fas fa-lock"></i>
           </span>
           <label for="password"></label>
-          <input type="password" name="password" id="password" placeholder="Confirme su contraseña">
+          <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Confirme su contraseña">
         </li>
+-->
       </ul>
-    </form>
+ 
     <section class="registrar">
       <button type="submit">Registrarme</button>
     </section>
+  </form>    
     <section class="registro">
       <h3>Registrate con</h3>
     </section>
