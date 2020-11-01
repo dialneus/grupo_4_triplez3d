@@ -3,7 +3,7 @@ let products = JSON.parse(fs.readFileSync(__dirname + '/../data/productsDataBase
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 //Requiero la Base de Datos:
-//const db = require('../database/models');
+const db = require('../database/models');
 
 const productsController = {
     carrito: function(req, res, next) {
@@ -23,7 +23,7 @@ const productsController = {
     create : function(req,res,next){
         res.render('products/create');
     },
-    store : function(req,res,next){
+    /*store : function(req,res,next){
         let newProduct = req.body;
         if(products.length > 0){
             let ultimoID = products[products.length-1].id;
@@ -38,15 +38,15 @@ const productsController = {
         //sobre-escribo-el-archivo-con-el-nuevo-producto 
         fs.writeFileSync(__dirname + '/../data/productsDataBase.json',JSON.stringify(products));
         res.send('Producto cargado!');
-    },
-    /*store : function(req, res, next) {
+    },*/
+    store : function(req, res, next) {
         console.log(req.body);
         db.Producto.create({
             descripcion: req.body.name,
             precio: req.body.price,
         });
         res.redirect('/products');
-    },*/
+    },
     edit : function(req,res,next){
         let productFind;
         products.forEach(product => { 

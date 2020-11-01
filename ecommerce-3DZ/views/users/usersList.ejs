@@ -11,7 +11,7 @@
     <% for(usuario of users) { %>
       <li>
         <a href='/users/detail/<%= usuario.id %>'>
-          <%= usuario.user_name + ', ' + usuario.user_email %>
+          <%= usuario.nombreApellido + ', ' + usuario.email + ' , con la pasword hasheada: ' + usuario.password%>
         </a>
       </li>
     <% } %> 
