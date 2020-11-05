@@ -13,7 +13,7 @@ router.get('/carrito', productsController.carrito);
 /*MULTER y Path. Luego de aplicar upload.any() a la ruta que lo necesite configuramos en el controller el objeto para tomar la imagen*/
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'public/images')
+      cb(null, 'resources/uploads')
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));

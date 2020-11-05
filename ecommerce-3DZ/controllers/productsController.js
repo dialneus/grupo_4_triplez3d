@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+
 let products = JSON.parse(fs.readFileSync(__dirname + '/../data/productsDataBase.json', 'utf-8'));
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -21,7 +23,13 @@ const productsController = {
         }
     },
     create : function(req,res,next){
-        res.render('products/create');
+        let promesaMedidas = db.Medida.findAll();
+        let promesaMaterial = db.Material.findAll();
+
+        Promise.all([promesaMedidas, promesaMaterial])
+            .then(([medidas,materials]) =>{
+                res.render('products/create', {medidas:medidas,materials:materials});
+            })
     },
     /*store : function(req,res,next){
         let newProduct = req.body;
@@ -41,11 +49,20 @@ const productsController = {
     },*/
     store : function(req, res, next) {
         console.log(req.body);
+        console.log(req.files[0])
         db.Producto.create({
             descripcion: req.body.name,
-            precio: req.body.price,
-        });
-        res.redirect('/products');
+            precio: Number(req.body.price),
+            // LA SIG. MANERA (COMENTADA) GUARDA EL ARCHIVO EN RESOURCES Y LUEGO LO LEE CON FS, ALMACENANDOLO EN LA DB COMO UN BLOB:
+            // (EN PHPMYADMIN LA COLUMNA IMAGEN DEBE ESTAR SETIADO COMO BLOB TAMBIEN)
+            // imagen : fs.readFileSync(__dirname + "/../resources/uploads/" + req.files[0].filename),
+            imagen : __dirname + "/../resources/uploads/" + req.files[0].filename,
+            pintado : req.body.pintado,
+            material_id : req.body.Material,
+            medida_id : req.body.dimension
+        }).then(()=>{
+            res.redirect('/products');
+        }).catch((err) => { console.log(err) })
     },
     edit : function(req,res,next){
         let productFind;

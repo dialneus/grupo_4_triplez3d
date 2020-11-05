@@ -14,13 +14,28 @@
         <input type="text" name="name"><br>
         
         <label for="dimension">Dimensiones (cm)</label>
-        <input type="text" name="dimension"><br>
+        <select name="dimension" id="dimension">
+            <% for(let i = 0; i < medidas.length; i++){ %>
+            <option value="<%= medidas[i].id %>">
+                <%= medidas[i].tamanios %>
+            </option>
+           <% } %>
+        </select><br>
 
         <label for="Material">Material</label>
-        <input type="text" name="Material"><br>
+        <select name="Material" id="Material">
+            <% for(let i = 0; i < materials.length; i++){ %>
+            <option value="<%= materials[i].id %>">
+                <%= materials[i].tipomaterial %>
+            </option>
+           <% } %>
+        </select><br>
 
         <label for="pintado">Pintado</label>
-        <input type="text" name="pintado"><br>
+        <select name="pintado" id="pintado">
+            <option value="no">no</option>
+            <option value="si">si</option>
+        </select><br>
 
         <label for="price">Importe $</label>
         <input type="text" name="price"><br>
