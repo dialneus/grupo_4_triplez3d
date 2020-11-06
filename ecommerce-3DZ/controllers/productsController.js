@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 let products = JSON.parse(fs.readFileSync(__dirname + '/../data/productsDataBase.json', 'utf-8'));
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 //Requiero la Base de Datos:
 const db = require('../database/models');
@@ -12,7 +11,12 @@ const productsController = {
         res.render('products/carrito', { title: 'Carrito de Compras 3DZ' });
     },
     vistaProducto : function(req,res,next){
-        res.render('products/products',{products, toThousand});
+        db.Producto.findAll({
+            include : [{association:"medidas"},{association:"materials"}]
+        })
+            .then(function(productos){
+                res.render('products/products',{productos:productos});
+            })
     },
     id : function(req,res,next){
         let product = products.find(element => element.id == req.params.id);
@@ -56,7 +60,7 @@ const productsController = {
             // LA SIG. MANERA (COMENTADA) GUARDA EL ARCHIVO EN RESOURCES Y LUEGO LO LEE CON FS, ALMACENANDOLO EN LA DB COMO UN BLOB:
             // (EN PHPMYADMIN LA COLUMNA IMAGEN DEBE ESTAR SETIADO COMO BLOB TAMBIEN)
             // imagen : fs.readFileSync(__dirname + "/../resources/uploads/" + req.files[0].filename),
-            imagen : __dirname + "/../resources/uploads/" + req.files[0].filename,
+            imagen : path.normalize("/uploads/" + req.files[0].filename),
             pintado : req.body.pintado,
             material_id : req.body.Material,
             medida_id : req.body.dimension
