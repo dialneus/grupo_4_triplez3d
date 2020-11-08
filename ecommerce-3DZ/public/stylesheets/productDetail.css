@@ -45,12 +45,17 @@ main img{
     margin-bottom: 10px;
 }
 
-.formulario .submit{
+.formulario #submit{
     font-weight: bold;
     color: rgb(17, 128, 17);
     background: white;
     width: 100px;
     height: 50px;
+}
+
+.formulario #submit:hover{
+    color: white;
+    background: rgb(17, 128, 17);
 }
 /*VISTA TELEFONO RESOLUCION MAXIMA 768PX*/
 @media(max-width:768px){

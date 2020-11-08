@@ -1,13 +1,19 @@
+body{
+    background-color: brown;
+}
 .formularioedit{
     display: flex;
-justify-content: center;
-color:white;
-background-color: brown;
+    justify-content: center;
+    color:white;
+    background-color: brown;
     
-display: flex;
-flex-direction: column;
-align-items: center;
-position: relative;
+    width: inherit;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+input[type="file" i]{
+    max-width: 135px;
 }
 .logo{
     width: 100px;
@@ -18,7 +24,7 @@ position: relative;
 {
 body{
     margin:auto;
-    margin-top: 150px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;

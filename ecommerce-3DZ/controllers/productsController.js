@@ -19,12 +19,15 @@ const productsController = {
             })
     },
     id : function(req,res,next){
-        let product = products.find(element => element.id == req.params.id);
-        if (product){
-            res.render('products/productDetail',{products, toThousand,product});
-        }else {
-            res.send('No existe el producto!');
-        }
+        db.Producto.findByPk(req.params.id)
+        .then((producto) =>{
+            if (producto){
+                res.render('products/productDetail', {producto});
+            } else {
+                res.redirect('/products');
+            }
+        }).catch(err => {console.log(err)})
+
     },
     create : function(req,res,next){
         let promesaMedidas = db.Medida.findAll();
@@ -52,8 +55,6 @@ const productsController = {
         res.send('Producto cargado!');
     },*/
     store : function(req, res, next) {
-        console.log(req.body);
-        console.log(req.files[0])
         db.Producto.create({
             descripcion: req.body.name,
             precio: Number(req.body.price),
@@ -69,47 +70,58 @@ const productsController = {
         }).catch((err) => { console.log(err) })
     },
     edit : function(req,res,next){
-        let productFind;
-        products.forEach(product => { 
-            //BUSCO EL PRODUCTO POR ID
-            if (product.id == req.params.id){
-                productFind = product;
-            }
+        let promesaProducto = db.Producto.findByPk(req.params.id,{
+            include : [{association:"medidas"},{association:"materials"}]
         });
-        // SI LO ENCUENTRO DEVUELVE LA VISTA
-        if (productFind){
-            res.render('products/edit',{product:productFind});
-        } else {
-            res.send('no existe tal producto!');
-        }
+        let promesaMedidas = db.Medida.findAll();
+        let promesaMaterial = db.Material.findAll();
+
+        Promise.all([promesaMedidas, promesaMaterial, promesaProducto])
+            .then(([medidas,materials,producto]) =>{
+                res.render('products/edit', {medidas:medidas,materials:materials, producto:producto});
+            }).catch((err) => {console.log(err)})
+
     },
     update : function(req,res,next){
-        products.forEach(product => { 
-            if (product.id == req.params.id){
-                //OJO QUE EL POST ES CON BODY Y EL GET CON PARAMS
-                product.name = req.body.name;
-                product.dimension = req.body.dimension;
-                product.price = req.body.price;
-                product.Material = req.body.Material;
-                if (typeof req.files[0] == 'undefined'){
-                    product.image = product.image;
-                }else{
-                    product.image = req.files[0].filename;
-                }
-                product.pintado = req.body.pintado;
-                }
-            });
-            fs.writeFileSync(__dirname + '/../data/productsDataBase.json',JSON.stringify(products));
-            res.send('actualizado exitosamente!');
+        // products.forEach(product => { 
+        //     if (product.id == req.params.id){
+        //         OJO QUE EL POST ES CON BODY Y EL GET CON PARAMS
+        //         product.name = req.body.name;
+        //         product.dimension = req.body.dimension;
+        //         product.price = req.body.price;
+        //         product.Material = req.body.Material;
+        //         if (typeof req.files[0] == 'undefined'){
+        //             product.image = product.image;
+        //         }else{
+        //             product.image = req.files[0].filename;
+        //         }
+        //         product.pintado = req.body.pintado;
+        //         }
+        //     });
+        //     fs.writeFileSync(__dirname + '/../data/productsDataBase.json',JSON.stringify(products));
+        //     res.send('actualizado exitosamente!');
+        db.Producto.update({
+            descripcion: req.body.name,
+            precio: Number(req.body.price),
+            imagen : path.normalize("/uploads/" + req.files[0].filename),
+            pintado : req.body.pintado,
+            material_id : req.body.Material,
+            medida_id : req.body.dimension
+        },{
+            where : {
+                id : req.params.id
+            }
+        }).then(()=>{
+            res.redirect('/products');
+        }).catch((err) => { console.log(err) })
     },
     destroy : function(req,res,next){
-        // RECORDAR QUE FILTER DEVUELVE UN NUEVO ARRAY y requiere de un booleano (true pasa false no pasa) entonces:
-        let newProducts = products.filter(product =>{
-            return req.params.id != product.id;
-        });
-        console.log(newProducts);
-        fs.writeFileSync(__dirname + '/../data/productsDataBase.json',JSON.stringify(newProducts));
-        res.send('Eliminado exitosamente!');
+       db.Producto.destroy({
+           where : {
+               id : req.params.id
+           }
+       })
+       res.redirect('/products');
     }
 };
 

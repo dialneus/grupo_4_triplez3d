@@ -7,27 +7,51 @@
     <title>Edicion de producto</title>
 </head>
 <body>
-    <form class= "formularioedit" action="/products/edit/<%=product.id%>" method="POST" enctype="multipart/form-data">
+    <form class= "formularioedit" action="/products/edit/<%=producto.id%>" method="POST" enctype="multipart/form-data">
         <img class="logo"src="/images/LOGO/LOGOPNG.png">
         <label for="name">Nombre de producto</label>
-        <input type="text" name="name" value="<%= product.name %>"><br>
+        <input type="text" name="name" value="<%= producto.descripcion %>"><br>
         
-        <label for="dimension">Dimensiones (cm)</label>
-        <input type="text" name="dimension" value="<%= product.dimension %>"><br>
+        <label for="dimension">Dimensiones</label>
+        <select name="dimension" id="dimension">
+            <% for(let i = 0; i < medidas.length; i++){ %>
+                <% if(medidas[i].id == producto.medida_id){ %>
+                    <option value="<%= medidas[i].id %>" selected>
+                        <%= medidas[i].tamanios %>
+                    </option>
+                <% } else { %>
+                    <option value="<%= medidas[i].id %>">
+                        <%= medidas[i].tamanios %>
+                    </option>
+                <% } %>
+           <% } %>
+        </select><br>
 
         <label for="Material">Material</label>
-        <input type="text" name="Material"  value="<%= product.Material %>"><br>
+        <select name="Material" id="Material">
+            <% for(let i = 0; i < materials.length; i++){ %>
+                <% if(materials[i].id == producto.material_id){ %>
+                    <option value="<%= materials[i].id %>" selected>
+                        <%= materials[i].tipomaterial %>
+                    </option>
+                <% } else { %>
+                    <option value="<%= materials[i].id %>">
+                        <%= materials[i].tipomaterial %>
+                    </option>
+                <% } %>
+           <% } %>
+        </select><br>
 
         <label for="pintado">Pintado</label>
-        <input type="text" name="pintado"  value="<%= product.pintado %>"><br>
+        <input type="text" name="pintado"  value="<%= producto.pintado %>"><br>
 
         <label for="price">Importe $</label>
-        <input type="text" name="price"  value="<%= product.price %>"><br>
+        <input type="text" name="price"  value="<%= producto.precio %>"><br>
 
-        <label for="image">Producto seleccionado</label>
+        <label for="image">Imagen</label>
         <input type="file" name="image" ><br>
 
-        <button type="submit">EDITAR</button><button><a href="/products/destroy/<%=product.id%>">ELIMINAR</a></button>
+        <button type="submit">EDITAR</button><button><a href="/products/destroy/<%=producto.id%>">ELIMINAR</a></button>
     </form>
 </body>
 </html>
