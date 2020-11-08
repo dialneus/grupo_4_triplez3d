@@ -53,9 +53,8 @@ div.banner img {
 
 /*VISTA TELEFONO RESOLUCION MAXIMA 768PX*/
 @media(max-width:768px){
-body{
-  min-width: 600px;
-}
+
+
 
 }
 
