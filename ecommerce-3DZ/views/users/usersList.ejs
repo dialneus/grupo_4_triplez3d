@@ -8,18 +8,13 @@
 <body>
   <h1>Lista de Usuarios Registrados</h1>
   <ul>
-    <% for(usuario of users) { %>
+    <% for(usuario of usuarios) { %>
       <li>
-        <a href='/users/detail/<%= usuario.id %>'>
-          <%= usuario.nombreApellido + ', ' + usuario.email + ' , con la pasword hasheada: ' + usuario.password%>
-        </a>
+        <a href="/users/<%= usuario.id %> ">
+        <%= 'id:' + usuario.id + ' Name:' + usuario.nombreApellido + ' Email: ' + usuario.email %>
+      </a>
       </li>
-    <% } %> 
+    <% } %>
   </ul>
-  <h2>Busqueda</h2>
-  <form action="/users/detail" method="GET">
-    <input type="text" name="consulta">
-    <input type="submit" value="Consultar">
-  </form>
 </body>
 </html>

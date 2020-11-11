@@ -14,15 +14,27 @@ header {
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding-bottom: 15px;
   bottom: 30px;
   border-bottom: medium ridge gray;
 }
-
 
 header section img {
   padding: 5px;
   width: 100%;
   max-width: 80px;
+}
+
+/*Estilo Section*/
+
+main section.idVista {
+  text-align: center;
+}
+
+main section.idVista h3{
+  margin-top: 0px;
+  font-size: 17px;
+  font-weight: bold;
 }
 
 /*Estilos Main*/

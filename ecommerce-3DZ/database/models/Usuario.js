@@ -14,7 +14,16 @@ module.exports = (sequelize, dataTypes) => {
     },
     password: {
       type: dataTypes.STRING
-    }
+    },
+    telefono: {
+      type: dataTypes.INTEGER
+    },
+    domicilio: {
+      type: dataTypes.STRING
+    },
+    localidad: {
+      type: dataTypes.STRING
+    },
   }
 
   let config = {

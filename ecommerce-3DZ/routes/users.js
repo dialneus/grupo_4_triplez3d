@@ -13,9 +13,9 @@ var{check, validationResult, body} = require('express-validator');
 //Requiero los modelos de Bases de Datos:
 const db = require('../database/models');
 
-/* GET LogIn page. */
+// Rutas a  LogIn:
 router.get('/login', usersController.logIn);
-//router.post('/login', usersController.enter);
+
 router.post('/login', [
   check('email').isEmail().withMessage('El mail debe ser válido y debe estar completo.') ,
   check('password').isLength({min:4}).withMessage('La constraseña debe tener al menos 4 carácteres.') ,
@@ -32,7 +32,7 @@ router.post('/login', [
   }),
 ] ,usersController.processLogin);
 
-/* GET Register page. */
+// Rutas a Registro Usuario:
 router.get('/register', usersController.register);
 router.post('/register', [
   check('userName').isLength({min:1}).withMessage('El nombre debe estar completo.') ,
@@ -56,12 +56,17 @@ router.post('/register', [
   })
 ], usersController.create);
 
-router.get('/check', (req,res) => {
- if(req.session.userLogueado == undefined) {
-   res.send('Ningún usuario se encuentra logueado')
- } else {
-   res.send(req.session.userLogueado);
- }
-})
+//Ruta a Listado Usuarios:
+
+router.get('/listado',usersController.list);
+
+//Ruta a Detalle de Usuario:
+
+router.get('/:id', usersController.detail);
+
+//Ruta a Actualización de Datos Usuario:
+
+router.get('/edit/:id', usersController.edit);
+router.post('/edit/:id', usersController.update);
 
 module.exports = router;

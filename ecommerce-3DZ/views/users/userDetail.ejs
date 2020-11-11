@@ -8,15 +8,16 @@
 <body>
   <h1>Detalle de usuario</h1>
   <br>
-  <h2>Se quiere consultar: <%= usuarioConsultado %> </h2>
+  <h2>Se quiere consultar: <%= usuario %> </h2>
 
-  <h1>Lista de Usuarios Consultados</h1>
+  <h1>Usuario Consultado:</h1>
   <ul>
-    <% for(usuario of usersResults) { %> 
-      <li>
-        <%= usuario.user_name + ', ' + usuario.user_email %>
-      </li>
-    <% } %> 
+    <li>
+        <%= usuario.nombreApellido + ', ' + usuario.email %>
+    </li>
   </ul>
+  <a href="/users/edit/<%= usuario.id %> ">
+    <button>Editar</button>
+  </a>
 </body>
 </html>
