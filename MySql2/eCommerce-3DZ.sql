@@ -3,11 +3,12 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 11-11-2020 a las 22:45:22
+-- Tiempo de generación: 12-11-2020 a las 15:31:18
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -128,7 +129,7 @@ INSERT INTO `productos` (`id`, `precio`, `descripcion`, `imagen`, `pintado`, `me
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombreApellido` varchar(100) NOT NULL,
-  `email` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `password` text NOT NULL,
   `telefono` int(11) DEFAULT NULL,
   `domicilio` varchar(150) DEFAULT NULL,
@@ -140,9 +141,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombreApellido`, `email`, `password`, `telefono`, `domicilio`, `localidad`) VALUES
-(1, 'Alejandro Neustadt ', 'dialneus@gmail.com', '$2b$10$hPHMCXPrTQ/MCOpVyW34YeryaFIlmw.OZ4zG4b/SycR5cUq2mpUm6', 1111111111, ' monroe 940', 'caba'),
-(2, 'Mariano Jerez ', 'mariano@jerez.com', '$2b$10$yshrV1wQwHVjrHKstRN3KOgVTHxw1IKuBEA52Yq.jZQdls2o1NoY.', 222222222, ' monroe 9400', 'bsas'),
-(3, 'Kevin Schild ', 'kevin@schild.com.ar', '$2b$10$pyFlNaSKzRLVy//83bM9BuYFs.2hLOBBQpYKbdUwMR4gGq3WP3z1u', 33333333, ' monroe 1940', 'misiones');
+(1, 'Diego Alejandro Neustadt             ', 'dialneus@gmail.com', '$2b$10$hPHMCXPrTQ/MCOpVyW34YeryaFIlmw.OZ4zG4b/SycR5cUq2mpUm6', 1145232551, 'Ceretti 2161    ', 'Buenos Aires         '),
+(2, 'Mariano Jerez           ', 'mariano@jerez.com', '$2b$10$yshrV1wQwHVjrHKstRN3KOgVTHxw1IKuBEA52Yq.jZQdls2o1NoY.', 40108211, 'Monroe 5500    ', 'Buenos Aires, Merlo'),
+(3, 'Kevin Schild   ', 'kevin@schild.com.ar', '$2b$10$pyFlNaSKzRLVy//83bM9BuYFs.2hLOBBQpYKbdUwMR4gGq3WP3z1u', 33333333, ' Av. Monroe 1940  ', 'Posadas, Misiones  ');
 
 --
 -- Índices para tablas volcadas
@@ -229,7 +230,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas

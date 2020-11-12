@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombreApellido` varchar(100) NOT NULL,
-  `email` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `password` text NOT NULL,
   `telefono` int(11) DEFAULT NULL,
   `domicilio` varchar(150) DEFAULT NULL,

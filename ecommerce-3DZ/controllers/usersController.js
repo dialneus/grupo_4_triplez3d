@@ -120,7 +120,6 @@ const usersController = {
       }
     });
     res.redirect('/users/' + req.params.id)
-    //res.send('Usuario Actualizado')
   }
 };
 

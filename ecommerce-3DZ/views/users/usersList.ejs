@@ -3,18 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/listusers.css">
+  <!--Fuentes Google-->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <!--Iconos Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <title>Lista de Usuarios Activos</title>
 </head>
 <body>
   <h1>Lista de Usuarios Registrados</h1>
-  <ul>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Nombre y Apellido</th>
+      <th>Correo Electrónico</th>
+      <th>Acción</th>
+    </tr>
     <% for(usuario of usuarios) { %>
-      <li>
-        <a href="/users/<%= usuario.id %> ">
-        <%= 'id:' + usuario.id + ' Name:' + usuario.nombreApellido + ' Email: ' + usuario.email %>
-      </a>
-      </li>
-    <% } %>
-  </ul>
+    <tr>
+      <td>
+        <%= usuario.id %>
+      </td>
+      <td> 
+        <%= usuario.nombreApellido %>
+      </td>
+      <td> 
+        <%= usuario.email %>
+      </td>
+      <td>
+        <a href="/users/<%= usuario.id %> ">Ver</a>
+        <a href="/users/edit/<%= usuario.id %> ">Editar</a>
+      </td>  
+    
+    </tr>
+       <% } %>
+      </table>
 </body>
 </html>

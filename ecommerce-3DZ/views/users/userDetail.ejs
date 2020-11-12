@@ -3,21 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/detailusers.css">
+  <!--Fuentes Google-->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <!--Iconos Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <title>Detalle de Usuario</title>
 </head>
 <body>
-  <h1>Detalle de usuario</h1>
-  <br>
-  <h2>Se quiere consultar: <%= usuario %> </h2>
-
-  <h1>Usuario Consultado:</h1>
-  <ul>
+  <header>
+    <section>
+      <a href="/"><img src="/images/LOGO/LOGOPNG.png"></a>
+    </section>
+  </header>
+  <main>
+    <section class="idVista">
+      <h2>Datos de Usuario</h2>
+    </section>
+  <ul class="formularioedit">
     <li>
-        <%= usuario.nombreApellido + ', ' + usuario.email %>
+        <p class="titulo">Nombre y Apellido</p>
+        <p class="dato"> <%= usuario.nombreApellido %></p>
+    </li>
+    <li>
+      <p class="titulo">Correo Electrónico</p>
+      <p class="dato"><%= usuario.email %></p>
+    </li>
+    <li>
+      <p class="titulo">Número de Teléfono</p> <p class="dato"><%= usuario.telefono %> </p>
+    </li>
+    <li>
+      <p class="titulo">Domicilio</p>
+      <p class="dato"><%= usuario.domicilio %> </p>
+    </li>
+    <li>
+      <p class="titulo">Localidad</p>
+      <p class="dato"><%= usuario.localidad %> </p>
     </li>
   </ul>
+  <section class="editar">
   <a href="/users/edit/<%= usuario.id %> ">
     <button>Editar</button>
   </a>
+  </section>
+</main>
 </body>
 </html>

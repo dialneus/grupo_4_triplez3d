@@ -1,0 +1,33 @@
+/*Estilos Body*/
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  margin: auto;
+  margin-top: 30px;
+  background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
+}
+
+table {
+  width: auto;
+  border: 1px solid #000;
+}
+
+th {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  background-color: brown;
+  vertical-align: top;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  padding: 0.3em;
+}
+
+td {
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  padding: 0.3em;
+}
