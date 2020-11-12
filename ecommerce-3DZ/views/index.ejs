@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="carousel.js"> </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel='stylesheet' href='stylesheets/style.css'>
   <title>3DZ_Impresiones_3D</title>
@@ -11,20 +12,26 @@
   <%-include('./partials/header')%>
   <div class="banner" >
     <img src="/images/IMAGENESEDITADAS/banner.jpg">
-  </div>  
-  <div class="productosslider">
-    <ul>
-      <li><a href=""><img src="/images/IMAGENESEDITADAS/MASCARACIRCULAR.png" alt="mascara"></a></li>
-      <li><a href=""><img src="/images/IMAGENESEDITADAS/CHIMUELOCIRCULAR.png" alt="dragon chimuelo" ></a></li>
-      <li><a href=""><img src="/images/IMAGENESEDITADAS/RAYQUAZACIRCULAR.png" alt="pokemon rayquaza" ></a></li>
-      <li><a href=""><img src="/images/IMAGENESEDITADAS/WALKERCIRCULAR.png" alt="robot walker" ></a></li>
-      <li><a href=""><img src="/images/IMAGENESEDITADAS/XWINGCIRCULAR.png" alt="XWING star wars" ></a></li>
-      <li><a href=""><img src="/images/IMAGENESEDITADAS/MATEDARTHVADERCIRCULAR.png" alt="Mate Darth Vader" ></a></li>
-      <li><a href=""><img src="/images/IMAGENESEDITADAS/CASACIRCULAR.png" alt="casita productora de cerveza" ></a></li>
+  </div>
+  <div class="carousel">
+    <ul class="slides">
+      <li><a href=""><img src="/images/IMAGENESEDITADAS/MASCARACIRCULAR.png" alt="mascara" class="slide"></a></li>
+      <li><a href=""><img src="/images/IMAGENESEDITADAS/CHIMUELOCIRCULAR.png" alt="dragon chimuelo" class="slide"></a></li>
+      <li><a href=""><img src="/images/IMAGENESEDITADAS/RAYQUAZACIRCULAR.png" alt="pokemon rayquaza"class="slide" ></a></li>
+      <li><a href=""><img src="/images/IMAGENESEDITADAS/WALKERCIRCULAR.png" alt="robot walker" class="slide"></a></li>
+      <li><a href=""><img src="/images/IMAGENESEDITADAS/XWINGCIRCULAR.png" alt="XWING star wars" class="slide"></a></li>
+      <li><a href=""><img src="/images/IMAGENESEDITADAS/MATEDARTHVADERCIRCULAR.png" alt="Mate Darth Vader" class="slide"></a></li>
+      <li><a href=""><img src="/images/IMAGENESEDITADAS/CASACIRCULAR.png" alt="casita productora de cerveza" class="slide"></a></li>
     </ul>
   </div>
-  <br><br><br><br> <br><br><br><br><br><br><br><br> <br><br><br><br>
-  <%-include('./partials/footer')%>
+  <div class="controls">
+    <a class="prev" onclick="nav(1)">←</a>
+    <a class="next" onclick="nav(-1)">→</a>
+</div>
+  
+  
   
 </body>
+  <div class="footerhome"><%-include('./partials/footer')%></div>
+
 </html>
