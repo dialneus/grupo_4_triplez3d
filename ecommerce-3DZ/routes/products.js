@@ -20,7 +20,7 @@ var storage = multer.diskStorage({
     }
   })
    
-  var upload = multer({ storage: storage })
+var upload = multer({ storage: storage });
 
 /*CLASICO AMB:*/
 /* DAR DE ALTA*/
@@ -38,6 +38,7 @@ router.post('/edit/:id',upload.any(),productsController.update);
 PONGO POR ULTIMO PORQUE EJECUTA DESDE ARRIBA HACIA ABAJO, SI TOMO UNA RUTA MUY GENERAL LA EJECUTA PRIMERO Y ARRUINA LO QUE ESTE MAS ABAJO*/
 /* GET Formulario page. */
 router.get('/',productsController.vistaProducto);
+router.post('/',productsController.search);
 router.get('/:id',productsController.id);
 
 

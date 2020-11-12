@@ -1,10 +1,13 @@
 const fs = require('fs');
 const path = require('path');
+const db = require('../database/models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
-let products = JSON.parse(fs.readFileSync(__dirname + '/../data/productsDataBase.json', 'utf-8'));
+
+// let products = JSON.parse(fs.readFileSync(__dirname + '/../data/productsDataBase.json', 'utf-8'));
 
 //Requiero la Base de Datos:
-const db = require('../database/models');
 
 const productsController = {
     carrito: function(req, res, next) {
@@ -17,6 +20,16 @@ const productsController = {
             .then(function(productos){
                 res.render('products/products',{productos:productos});
             })
+    },
+    search : function(req,res,next){
+        let x = req.body.search;
+ 
+        db.Producto.findAll({
+            where: { descripcion: {[db.Sequelize.Op.like]: '%' + x + '%'} },
+            include : [{association:"medidas"},{association:"materials"}]
+        }).then(function(productos){
+            res.render('products/products', {productos})
+        }).catch((err) => {console.log(err)});
     },
     id : function(req,res,next){
         db.Producto.findByPk(req.params.id)
