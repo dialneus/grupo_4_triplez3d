@@ -27,7 +27,7 @@ body {
 div.banner img {
   width: 100%;
 }
-.carousel{
+.carousel1{
   
   overflow: hidden;
   position: relative;
@@ -41,7 +41,7 @@ div.banner img {
   white-space: nowrap;
  
 }
-.carousel li{
+.carousel1 li{
   width: 30%;
   padding: 18px;
   list-style:none;

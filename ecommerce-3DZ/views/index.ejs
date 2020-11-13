@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="carousel.js"> </script>
+  <script src="javascripts/carousel.js"> </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel='stylesheet' href='stylesheets/style.css'>
+  <link rel="stylesheet" href="stylesheets/carousel.css">
   <title>3DZ_Impresiones_3D</title>
 </head>
 <body>
@@ -13,7 +15,7 @@
   <div class="banner" >
     <img src="/images/IMAGENESEDITADAS/banner.jpg">
   </div>
-  <div class="carousel">
+  <div class="carousel1">
     <ul class="slides">
       <li><a href=""><img src="/images/IMAGENESEDITADAS/MASCARACIRCULAR.png" alt="mascara" class="slide"></a></li>
       <li><a href=""><img src="/images/IMAGENESEDITADAS/CHIMUELOCIRCULAR.png" alt="dragon chimuelo" class="slide"></a></li>
@@ -27,10 +29,16 @@
   <div class="controls">
     <a class="prev" onclick="nav(1)">←</a>
     <a class="next" onclick="nav(-1)">→</a>
-</div>
+  </div>
+  <div class="carousel"><%-include('./partials/carousel')%></div>
   
+ 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>  
   
-  
+  <script src="javascripts/carousel.js"></script>
+
+
 </body>
   <div class="footerhome"><%-include('./partials/footer')%></div>
 
