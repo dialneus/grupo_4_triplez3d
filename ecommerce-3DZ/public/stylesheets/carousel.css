@@ -167,5 +167,6 @@ input[id="7"]:checked ~ .pagination .pagination-item[for="7"]{
   100%{
       transform: translate3d(calc(-100% * 2), 0, 0);
   }
+  
 
 }

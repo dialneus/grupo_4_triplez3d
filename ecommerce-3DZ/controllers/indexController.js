@@ -7,6 +7,12 @@ const indexController = {
   },
   modelado: function (req,res,next){
     res.render('modelado',{title: 'Formulario de Servicio de modelado'})
+  },
+  nosotros: function (req,res,next){
+    res.render('nosotros',{title: 'nosotros'})
+  },
+  contacto:function(req,res,next){
+    res.render('contacto',{title: 'contacto'})
   }
 };
 
