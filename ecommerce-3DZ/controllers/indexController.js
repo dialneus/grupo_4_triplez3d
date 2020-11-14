@@ -11,9 +11,10 @@ const indexController = {
   nosotros: function (req,res,next){
     res.render('nosotros',{title: 'nosotros'})
   },
-  contacto:function(req,res,next){
+  contacto: function (req,res,next){
     res.render('contacto',{title: 'contacto'})
   }
-};
+}
+
 
 module.exports = indexController;
