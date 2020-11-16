@@ -28,7 +28,7 @@ img{
   transform: translate3d(0, 0, 0);
   transition: all 600ms;
   animation-name: autoplay;
-  animation-duration: 6.5s;
+  animation-duration: 16.5s;
   animation-direction: alternate;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
@@ -156,16 +156,28 @@ input[id="7"]:checked ~ .pagination .pagination-item[for="7"]{
 
 
 @keyframes autoplay{
-  33%{
+  14%{
       transform: translate3d(calc(-100% * 0), 0, 0);
   }
   
-  66%{
+  28%{
       transform: translate3d(calc(-100% * 1), 0, 0);
   }
   
-  100%{
+  42%{
       transform: translate3d(calc(-100% * 2), 0, 0);
+  }
+  56%{
+    transform: translate3d(calc(-100% * 3), 0, 0);
+  }
+  70%{
+    transform: translate3d(calc(-100% * 4), 0, 0);
+  }
+  84%{
+    transform: translate3d(calc(-100% * 5), 0, 0);
+  }
+  100%{
+    transform: translate3d(calc(-100% * 6), 0, 0);
   }
   
 
