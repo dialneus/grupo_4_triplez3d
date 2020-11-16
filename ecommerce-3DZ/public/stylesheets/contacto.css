@@ -12,3 +12,24 @@ body{
     background-attachment: fixed;
     background-position: center;
 }
+/*.contactobloque img{
+    width: 35px;
+
+}*/
+.wmlbloque{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    position: relative;
+    padding-top: 30px;  
+}
+li{
+    display: flex;
+}
+
+form{
+    display: block;
+}
+ul{
+    list-style: none;
+}

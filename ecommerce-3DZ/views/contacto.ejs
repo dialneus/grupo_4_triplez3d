@@ -8,7 +8,67 @@
 </head>
 <body>
     <%-include('./partials/header')%>
-    <p>CREANDOPAGINA</p>
+    <div class="contactobloque">
+        <div class="wmlbloque">
+            <p class="textocontacto">Contacto</p>
+            <ul class="wml">
+                <li class="icon">
+                   <img src="/images/IMAGENESEDITADAS/whatsapp.png" alt="" ><p>+54 9 11 3306-6351</p>
+                </li>
+                <li class="icon">
+                    <img src="/images/IMAGENESEDITADAS/mail.png" alt="" class="mail"><p>mariotaebox08@gmail.com</p>
+                </li>
+                 <li class="icon">
+                    <img src="/images/IMAGENESEDITADAS/localization.png" alt="" class="mail"><p>Antonio Rocca 4538 - Quilmes Oeste</p>
+                </li>     
+            </ul>
+        </div>
+        <div class="redescontacto">
+            <h2>Seguinos!</h2>
+            <ul class="icon2">
+                <li><img src="/images/IMAGENESEDITADAS/facebook.png" alt="" ></li>
+                <li><img src="/images/IMAGENESEDITADAS/instagram.png" alt="" ><p>@3dz_arte3dimpresiones</p></li>             
+            </ul>
+        </div>
+    </div>
+    <div class="formulariobloque">
+        <div id="contact-form" class="m-bottom">       
+            <form action="/contacto" method="post" onsubmit="$(this).attr('action', '');">
+                <input type="hidden" value="" name="product">
+                <input type="hidden" name="type" value="contact">
+                <div class="form-group">
+                    <input type="text" autocorrect="off" autocomplete="name" id="name" class="form-control " name="name" onfocus="if (this.value == 'Nombre') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Nombre';}" value="Nombre">
+                    <label for="name">Nombre</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" autocapitalize="off" autocorrect="off" autocomplete="email" class="form-control " onfocus="if (this.value == 'Email') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email';}" value="Email" name="email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group" style="display:none;">
+                    <input id="winnie-pooh" type="text" class="form-control" name="winnie-pooh">
+                    <label for="winnie-pooh">No completar este campo</label>
+                </div>
+                <div class="form-group">
+                    <input id="phone" type="tel" autocorrect="off" autocomplete="tel" class="form-control" onfocus="if (this.value == 'Teléfono') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Teléfono';}" value="Teléfono" name="phone">
+                    <label for="phone">Teléfono                           
+                        <span class="mini-text">(Opcional)</span>
+                    </label>
+                </div> 
+                <div class="form-group">
+                    <textarea id="message" name="message" class="form-control" cols="20" rows="5"></textarea>
+                    <label for="message">Mensaje                             
+                        <span class="mini-text">(Opcional)</span>
+                    </label>
+                </div>
+                <input type="hidden" value="contact" name="type">
+                    <div class="row">
+                        <div class="container-fluid">
+                             <input type="submit" class="enviar1" value="enviar" name="contact">
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
     
 </body>
 </html>
