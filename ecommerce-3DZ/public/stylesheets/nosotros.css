@@ -1,7 +1,10 @@
+*{
+    margin: 0px;
+    padding: 0px;
+  }
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
     background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg" );
     background-size: cover;
     background-repeat: no-repeat;
@@ -19,7 +22,9 @@ body {
       opacity: 80%;
       justify-content:center;
       position: relative;
-      padding: 290px;
+      /*padding: 290px;*/
+      padding-top: 20px;
+      padding-bottom: 20px;
       border-color: brown 5px;
       
   }
