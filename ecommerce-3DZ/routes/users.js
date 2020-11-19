@@ -69,4 +69,15 @@ router.get('/:id', usersController.detail);
 router.get('/edit/:id', usersController.edit);
 router.post('/edit/:id', usersController.update);
 
+//Eliminar Session:
+
+router.post('/checkout/', usersController.checkout);
+
+
+//Ruta al carrito:
+
+//router.get('/chart', usersController.chart);
+
+
+
 module.exports = router;

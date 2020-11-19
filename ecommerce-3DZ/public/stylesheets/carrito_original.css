@@ -46,24 +46,24 @@ main section article {
 
 /* --- Estilos de Productos --- */
 
-main section /*article*/td.prd_image {
+main section article.prd_image {
   width: 15%;
   padding: 5px 0px;
   border-radius: 8px 0px 0px 8px;
 }
 
-main section /*article*/td.prd_image img {
+main section article.prd_image img {
   width: 100%;
   display: table-cell;
   vertical-align: middle;
 }
 
-main section /*article*/td.prd_detail {
+main section article.prd_detail {
   width: 55%;
   padding: 5px;
 }
 
-main section /*article*/td.prd_price {
+main section article.prd_price {
   width: 20%;
   padding: 5px;
   text-align: center;
@@ -74,26 +74,26 @@ main section article p {
   margin: 0px;
 }
 
-main section /*article*/td.prd_qty {
+main section article.prd_qty {
   width: 5%;
   padding: 5px;
   text-align: center; 
 }
 
-main section /*article*/td.prd_qty input[type="number"] {
-  max-width: 70%;
-  height: 20px;
+main section article.prd_qty input[type="number"] {
+  max-width: 25%;
 }
 
-main section td.prd_trash {
-  width: 100%;
+main section article.prd_trash {
+  width: 5%;
   padding: 5px;
   text-align: center;
   border-radius: 0px 8px 8px 0px;
 }
 
-main section td.prd_trash img {
-  width: 20px;
+main section article.prd_trash img {
+  width: 100%;
+  display: table-cell;
   vertical-align: middle;
 }
 

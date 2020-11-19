@@ -18,16 +18,53 @@
     <input type="checkbox">
     <i class="fas fa-bars"></i>
     <i class="fas fa-times"></i>
-    <nav>
-      
+    <nav> 
       <ul class="opciones">
             <li><a href="/">HOME</a></li>
             <li><a href="/products">PRODUCTOS</a></li>
             <li><a href="">NOSOTROS</a></li>
             <li><a href="/modelado">MODELADO</a></li>
             <li><a href="">CONTACTO</a></li>
-            <li><a href="/users/login"><i class="fas fa-portrait"></i></a></li>
-      </ul>
+            <li class="carrito"><a href="/chart"><i class="fas fa-shopping-basket"></i></a></li>
+            <li>
+              <a href=""><i class="fas fa-portrait"></i></a>
+            <!-- start menu desplegable -->
+              <ul class="userMenu">
+                <li class="userMenu">
+                  <a class="userMenu" href="/users/login">
+                    <i class="fas fa-user"></i>
+                    Mi Cuenta
+                  </a>
+                </li>
+                <li>
+                  <% if(user == undefined) {%>
+                  <a class="userMenu" href="/users/login">
+                  <% } else { %>  
+                  <a class="userMenu" href="/users/<%= user.id %> ">
+                  <% } %>  
+                    <i class="fas fa-user-cog"></i>
+                    Mis Datos
+                  </a>
+                </li>
+                <li>
+                  <form action="/users/checkout" method="POST">
+                    <button class="userMenu" type="submit">
+                      <i class="fas fa-sign-out-alt"></i>
+                      Cerrar sesión
+                    </button>  
+                  </form>
+                </li>
+              </ul>
+              <!-- end menu desplegable -->    
+            </li>
+          </ul>
     </nav>
   </div>
+  <section class="user">
+    <% if(user != undefined) {%> 
+      <p> <%= user.nombreApellido %> </p>
+     <% } %> 
+  </section>
 </header>
+  
+

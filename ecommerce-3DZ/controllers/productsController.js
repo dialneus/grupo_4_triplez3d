@@ -10,9 +10,6 @@ const Op = Sequelize.Op;
 //Requiero la Base de Datos:
 
 const productsController = {
-    carrito: function(req, res, next) {
-        res.render('products/carrito', { title: 'Carrito de Compras 3DZ' });
-    },
     vistaProducto : function(req,res,next){
         db.Producto.findAll({
             include : [{association:"medidas"},{association:"materials"}]
@@ -40,7 +37,6 @@ const productsController = {
                 res.redirect('/products');
             }
         }).catch(err => {console.log(err)})
-
     },
     create : function(req,res,next){
         let promesaMedidas = db.Medida.findAll();

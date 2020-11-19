@@ -14,13 +14,15 @@ const { log } = require('console');
 
 
 const usersController = {
+  chart: (req, res) => {
+    res.render('users/carrito', { title: 'Carrito de Compras 3DZ' });
+  },
   logIn: (req, res, next) => {
     res.render('users/login');
   },
   register: (req, res, next) => {
     res.render('users/register');
   },
-
   create: (req,res) => {
   //Capturo los errores del formulario y analizo su existencia:
   let errors = (validationResult(req));
@@ -45,9 +47,7 @@ const usersController = {
   } else {
   res.render('users/register', {errors: errors.errors});
   };
-
 },
-
   processLogin: (req, res, next) => {
     let errors = (validationResult(req));
       
@@ -65,10 +65,10 @@ const usersController = {
         if (userFind == undefined) {
           return res.render('users/login', {errors: [{msg: 'Credenciales Invalidas'}]});
         } else {
-          res.redirect('/');
           //Configuro Session y Cookies:
           req.session.userLogueado = userFind;
-          console.log('El usuario en session es: ' + userFind.email);//agregado
+          console.log('El id del usuario en session es: ' + req.session.userLogueado.id);//agregado
+          res.redirect('/');
           if(req.body.recordame != undefined) {
             res.cookie('recordame', userFind.email, {maxAge: 8.64e+7});
         }
@@ -89,7 +89,8 @@ const usersController = {
   detail: (req, res, next) => {
     db.Usuarios.findByPk(req.params.id)
       .then((usuario) => {
-        res.render('users/userDetail', {usuario: usuario});
+        userId = req.params.id;
+        res.render('users/userDetail', {usuario: usuario, userId: userId});
       })
   },
   edit: (req, res, next) => {
@@ -120,7 +121,13 @@ const usersController = {
       }
     });
     res.redirect('/users/' + req.params.id)
-  }
+  },
+  checkout: (req,res,next) => {
+    req.session.destroy((err) => {
+      res.redirect('/')
+    });
+  },
+
 };
 
 module.exports = usersController;
