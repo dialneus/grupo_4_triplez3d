@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/contacto.css">
+    <title>contacto</title>
+</head>
+<body>
+    <%-include('./partials/header')%>
+    <div class="losdosbloques">
+        <div class="contactobloque">
+            <div class="wmlbloque">
+                <h2 class="textocontacto">Envianos tu consulta y te contestaremos a la brevedad</h2>
+                <ul class="wml">
+                    <li class="icon">
+                        <img src="/images/IMAGENESEDITADAS/whatsapp.png" alt="" ><p>+54 9 11 3306-6351</p>
+                    </li>
+                    <li class="icon">
+                        <img src="/images/IMAGENESEDITADAS/mail.png" alt="" class="mail"><p>mariotaebox08@gmail.com</p>
+                    </li>
+                    <li class="icon">
+                        <img src="/images/IMAGENESEDITADAS/localization.png" alt="" class="mail"><p>Antonio Rocca 4538 - Quilmes Oeste</p>
+                    </li>     
+                </ul>
+            </div>                                                                                      
+        </div>
+        <div class="formulariobloque">
+            <div id="contact-form" class="m-bottom">
+                <form action="" method="POST" onsubmit="">
+                    <ul>
+                        <li>
+                            <label for="nombre"></label>
+                            <input type="nombre" name="nombre" id="nomb" placeholder="Nombre">
+                        </li>
+                        <li>
+                            <label for="mail"></label>
+                            <input type="mail" name="mail" id="email" placeholder="E-mail">  
+                        </li>
+                        <li>
+                            <label for="telefono"></label>
+                            <input type="tel" name="tel" id="tel" placeholder="Tel.">  
+                        </li>
+                        <li>
+                            <label for="mensaje"></label>
+                            <input type="mensaje" name="mensaje" id="mensaje" placeholder="Mensaje">  
+                        </li>
+                        <section class="enviar">
+                            <button type="submit">Enviar</button>
+                        </section>
+                    </ul>
+                    
+                    
+                    
+
+
+
+
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+    <%-include('./partials/footer')%>
+</body>
+</html>

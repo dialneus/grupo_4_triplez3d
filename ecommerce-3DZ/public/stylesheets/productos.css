@@ -92,6 +92,21 @@ button .buscar{
     
 }
 
+.sinProductos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.sinProductos h1{
+    color: brown;
+    margin-bottom: 10px;
+}
+.sinProductos img{
+    width: 30%;
+}
+
 #search{
     height: 18px;
     width: 30%;
@@ -115,6 +130,8 @@ button .buscar{
 #search{
     width: 50%;
 }
-
+.sinProductos img{
+    width: 50%;
+}
 }
 

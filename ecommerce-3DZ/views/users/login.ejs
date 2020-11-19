@@ -13,24 +13,41 @@
   <title>Ingresá en tu cuenta de 3DZ impresiones</title>
 </head>
 <body>
-  <header>
-    <section>
-      <a href="/">
-        <img src="/images/LOGO/LOGOPNG.png">
-      </a>
-    </section>
-  </header>
-  
-  <main>
-    <section class="idVista">
-      <h3>Inicio de Sesión</h3>
-    </section>
-    <% if(typeof errors != 'undefined') { %>
-      <p>Errores detectados</p>
-      <ul>
-        <% for(let i = 0; i < errors.length; i++) {%> 
+  <div class="container">
+    <header>
+      <section>
+        <a href="/">
+          <img src="/images/LOGO/LOGOPNG.png">
+        </a>
+      </section>
+    </header>
+    
+    <main>
+      <section class="idVista">
+        <h3>Inicio de Sesión</h3>
+      </section>
+      <% if(typeof errors != 'undefined') { %>
+        <p>Errores detectados</p>
+        <ul>
+          <% for(let i = 0; i < errors.length; i++) {%> 
+            <li>
+              <%= errors[i].msg %> 
+            </li>
+            <% } %>
+        </ul>
+    <% } %>
+      
+      <form action="/users/login" method="POST">
+        <ul>
           <li>
-            <%= errors[i].msg %> 
+            <span class="iconForm">
+              <!--<i class="far fa-user"></i>-->
+              <i class="far fa-envelope"></i>
+            </span>
+            <label for="email"></label>
+            <input type="email" name="email" id="email" placeholder="Ingrese su email">
+            <!--<label for="user"></label>
+            <input type="text" name="user" id="user" placeholder="Ingrese su usuario o email">-->
           </li>
           <% } %>
       </ul>

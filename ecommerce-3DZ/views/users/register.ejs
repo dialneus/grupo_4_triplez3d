@@ -11,76 +11,78 @@
   <title>Registrate en 3DZ impresiones</title>
 </head>
 <body>
-  <header>
-    <section>
-      <a href="/"><img src="/images/LOGO/LOGOPNG.png"></a>
-    </section>
-  </header>
-  <main>
-    <section class="idVista">
-      <h3>Registro de Usuario</h3>
-    </section>
-    <% if(typeof errors != 'undefined') { %>
-      <p>Errores detectados</p>
-      <ul>
-        <% for(let i = 0; i < errors.length; i++) {%> 
+  <div class="container">
+    <header>
+      <section>
+        <a href="/"><img src="/images/LOGO/LOGOPNG.png"></a>
+      </section>
+    </header>
+    <main>
+      <section class="idVista">
+        <h3>Registro de Usuario</h3>
+      </section>
+      <% if(typeof errors != 'undefined') { %>
+        <p>Errores detectados</p>
+        <ul>
+          <% for(let i = 0; i < errors.length; i++) {%> 
+            <li>
+              <%= errors[i].msg %> 
+            </li>
+            <% } %>
+        </ul>
+    <% } %>  
+      <form action="/users/register" method="POST" autocomplete="on">
+        <ul>
           <li>
-            <%= errors[i].msg %> 
+            <span class="iconForm">
+              <i class="far fa-user"></i>
+            </span>
+            <label for="userName"></label>
+            <input type="text" name="userName" id="user" placeholder="Ingrese su nombre y apellido">
           </li>
-          <% } %>
-      </ul>
-  <% } %>  
-    <form action="/users/register" method="POST" autocomplete="on">
-      <ul>
-        <li>
-          <span class="iconForm">
-            <i class="far fa-user"></i>
-          </span>
-          <label for="userName"></label>
-          <input type="text" name="userName" id="user" placeholder="Ingrese su nombre y apellido">
-        </li>
-        <li>
-          <span class="iconForm">
-            <i class="far fa-envelope"></i>
-          </span>
-          <label for="email"></label>
-          <input type="email" name="email" id="email" placeholder="Ingrese su email">
-        </li>
-        <li>
-          <span class="iconForm">
-            <i class="fas fa-unlock-alt"></i>
-          </span>
-          <label for="password"></label>
-          <input type="password" name="password" id="password" placeholder="Ingrese su contraseña">
-        </li>
-         
-        <li>
-          <span class="iconForm">
-            <i class="fas fa-lock"></i>
-          </span>
-          <label for="password"></label>
-          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirme su contraseña">
-        </li>
+          <li>
+            <span class="iconForm">
+              <i class="far fa-envelope"></i>
+            </span>
+            <label for="email"></label>
+            <input type="email" name="email" id="email" placeholder="Ingrese su email">
+          </li>
+          <li>
+            <span class="iconForm">
+              <i class="fas fa-unlock-alt"></i>
+            </span>
+            <label for="password"></label>
+            <input type="password" name="password" id="password" placeholder="Ingrese su contraseña">
+          </li>
+          
+          <li>
+            <span class="iconForm">
+              <i class="fas fa-lock"></i>
+            </span>
+            <label for="password"></label>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirme su contraseña">
+          </li>
 
-      </ul>
- 
-    <section class="registrar">
-      <button type="submit">Registrarme</button>
-    </section>
-  </form>    
-    <section class="registro">
-      <h3>Registrate con</h3>
-    </section>
-    <%-include('../partials/redes_sociales')%>
-  </main>
-  <footer>
-    <section>
-      <p>Ya tenés una cuenta?</p>
-      <div>
-        <i class="fas fa-sign-in-alt"></i>
-        <a href="/users/login">Iniciar Sesión</a>
-      </div>
-    </section>
-  </footer>
+        </ul>
+  
+      <section class="registrar">
+        <button type="submit">Registrarme</button>
+      </section>
+    </form>    
+      <section class="registro">
+        <h3>Registrate con</h3>
+      </section>
+      <%-include('../partials/redes_sociales')%>
+    </main>
+    <footer>
+      <section>
+        <p>Ya tenés una cuenta?</p>
+        <div>
+          <i class="fas fa-sign-in-alt"></i>
+          <a href="/users/login">Iniciar Sesión</a>
+        </div>
+      </section>
+    </footer>
+  </div>
 </body>
 </html>

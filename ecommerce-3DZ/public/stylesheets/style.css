@@ -27,82 +27,42 @@ body {
 div.banner img {
   width: 100%;
 }
-.carousel{
-  
-  overflow: hidden;
-  position: relative;
-}
-.slides{
-  font-size: 0;
-  left:0;
-  display: flex;
-  position: relative;
-  transition: 1s;
-  white-space: nowrap;
- 
-}
-.carousel li{
-  width: 30%;
-  padding: 18px;
-  list-style:none;
-  background: #cccccc;  
-  
-}
-.slide{
-  width: 100%;
-  
-}
-.controls{
-  position: absolute;
-  top:50%;
-  transform:translateY(-270%);
-  width:100%;
-}
-.controls a{
-  background:black;
-  color:#fff;
-  cursor:pointer;
-  opacity:.7;
-  padding:/*1.2rem*/20px;
-  
-  
-}
-.controls a:hover{
-  opacity:.9;
-}
-.prev{
-  float:left;
-}
-.next{
-  float:right;
-}
 li{
   list-style: none;
 }
 a{
   text-decoration: none;
 }
-.footerhome{
-  transform:translateY(250%);
-}
 
 /*VISTA TELEFONO RESOLUCION MAXIMA 768PX*/
 @media(max-width:768px)
 {
-  /*FOOTER*/
-  
-  .contacto{
-      flex-direction: column;
-      
-  }
-  .contacto-i{
-      margin-top: 8px;
-  }
-  body{
-    min-width: 542px;
+  .carousel{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
     }
-}
-
+   /* .carousel .container-all{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      margin: auto;
+      position: relative;
+      max-width: 500px;
+      width: 40%;
+      border-radius: 6px;
+      overflow: hidden;
+    }*/
+    #footer{
+      margin: auto;
+      position: relative;
+      bottom: 0px;
+      width: 100%;
+      justify-content: center;
+    }
+  
+  
+}  

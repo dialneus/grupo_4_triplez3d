@@ -1,8 +1,6 @@
 
 
-/*Estilos Body*/
-
-body {
+.container {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   margin-left: auto;
@@ -182,7 +180,7 @@ footer section div {
     background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
   }
 
-  body {
+  .container {
     width: 360px;
     border: solid 1px rgb(189,189,189);
     border-radius: 8px;

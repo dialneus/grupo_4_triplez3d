@@ -1,0 +1,93 @@
+*{
+    margin: 0px;
+    padding: 0px;
+  }
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image:url("/images/IMAGENESEDITADAS/fondocontacto.jpg" );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+.losdosbloques{
+    
+    
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 50px;
+    padding-bottom: 50px;  
+    
+    
+}
+.contactobloque{
+    
+   
+    width: 50%;
+    
+       
+    
+    
+    /*background-color: blue;*/
+}
+.formulariobloque{
+    
+   
+    width: 50%;
+    
+          
+        
+    
+   /* background-color: blueviolet;*/
+    
+}
+.wmlbloque{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    padding-top: 30px;  
+}
+li{
+    display: flex;
+    
+}
+#nomb{
+    width: 200px;
+
+}
+#email{
+    width: 300px;
+}
+#tel{
+    width: 200px;
+}
+#mensaje{
+    width: 600px;
+    height: 326px;
+    text-align: left;
+    justify-content: center;
+    
+}
+ul{
+    list-style: none;
+}
+.icon img{
+    width: 35px;
+    height: 35px;
+
+}
+.textocontacto{
+    color: brown;
+}
+.icon{
+    align-items: center;
+}
+.icon p{
+    color:brown;
+}
+
+
+

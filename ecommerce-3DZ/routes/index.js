@@ -16,5 +16,13 @@ router.get('/', usersController.checkout);
 //Ruta al carrito:
 
 router.get('/chart', usersController.chart);
+/* GET nosotros page. */
+router.get('/nosotros',indexController.nosotros);
+
+/* GET contacto page. */
+router.get('/contacto',indexController.contacto);
+
+
+
 
 module.exports = router;
