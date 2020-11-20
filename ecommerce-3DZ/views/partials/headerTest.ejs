@@ -25,7 +25,7 @@
             <li><a href="/nosotros">NOSOTROS</a></li>
             <li><a href="/modelado">MODELADO</a></li>
             <li><a href="/contacto">CONTACTO</a></li>
-            <li><a href="/chart"><i class="fas fa-shopping-basket"></i></a></li>
+            <li class="carrito"><a href="/chart"><i class="fas fa-shopping-basket"></i></a></li>
             <li>
               <a href=""><i class="fas fa-portrait"></i></a>
             <!-- start menu desplegable -->
@@ -37,12 +37,8 @@
                   </a>
                 </li>
                 <li>
-                  <% if(user == undefined) {%>
                   <a class="userMenu" href="/users/login">
-                  <% } else { %>  
-                  <a class="userMenu" href="/users/<%= user.id %> ">
-                  <% } %>  
-                    <i class="fas fa-user-cog"></i>
+                  <i class="fas fa-user-cog"></i>
                     Mis Datos
                   </a>
                 </li>
@@ -59,13 +55,7 @@
             </li>
           </ul>
     </nav>
-  </div>
-  <section class="user">
-    <% if(user != undefined) {%> 
-      <p> <%= user.nombreApellido %> </p>
-     <% } %> 
-  </section>
-
+  
 </header>
   
 

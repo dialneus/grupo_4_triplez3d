@@ -3,9 +3,17 @@
     padding: 0px;
   }
 body{
+    /* Original de Mariano
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-image:url("/images/IMAGENESEDITADAS/fondocontacto.jpg" );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;*/
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg" );
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

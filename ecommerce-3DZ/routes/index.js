@@ -23,6 +23,10 @@ router.get('/nosotros',indexController.nosotros);
 /* GET contacto page. */
 router.get('/contacto',indexController.contacto);
 
+router.get('/header', (req, res) => {
+  res.render('partials/headerTest');
+})
+
 
 
 
