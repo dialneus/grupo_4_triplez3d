@@ -14,9 +14,6 @@ const { log } = require('console');
 
 
 const usersController = {
-  chart: (req, res) => {
-    res.render('users/carrito', { title: 'Carrito de Compras 3DZ' });
-  },
   logIn: (req, res, next) => {
     res.render('users/login');
   },
@@ -68,12 +65,11 @@ const usersController = {
           //Configuro Session y Cookies:
           req.session.userLogueado = userFind;
           console.log('El id del usuario en session es: ' + req.session.userLogueado.id);//agregado
-          res.redirect('/');
           if(req.body.recordame != undefined) {
             res.cookie('recordame', userFind.email, {maxAge: 8.64e+7});
         }
-        }
-        
+          res.redirect('/');
+        }    
       });
       
       } else {
@@ -126,7 +122,18 @@ const usersController = {
     req.session.destroy((err) => {
       res.redirect('/')
     });
-  },
+  },  
+  carrito: function(req, res, next) {
+    console.log(req.session.userLogueado);
+    db.CarritoProducto.findAll()
+    //db.sequelize.query(`SELECT * FROM carritoproductos WHERE usuario_id = ${req.session.userLogueado.id} AND estado = ${1}`)
+    .then((respuesta) => {
+      // emplear respuesta[0] --- recordar que al hacer cambios nodemon reinica y se pierde session 
+      //--- LA RUTA AL CARRITO ESTA EN INDEX
+      res.json({respuesta});
+    }).catch((e) => {console.log(e)});
+    //res.render('users/carrito', { title: 'Carrito de Compras 3DZ' });
+  }
 
 };
 
