@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2020 a las 01:39:06
+-- Tiempo de generación: 20-11-2020 a las 19:53:29
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.2.31
 
@@ -50,8 +50,19 @@ CREATE TABLE `carritoproductos` (
   `precio` decimal(10,0) NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
   `subTotal` int(255) NOT NULL,
-  `usuario_id` int(10) NOT NULL
+  `productoId` int(10) DEFAULT NULL,
+  `usuarioId` int(10) DEFAULT NULL,
+  `carritoId` int(10) DEFAULT NULL,
+  `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `carritoproductos`
+--
+
+INSERT INTO `carritoproductos` (`id`, `cantidad`, `carrito_id`, `producto_id`, `precio`, `estado`, `subTotal`, `productoId`, `usuarioId`, `carritoId`, `usuario_id`) VALUES
+(4, 1, NULL, 8, '850', 1, 850, NULL, NULL, NULL, 8),
+(5, 5, NULL, 14, '50', 1, 250, NULL, NULL, NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -167,7 +178,8 @@ ALTER TABLE `carritoproductos`
   ADD KEY `carrito_id` (`carrito_id`),
   ADD KEY `producto_id` (`producto_id`),
   ADD KEY `carrito_id_2` (`carrito_id`),
-  ADD KEY `producto_id_2` (`producto_id`);
+  ADD KEY `producto_id_2` (`producto_id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `materials`
@@ -209,7 +221,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `carritoproductos`
 --
 ALTER TABLE `carritoproductos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `materials`
@@ -250,7 +262,8 @@ ALTER TABLE `carrito`
 --
 ALTER TABLE `carritoproductos`
   ADD CONSTRAINT `carritoproductos_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carrito` (`id`),
-  ADD CONSTRAINT `carritoproductos_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`);
+  ADD CONSTRAINT `carritoproductos_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`),
+  ADD CONSTRAINT `carritoproductos_ibfk_3` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `productos`

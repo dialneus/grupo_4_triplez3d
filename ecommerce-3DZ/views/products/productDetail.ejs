@@ -8,25 +8,27 @@
     <title>Productos</title>
 </head>
 <body>
-  <%-include('../partials/header')%>
+
     <main>
         <% console.log(producto) %>
         <img src="<%=producto.imagen%>" alt="<% producto.descripcion %>"> 
         <div class="formulario">
-          <h3><%= producto.descripcion %></h3>
-          <p>Importe (AR$)</p><p class="monto"><%= producto.precio %></p><br>
-          <p class="cantidad">Cantidad</p>
-          <select name="cantidad" id="cantidad">
-            <option value="default">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select><br>
-          <p>Importe Total $</p><p class="monto"><%= producto.precio %></p><br>
-          <button type="submit" id="submit">AÑADIR AL CARRITO</button>
+          <form action="/addToCart" method="POST" enctype="application/json">
+            <h3><%= producto.descripcion %></h3>
+            <p>Importe (AR$)</p><p class="monto"><%= producto.precio %></p><br>
+            <input type="hidden" name="producto_id" value="<%= producto.id %>">
+            <p class="cantidad">Cantidad</p>
+            <select name="cantidad" id="cantidad">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select><br>
+            <p>Importe Total $</p><p class="monto"><%= producto.precio %></p><br>
+            <button type="submit" id="submit">AÑADIR AL CARRITO</button>
+          </form>
         </div>
-
     </main>
     <%-include('../partials/footer')%>
 </body>
