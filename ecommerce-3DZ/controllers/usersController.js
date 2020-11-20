@@ -125,14 +125,36 @@ const usersController = {
   },  
   carrito: function(req, res, next) {
     console.log(req.session.userLogueado);
-    db.CarritoProducto.findAll()
-    //db.sequelize.query(`SELECT * FROM carritoproductos WHERE usuario_id = ${req.session.userLogueado.id} AND estado = ${1}`)
+    db.CarritoProducto.findAll({
+      where : {
+        usuario_id : req.session.userLogueado.id,
+        estado : 1
+      },
+      include : ['producto']
+    })
     .then((respuesta) => {
-      // emplear respuesta[0] --- recordar que al hacer cambios nodemon reinica y se pierde session 
+      console.log(req.session.userLogueado.id);
+      console.log(respuesta);
       //--- LA RUTA AL CARRITO ESTA EN INDEX
+      //res.render('/chart', { title: 'Carrito de Compras 3DZ' });
       res.json({respuesta});
     }).catch((e) => {console.log(e)});
-    //res.render('users/carrito', { title: 'Carrito de Compras 3DZ' });
+  },
+  addToCart: function(req,res,next){
+    db.Producto.findByPk(req.body.producto_id)
+    .then((producto) =>{
+      db.CarritoProducto.create({
+        producto_id : producto.id,
+        usuario_id : req.session.userLogueado.id,
+        precio : producto.precio,
+        cantidad : req.body.cantidad,
+        estado : 1,
+        subTotal : producto.precio*req.body.cantidad
+      })
+      .then(() => res.redirect('/chart'))
+      .catch((e) => {console.log(e)});
+    }).catch((e) => {console.log(e)});
+
   }
 
 };
