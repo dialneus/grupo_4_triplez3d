@@ -11,11 +11,12 @@ router.get('/modelado',indexController.modelado);
 
 //Cierre Session:
 
-router.get('/', usersController.checkout);
+router.get('/logout', usersController.checkout);
 
 //Ruta al carrito:
 
-router.get('/chart', usersController.chart);
+router.get('/chart', usersController.carrito);
+
 /* GET nosotros page. */
 router.get('/nosotros',indexController.nosotros);
 

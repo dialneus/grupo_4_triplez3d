@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
     telefono: {
       type: dataTypes.INTEGER
     },
-    domicilio: {
+    direccion: {
       type: dataTypes.STRING
     },
     localidad: {
@@ -31,6 +31,10 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: false
   }
 
-  let Usuario = sequelize.define(alias, cols, config);
+  const Usuario = sequelize.define(alias, cols, config);
+  Usuario.associate = function(models){
+    Usuario.hasMany(models.Carrito, { as:"carrito", foreignKey:"usuario_id" });
+    Usuario.hasMany(models.CarritoProducto, {as:"carrito_producto", foreignKey: "usuario_id"});
+  }
   return Usuario;
 }

@@ -20,11 +20,12 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: false
   }
 
-  let Producto = sequelize.define(alias, cols, config);
+  const Producto = sequelize.define(alias, cols, config);
 
   Producto.associate = function(models){
     Producto.belongsTo(models.Medida, { as:"medidas", foreignKey:"medida_id" });
     Producto.belongsTo(models.Material, { as:"materials", foreignKey:"material_id" });
+    Producto.hasMany(models.CarritoProducto, {as:"carrito_producto", foreignKey: "producto_id"});
   }
 
   return Producto;
