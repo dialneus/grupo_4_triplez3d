@@ -113,6 +113,18 @@ button .buscar{
     border: brown solid 2.5px;
     border-radius: 5px;
 }
+
+/*BANNER FRASE*/
+.banner{
+    background: white;
+    margin: 0;
+    padding:0;
+  }
+  
+  div.banner img {
+    width: 100%;
+  }
+  
 /*VISTA TELEFONO RESOLUCION MAXIMA 768PX*/
 @media(max-width:768px){
 

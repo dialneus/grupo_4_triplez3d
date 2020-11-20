@@ -64,7 +64,7 @@ const usersController = {
         } else {
           //Configuro Session y Cookies:
           req.session.userLogueado = userFind;
-          console.log('El id del usuario en session es: ' + req.session.userLogueado.id);//agregado
+          console.log('En login el id del usuario en session es: ' + req.session.userLogueado.id);
           if(req.body.recordame != undefined) {
             res.cookie('recordame', userFind.email, {maxAge: 8.64e+7});
         }

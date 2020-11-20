@@ -7,17 +7,20 @@ const indexController = {
     res.render('formularioProductos', { title: 'Formulario de productos' });
   },
   modelado: function (req,res,next){
-    res.render('modelado',{title: 'Formulario de Servicio de modelado'})
+    let user = req.session.userLogueado;
+    res.render('modelado',{title: 'Formulario de Servicio de modelado', user})
   },
   check: (req, res, next) => {
     let userInSession = req.session.userLogueado.id;
     res.render('session', {userInSession:userInSession});
   },
     nosotros: function (req,res,next){
-    res.render('nosotros',{title: 'nosotros'})
+    let user = req.session.userLogueado;
+    res.render('nosotros',{title: 'nosotros', user})
   },
   contacto: function (req,res,next){
-    res.render('contacto',{title: 'contacto'})
+    let user = req.session.userLogueado;
+    res.render('contacto',{title: 'contacto', user})
   }
 }
 

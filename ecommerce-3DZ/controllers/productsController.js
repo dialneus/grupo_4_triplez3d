@@ -15,7 +15,8 @@ const productsController = {
             include : [{association:"medidas"},{association:"materials"}]
         })
             .then(function(productos){
-                res.render('products/products',{productos:productos});
+                let user = req.session.userLogueado;
+                res.render('products/products',{productos:productos, user});
             })
     },
     search : function(req,res,next){
@@ -32,7 +33,8 @@ const productsController = {
         db.Producto.findByPk(req.params.id)
         .then((producto) =>{
             if (producto){
-                res.render('products/productDetail', {producto});
+                let user = req.session.userLogueado;
+                res.render('products/productDetail', {producto, user});
             } else {
                 res.redirect('/products');
             }

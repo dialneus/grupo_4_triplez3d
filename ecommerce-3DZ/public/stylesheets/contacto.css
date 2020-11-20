@@ -89,5 +89,15 @@ ul{
     color:brown;
 }
 
-
+  /*BANNER FRASE*/
+  .banner{
+    background: white;
+    margin: 0;
+    padding:0;
+  }
+  
+  div.banner img {
+    width: 100%;
+  }
+  
 
