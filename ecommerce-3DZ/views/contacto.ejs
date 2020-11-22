@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="/stylesheets/contacto.css">
+    
     <title>contacto</title>
 </head>
 <body>
@@ -33,6 +34,7 @@
             <div id="contact-form" class="m-bottom">
                 <form action="mailto:mariotaebox08@gmail.com" method="POST" onsubmit="">
                     <ul>
+                        <% if(user == undefined) {%> 
                         <li>
                             <label for="nombre"></label>
                             <input type="nombre" name="nombre" id="nomb" placeholder="Nombre">
@@ -45,9 +47,23 @@
                             <label for="telefono"></label>
                             <input type="tel" name="tel" id="tel" placeholder="Tel.">  
                         </li>
+                        <% } else {%>
+                            <li>
+                                <label for="nombre"></label>
+                                <input type="nombre" name="nombre" id="nomb" value="<%= user.nombreApellido %>">
+                            </li>
+                            <li>
+                                <label for="mail"></label>
+                                <input type="mail" name="mail" id="email" value="<%= user.email %>">  
+                            </li>
+                            <li>
+                                <label for="telefono"></label>
+                                <input type="tel" name="tel" id="tel" value="<%= user.telefono %>">  
+                            </li>
+                        <% } %>  
                         <li>
                             <label for="mensaje"></label>
-                            <input type="mensaje" name="mensaje" id="mensaje" placeholder="Mensaje">  
+                            <input type="mensaje" name="mensaje" id="mensaje" placeholder="Escribanos su mensaje aquí..">  
                         </li>
                         <section class="enviar">
                             <button type="submit">Enviar</button>

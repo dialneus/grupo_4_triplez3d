@@ -41,10 +41,16 @@
       <p class="dato"><%= usuario.localidad %> </p>
     </li>
   </ul>
-  <section class="editar">
-  <a href="/users/edit/<%= usuario.id %> ">
+  <section class="botones">
+  <a class="edit" href="/users/edit/<%= usuario.id %> ">
     <button>Editar</button>
   </a>
+  <a class="salir" href="/">
+    <button>Salir</button>
+  </a>
+  </section>
+  <section class="exit">
+    
   </section>
 </main>
 </body>

@@ -78,13 +78,13 @@ header section img {
     border-radius: 6px;
   }
  
-  main section.editar {
+  main section.botones {
     display: flex;
     justify-content: center;
     margin: 5px 20px 20px 20px;
   }
   
-  main section.editar a button{
+  main section.botones a button{
     font-size: medium;
     color: rgb(172, 47, 53);
     background-color:white;
@@ -92,16 +92,29 @@ header section img {
     border: none;
     height: 35px;
   }
+
   
-  main section.editar a button:hover {
+  .salir {
+    margin-left: 20px;
+  }
+  
+  main section.botones a.edit button:hover {
     background-color: grey;
     color: white;
     font-weight: bold;
     box-shadow: 0 4px 16px rgb(172,47,53);
     transition: all 0.2s ease;
   }
+
+  main section.botones a.salir button:hover {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 16px rgb(172,47,53);
+    transition: all 0.2s ease;
+  }
   
-  main section.editar  {
+  main section.botones  {
     display: flex;
     align-items: flex-end;
     justify-content: center;

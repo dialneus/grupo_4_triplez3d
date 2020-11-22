@@ -58,10 +58,13 @@ body{
     
     padding-top: 30px;  
 }
+/*
 li{
     display: flex;
     
 }
+*/
+
 #nomb{
     width: 200px;
 
@@ -74,14 +77,21 @@ li{
 }
 #mensaje{
     width: 600px;
-    height: 326px;
+    height: 155px;/*326px;<-Valor de Mariano*/
     text-align: left;
-    justify-content: center;
+    padding-top: 30px;
+    /*justify-content: center;*/
     
 }
+
+::placeholder {
+    vertical-align: bottom;
+}
+
 ul{
     list-style: none;
 }
+
 .icon img{
     width: 35px;
     height: 35px;
