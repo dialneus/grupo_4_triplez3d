@@ -127,25 +127,22 @@ const usersController = {
     console.log(req.session.userLogueado);
     db.CarritoProducto.findAll({
       where : {
-        usuario_id : req.session.userLogueado.id,
+        usuarioId : req.session.userLogueado.id,
         estado : 1
       },
-      include : ['producto']
+      include : [{association: "producto"}]
     })
     .then((respuesta) => {
-      console.log(req.session.userLogueado.id);
-      console.log(respuesta);
-      //--- LA RUTA AL CARRITO ESTA EN INDEX
-      //res.render('/chart', { title: 'Carrito de Compras 3DZ' });
-      res.json({respuesta});
+      res.render('users/carrito', { title: 'Carrito de Compras 3DZ', respuesta});
+      //res.json({respuesta});
     }).catch((e) => {console.log(e)});
   },
   addToCart: function(req,res,next){
     db.Producto.findByPk(req.body.producto_id)
     .then((producto) =>{
       db.CarritoProducto.create({
-        producto_id : producto.id,
-        usuario_id : req.session.userLogueado.id,
+        productoId : producto.id,
+        usuarioId : req.session.userLogueado.id,
         precio : producto.precio,
         cantidad : req.body.cantidad,
         estado : 1,

@@ -10,9 +10,9 @@ module.exports = (sequelize, dataTypes) => {
       cantidad: dataTypes.INTEGER,
       subTotal: dataTypes.INTEGER,
       estado: dataTypes.TINYINT,
-      usuario_id: dataTypes.INTEGER,
-      producto_id: dataTypes.INTEGER,
-      carrito_id: dataTypes.INTEGER
+      usuarioId: dataTypes.INTEGER,
+      productoId: dataTypes.INTEGER,
+      carritoId: dataTypes.INTEGER
     }
   
     let config = {
@@ -35,9 +35,9 @@ module.exports = (sequelize, dataTypes) => {
     // };
   
     CarritoProducto.associate = function(models){
-      CarritoProducto.belongsTo(models.Usuarios, {as: "usuario", foreignkey: "usuario_id"});
-      CarritoProducto.belongsTo(models.Carrito, {as: "carrito", foreignkey: "carrito_id"});
-      CarritoProducto.belongsTo(models.Producto, {as: "producto", foreignkey: "producto_id"});
+      CarritoProducto.belongsTo(models.Usuarios, {as: "usuario", foreignkey: "usuarioId"});
+      CarritoProducto.belongsTo(models.Carrito, {as: "carrito", foreignkey: "carritoId"});
+      CarritoProducto.belongsTo(models.Producto, {as: "producto", foreignkey: "productoId"});
     }
   
     return CarritoProducto;

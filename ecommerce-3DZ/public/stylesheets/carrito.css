@@ -1,11 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html {
+  background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
+}
 /*Estilos Body*/
 
-body {
+.container{
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   margin: auto;
   margin-top: 30px;
+  margin-bottom: 30px;
   background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
+  width: 750px;
+  border: solid 3px gray;
 }
 
 /*Estilos Header*/
@@ -46,55 +56,10 @@ main section article {
 
 /* --- Estilos de Productos --- */
 
-main section /*article*/td.prd_image {
-  width: 15%;
-  padding: 5px 0px;
-  border-radius: 8px 0px 0px 8px;
-}
 
-main section /*article*/td.prd_image img {
-  width: 100%;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-main section /*article*/td.prd_detail {
-  width: 55%;
-  padding: 5px;
-}
-
-main section /*article*/td.prd_price {
-  width: 20%;
-  padding: 5px;
-  text-align: center;
-  font-weight: bold;
-}
 
 main section article p {
   margin: 0px;
-}
-
-main section /*article*/td.prd_qty {
-  width: 5%;
-  padding: 5px;
-  text-align: center; 
-}
-
-main section /*article*/td.prd_qty input[type="number"] {
-  max-width: 70%;
-  height: 20px;
-}
-
-main section td.prd_trash {
-  width: 100%;
-  padding: 5px;
-  text-align: center;
-  border-radius: 0px 8px 8px 0px;
-}
-
-main section td.prd_trash img {
-  width: 20px;
-  vertical-align: middle;
 }
 
 main section.money_chart {
@@ -161,20 +126,88 @@ main section article.continue_shop {
   justify-content: center;
 }
 
+#prd_image{
+  width: 150px;
+  height: 150px;
+  border: 1px;
+  border-radius: 50%;
+}
+
+a .fa-trash{
+  font-size: 18px;
+  color: crimson;
+}
+.prd_detail{
+  width: 100px;
+  text-align: center;
+  font-style: italic;
+}
+
+.product_chart{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid grey;
+  margin-bottom: 12px;
+}
+
+.EmptyMessage p{
+  font-size: 18px;
+  color: crimson;
+  text-align: center;
+}
+
+.information{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 55%;
+  align-items: flex-start;
+  text-align: center;
+}
+.pInfo{
+
+  font-weight: bold;
+}
+
+
 
 /*Responsive*/
 
-@media (min-width:360px) {
+@media (max-width:768px) {
 
-  html {
-    background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
-  }
-
-  body {
+.container {
     height: auto;
-    width: 360px;
+    width: 100%;
     border-radius: 8px;
     border: solid 1px rgb(189,189,189);
     background-color: gray;
   }
+  .product_chart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid grey;
+    border-radius: 5%;
+    margin-bottom: 10px;
+  }
+  .information{
+    width: 10vw;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  #prd_image{
+    width: 230px;
+    height:230px;
+    border: 1px;
+    border-radius: 50%;
+  }
+  .pInfo{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
 }

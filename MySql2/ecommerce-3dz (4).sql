@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2020 a las 19:53:29
+-- Tiempo de generación: 22-11-2020 a las 20:12:41
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.2.31
 
@@ -44,25 +44,23 @@ CREATE TABLE `carrito` (
 
 CREATE TABLE `carritoproductos` (
   `id` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL DEFAULT 1,
-  `carrito_id` int(11) DEFAULT NULL,
-  `producto_id` int(11) NOT NULL,
   `precio` decimal(10,0) NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
   `subTotal` int(255) NOT NULL,
-  `productoId` int(10) DEFAULT NULL,
-  `usuarioId` int(10) DEFAULT NULL,
-  `carritoId` int(10) DEFAULT NULL,
-  `usuario_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `carritoId` int(11) NOT NULL,
+  `productoId` int(11) NOT NULL,
+  `usuarioId` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `carritoproductos`
 --
 
-INSERT INTO `carritoproductos` (`id`, `cantidad`, `carrito_id`, `producto_id`, `precio`, `estado`, `subTotal`, `productoId`, `usuarioId`, `carritoId`, `usuario_id`) VALUES
-(4, 1, NULL, 8, '850', 1, 850, NULL, NULL, NULL, 8),
-(5, 5, NULL, 14, '50', 1, 250, NULL, NULL, NULL, 8);
+INSERT INTO `carritoproductos` (`id`, `precio`, `estado`, `subTotal`, `carritoId`, `productoId`, `usuarioId`, `cantidad`) VALUES
+(1, '690', 1, 690, 0, 12, 8, 1),
+(2, '1400', 1, 1400, 0, 13, 8, 1),
+(3, '50', 1, 250, 0, 14, 8, 5);
 
 -- --------------------------------------------------------
 
@@ -175,11 +173,9 @@ ALTER TABLE `carrito`
 --
 ALTER TABLE `carritoproductos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `carrito_id` (`carrito_id`),
-  ADD KEY `producto_id` (`producto_id`),
-  ADD KEY `carrito_id_2` (`carrito_id`),
-  ADD KEY `producto_id_2` (`producto_id`),
-  ADD KEY `usuario_id` (`usuario_id`);
+  ADD KEY `carritoId` (`carritoId`),
+  ADD KEY `productoId` (`productoId`),
+  ADD KEY `usuarioId` (`usuarioId`);
 
 --
 -- Indices de la tabla `materials`
@@ -221,7 +217,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `carritoproductos`
 --
 ALTER TABLE `carritoproductos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `materials`
@@ -261,9 +257,8 @@ ALTER TABLE `carrito`
 -- Filtros para la tabla `carritoproductos`
 --
 ALTER TABLE `carritoproductos`
-  ADD CONSTRAINT `carritoproductos_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carrito` (`id`),
-  ADD CONSTRAINT `carritoproductos_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`),
-  ADD CONSTRAINT `carritoproductos_ibfk_3` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `carritoproductos_ibfk_1` FOREIGN KEY (`productoId`) REFERENCES `productos` (`id`),
+  ADD CONSTRAINT `carritoproductos_ibfk_2` FOREIGN KEY (`usuarioId`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `productos`
