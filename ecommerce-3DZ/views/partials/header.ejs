@@ -30,31 +30,29 @@
               <a href=""><i class="fas fa-portrait"></i></a>
             <!-- start menu desplegable -->
               <ul class="userMenu">
-                <li class="userMenu">
-                  <a class="userMenu" href="/users/login">
-                    <i class="fas fa-user"></i>
-                    Mi Cuenta
-                  </a>
-                </li>
-                <li>
-                  <% if(user == undefined) {%>
-                  <a class="userMenu" href="/users/login">
-                  <% } else { %>  
+                <% if(user == undefined) {%>
+                  <li class="userMenu">
+                    <a class="userMenu" href="/users/login">
+                      <i class="fas fa-user"></i>
+                      Ingresar
+                    </a>
+                  </li>
+                <% } else { %> 
                   <a class="userMenu" href="/users/<%= user.id %> ">
+                      <i class="fas fa-user-cog"></i>
+                      Mis Datos
+                    </a>
+                  </li>
+                  <li>
+                    <form action="/users/checkout" method="POST">
+                      <button class="userMenu" type="submit">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Cerrar sesión
+                      </button>  
+                    </form>
+                  </li>
                   <% } %>  
-                    <i class="fas fa-user-cog"></i>
-                    Mis Datos
-                  </a>
-                </li>
-                <li>
-                  <form action="/users/checkout" method="POST">
-                    <button class="userMenu" type="submit">
-                      <i class="fas fa-sign-out-alt"></i>
-                      Cerrar sesión
-                    </button>  
-                  </form>
-                </li>
-              </ul>
+                </ul>
               <!-- end menu desplegable -->    
             </li>
           </ul>

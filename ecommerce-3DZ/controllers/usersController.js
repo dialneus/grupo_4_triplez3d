@@ -103,9 +103,11 @@ const usersController = {
       user_domicilio: req.body.domicilio,
       user_localidad: req.body.localidad,
       user_telefono: Number(req.body.telefono),
+      user_admin: Number(req.body.userType),
     }
     //Grabo los datos en la base de Datos:
     db.Usuarios.update({
+      admin: user.user_admin,
       nombreApellido: user.user_name,
       email: user.user_email,
       domicilio: user.user_domicilio,

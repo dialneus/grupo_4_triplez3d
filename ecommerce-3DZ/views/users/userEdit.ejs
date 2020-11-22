@@ -38,6 +38,14 @@
         <label class="titulo" for="Localidad">Localidad</label>
         <input class="dato" type="text" name="localidad" id="localidad" value="<%= usuario.localidad %> " required>
       </li>
+      <% if(usuario.admin == 1) { %> 
+      <li>
+        <input type="radio" id="admin" name="userType" value="1" checked>
+        <label class="userType" for="admin">Administrador</label>
+        <input type="radio" id="consumer" name="userType" value="0" checked>
+        <label class="userType" for="consumer">Cliente</label>
+      </li>
+      <% } %> 
       <li>
         <p>Cuenta vinculada al mail: <%= usuario.email %></p>
       </li>

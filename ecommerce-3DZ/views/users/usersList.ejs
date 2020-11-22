@@ -11,32 +11,67 @@
   <title>Lista de Usuarios Activos</title>
 </head>
 <body>
-  <h1>Lista de Usuarios Registrados</h1>
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Nombre y Apellido</th>
-      <th>Correo Electrónico</th>
-      <th>Acción</th>
-    </tr>
-    <% for(usuario of usuarios) { %>
-    <tr>
-      <td>
-        <%= usuario.id %>
-      </td>
-      <td> 
-        <%= usuario.nombreApellido %>
-      </td>
-      <td> 
-        <%= usuario.email %>
-      </td>
-      <td>
-        <a href="/users/<%= usuario.id %> ">Ver</a>
-        <a href="/users/edit/<%= usuario.id %> ">Editar</a>
-      </td>  
-    
-    </tr>
-       <% } %>
-      </table>
+  <section class="customerUsers">
+    <h1>Listado de Clientes Registrados</h1>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Nombre y Apellido</th>
+        <th>Correo Electrónico</th>
+        <th>Acción</th>
+      </tr>
+      <% for(usuario of usuarios) { %>
+        <% if(usuario.admin == 0) {%>
+      <tr>
+        <td>
+          <%= usuario.id %>
+        </td>
+        <td> 
+          <%= usuario.nombreApellido %>
+        </td>
+        <td> 
+          <%= usuario.email %>
+        </td>
+        <td>
+          <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
+          <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
+          <button><a href="/users/edit/<%= usuario.id %> ">Eliminar</a></button>
+        </td>  
+        <% } %> 
+      </tr>
+        <% } %>
+        </table>
+    </section>
+    <section class="adminUsers">
+      <h1>Administradores Activos</h1>
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>Nombre y Apellido</th>
+          <th>Correo Electrónico</th>
+          <th>Acción</th>
+        </tr>
+        <% for(usuario of usuarios) { %>
+          <% if(usuario.admin == 1) {%>
+        <tr>
+          <td>
+            <%= usuario.id %>
+          </td>
+          <td> 
+            <%= usuario.nombreApellido %>
+          </td>
+          <td> 
+            <%= usuario.email %>
+          </td>
+          <td>
+            <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
+          <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
+          <button><a href="/users/edit/<%= usuario.id %> ">Eliminar</a></button>
+          </td>  
+          <% } %> 
+        </tr>
+          <% } %>
+          </table>
+      </section>
 </body>
 </html>
