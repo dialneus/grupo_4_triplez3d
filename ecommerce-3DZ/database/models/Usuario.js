@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
     telefono: {
       type: dataTypes.INTEGER
     },
-    domicilio: {
+    direccion: {
       type: dataTypes.STRING
     },
     localidad: {
