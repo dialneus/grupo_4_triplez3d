@@ -20,6 +20,9 @@ router.get('/nosotros',indexController.nosotros);
 /* GET contacto page. */
 router.get('/contacto',indexController.contacto);
 
+router.get('/header', (req, res) => {
+  res.render('partials/headerTest');
+})
 //-----------------------Ruta al carrito:-------------------
 
 router.get('/chart', logMiddleware, usersController.carrito);
