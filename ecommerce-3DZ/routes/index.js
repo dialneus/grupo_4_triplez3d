@@ -31,6 +31,7 @@ router.get('/header', (req, res) => {
 
 router.get('/chart', logMiddleware, usersController.carrito);
 router.post('/addToCart', logMiddleware, usersController.addToCart);
+router.post('/deleteFromChart', logMiddleware, usersController.deleteFromChart);
 
 
 

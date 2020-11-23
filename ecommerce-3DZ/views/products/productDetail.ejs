@@ -8,12 +8,12 @@
     <title>Productos</title>
 </head>
 <body>
-
+  <%-include('../partials/header') %>
     <main>
         <% console.log(producto) %>
         <img src="<%=producto.imagen%>" alt="<% producto.descripcion %>"> 
         <div class="formulario">
-          <form action="/addToCart" method="POST" enctype="application/json">
+          <form action="/addToCart" method="POST" enctype="application/json" class="formInterno">
             <h3><%= producto.descripcion %></h3>
             <p>Importe (AR$)</p><p class="monto"><%= producto.precio %></p><br>
             <input type="hidden" name="producto_id" value="<%= producto.id %>">
@@ -25,7 +25,7 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select><br>
-            <p>Importe Total $</p><p class="monto"><%= producto.precio %></p><br>
+            
             <button type="submit" id="submit">AÑADIR AL CARRITO</button>
           </form>
         </div>

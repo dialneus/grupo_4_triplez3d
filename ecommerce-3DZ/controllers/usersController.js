@@ -135,7 +135,12 @@ const usersController = {
       include : [{association: "producto"}]
     })
     .then((respuesta) => {
-      res.render('users/carrito', { title: 'Carrito de Compras 3DZ', respuesta});
+      let user = req.session.userLogueado;
+      let Total = 0;
+      respuesta.forEach(element => {
+        Total += element.subTotal; 
+      });
+      res.render('users/carrito', { title: 'Carrito de Compras 3DZ', respuesta, Total, user});
       //res.json({respuesta});
     }).catch((e) => {console.log(e)});
   },
@@ -153,7 +158,16 @@ const usersController = {
       .then(() => res.redirect('/chart'))
       .catch((e) => {console.log(e)});
     }).catch((e) => {console.log(e)});
-
+  },
+  deleteFromChart: function(req,res,next){
+    db.CarritoProducto.destroy({
+      where: {
+        id: req.body.elemento_id,
+      },
+      force: true,
+    })
+      .then(() => res.redirect("/chart"))
+      .catch((e) => console.log(e));
   }
 
 };

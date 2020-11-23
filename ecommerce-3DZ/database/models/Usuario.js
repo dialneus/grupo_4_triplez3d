@@ -6,12 +6,12 @@ module.exports = (sequelize, dataTypes) => {
       primaryKey: true,
       autoIncremental: true
     },
-    activo: {
-      type: dataTypes.INTEGER
-    },
-    admin: {
-      type: dataTypes.INTEGER
-    },
+    // activo: {
+    //   type: dataTypes.INTEGER
+    // },
+    // admin: {
+    //   type: dataTypes.INTEGER
+    // },
     nombreApellido: { 
       type: dataTypes.STRING
     },
@@ -24,7 +24,7 @@ module.exports = (sequelize, dataTypes) => {
     telefono: {
       type: dataTypes.INTEGER
     },
-    domicilio: {
+    direccion: {
       type: dataTypes.STRING
     },
     localidad: {

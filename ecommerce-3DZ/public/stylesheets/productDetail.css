@@ -26,20 +26,24 @@ main{
 main img{
     width: 300px;
     height: 300px;
-    border: 5px solid white;
+    border: 1px solid white;
     border-radius: 50%;
+    background-color: white;
 }
 .formulario{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: lightgrey;
     margin: 15px;
     padding: 15px;
     font-size: 20px;
-    min-width: 220px;
     border: 5px solid white;
     border-radius: 10%;
+}
+
+.formInterno{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .formulario h3,.cantidad{
     margin-bottom: 10px;

@@ -4,6 +4,10 @@
 }
 html {
   background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 /*Estilos Body*/
 
@@ -13,21 +17,25 @@ html {
   margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
-  background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
+  background-color: whitesmoke;
   width: 750px;
   border: solid 3px gray;
 }
 
 /*Estilos Header*/
+header{
+  font-size: 14px;
+}
 
-header {
+.headerTitulo {
   display: flex;
   justify-content: flex-start;
-  background-color: rgb(235,236,240);
+  align-items: center;
+  background-color: whitesmoke;
   border-radius: 8px 8px 0px 0px;
 }
 
-header img {
+.headerTitulo img {
   width: 12%;
   margin: 3px;
   padding: 3px;
@@ -35,20 +43,20 @@ header img {
 
 /*Estilos Main*/
 
-main {
+.prd_main {
   display: flex;
   flex-direction: column;
   margin: 15px;
 }
 
-main section {
+.prd_main section {
   display: flex;
   flex-direction: row;
   /*background-color: rgb(235,236,240);
   border-radius: 0px;*/
 }
 
-main section article {
+.prd_main section article {
   background-color: rgb(235,236,240);
   word-wrap: break-word;
   margin-bottom: 10px;
@@ -56,13 +64,16 @@ main section article {
 
 /* --- Estilos de Productos --- */
 
+.money_chart{
+  border: solid brown 3px;
+  border-radius: 5%;
+}
 
-
-main section article p {
+.prd_main section article p {
   margin: 0px;
 }
 
-main section.money_chart {
+.prd_main section.money_chart {
   flex-direction: column;
   background-color:white;
   width: 50%;
@@ -71,7 +82,7 @@ main section.money_chart {
   margin-left: auto;
 }
 
-main section.money_chart article {
+.prd_main section.money_chart article {
   display: flex;
   background-color: white;
   border-radius: 8px;
@@ -79,15 +90,15 @@ main section.money_chart article {
   justify-content: space-between;
 }
 
-main section.money_chart article p.type {
+.prd_main section.money_chart article p.type {
   margin-left: 5px;
 }
 
-main section.money_chart article p.number {
+.prd_main section.money_chart article p.number {
   margin-right: 5px;
 }
 
-main section.money_chart h4 {
+.prd_main section.money_chart h4 {
   width: 100%;
   font-size: 14px;
   margin: 8px 1px;
@@ -95,18 +106,18 @@ main section.money_chart h4 {
   border-bottom: 2px ridge gray;
 }
 
-main section article.money_chart_total {
+.prd_main section article.money_chart_total {
   font-weight: bold;
   border-top: 2px ridge gray;
   border-bottom: 1px ridge gray;
   background-color: rgb(235,236,240);
 }
 
-main section article.money_chart_button {
+.prd_main section article.money_chart_button {
   justify-content: center;
 }
 
-main section article.money_chart_button button {
+.prd_main section article.money_chart_button button {
   font-size: small;
   color: white;
   background-color:rgb(172, 47, 53);
@@ -116,13 +127,13 @@ main section article.money_chart_button button {
   height: 20px;
 }
 
-main section article.money_chart_button button:hover {
+.prd_main section article.money_chart_button button:hover {
   background-color: rgb(236,40,55);
   box-shadow: 0 4px 16px rgb(172,47,53);
   transition: all 0.2s ease;
 }
 
-main section article.continue_shop {
+.prd_main section article.continue_shop {
   justify-content: center;
 }
 
@@ -133,10 +144,17 @@ main section article.continue_shop {
   border-radius: 50%;
 }
 
-a .fa-trash{
-  font-size: 18px;
+button .fa-trash{
+  font-size: 22px;
   color: crimson;
 }
+
+button .fa-trash:hover{
+  background-color: white;
+  box-shadow: 0 4px 16px rgb(172,47,53);
+  transition: all 0.2s ease;
+}
+
 .prd_detail{
   width: 100px;
   text-align: center;
@@ -150,12 +168,22 @@ a .fa-trash{
   align-items: center;
   border: 2px solid grey;
   margin-bottom: 12px;
+  background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .EmptyMessage p{
   font-size: 18px;
   color: crimson;
   text-align: center;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .information{
@@ -170,7 +198,6 @@ a .fa-trash{
 
   font-weight: bold;
 }
-
 
 
 /*Responsive*/

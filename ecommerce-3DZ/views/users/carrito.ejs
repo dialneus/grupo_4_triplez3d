@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,14 @@
   <title><%= title %></title>
 </head>
 <body>
-
+  <%-include('../partials/header') %>
   <div class="container">
-    <header>
+    <header class="headerTitulo">
         <img src="/images/shopping_cart.ico">
-        <h2>Carrito de Compras</h2>
+        <h2>Carrito de Compras 3DZ</h2>
     </header>
-    <main>
-
-      <% if(respuesta) { %>
+    <main class="prd_main">
+      <% if(respuesta.length>0) { %>
         <% for(i=0; i < respuesta.length; i++){ %>
           <section class="product_chart">
             <div class="prd_image">
@@ -41,16 +41,17 @@
               </div>
             </div>  
             <div class="prd_trash">
-
               <!-- DESTRUIR PRODUCTO -->
-              <a href=""><i class="fas fa-trash"></i></a>
-
+              <form action="/deleteFromChart" method="POST" enctype="application/json">
+                <input type="hidden" name="elemento_id" value="<%= respuesta[i].id %>">
+                <button type="submit"><i class="fas fa-trash"></i></button>
+             </form>
             </div>
           </section>
         <% } %>
       <% } else { %>
         <div class="EmptyMessage">
-          <p>Aun no agregaste productos!</p>
+          <p>El carrito esta vacio!</p>
         </div>
       <% } %>
       <section class="money_chart">
@@ -63,7 +64,7 @@
         </article>
         <article class="money_chart_total">
           <p class="type">Total $ </p>
-          <p class="number"></p> 
+          <p class="number"><%= Total %></p> 
         </article>
         <article class="money_chart_button">
           <button type="submit">comprar</button>
