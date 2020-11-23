@@ -10,6 +10,10 @@ router.get('/', indexController.homePage);
 /* GET Modelado page. */
 router.get('/modelado',indexController.modelado);
 
+/* GET Admin page. */
+router.get('/admin',indexController.admin);
+
+
 //Cierre Session:
 
 router.get('/logout', usersController.checkout);

@@ -26,7 +26,8 @@ const productsController = {
             where: { descripcion: {[db.Sequelize.Op.like]: '%' + x + '%'} },
             include : [{association:"medidas"},{association:"materials"}]
         }).then(function(productos){
-            res.render('products/products', {productos})
+            let user = req.session.userLogueado;
+            res.render('products/products', {productos, user})
         }).catch((err) => {console.log(err)});
     },
     id : function(req,res,next){

@@ -27,22 +27,26 @@
             <li><a href="/contacto">CONTACTO</a></li>
             <li><a href="/chart"><i class="fas fa-shopping-basket"></i></a></li>
             <li>
-              <a href=""><i class="fas fa-portrait"></i></a>
+              <% if(user == undefined) {%>
+              <a href="/users/login"><i class="fas fa-portrait"></i></a>
             <!-- start menu desplegable -->
+            <% } else { %> 
+              <a href=""><i class="fas fa-portrait"></i></a>
               <ul class="userMenu">
-                <% if(user == undefined) {%>
-                  <li class="userMenu">
-                    <a class="userMenu" href="/users/login">
-                      <i class="fas fa-user"></i>
-                      Ingresar
-                    </a>
-                  </li>
-                <% } else { %> 
+                  <li>
+                  <% if(user.admin == 0) {%> 
                   <a class="userMenu" href="/users/<%= user.id %> ">
                       <i class="fas fa-user-cog"></i>
                       Mis Datos
                     </a>
                   </li>
+                  <% } else { %>
+                  <a class="userMenu" href="/admin">
+                      <i class="fas fa-user-cog"></i>
+                      Administrar
+                    </a>
+                  </li>
+                  <% } %> 
                   <li>
                     <form action="/users/checkout" method="POST">
                       <button class="userMenu" type="submit">
