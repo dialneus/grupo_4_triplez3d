@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 22-11-2020 a las 21:07:33
+-- Tiempo de generación: 23-11-2020 a las 23:37:58
 -- Versión del servidor: 5.7.30
 -- Versión de PHP: 7.4.9
 
@@ -28,27 +28,40 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `carrito` (
   `id` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `total` int(11) NOT NULL,
-  `fecha_compra` date NOT NULL,
-  `fecha_creacion` date NOT NULL,
-  `estado` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL
+  `fecha_compra` date DEFAULT NULL,
+  `fecha_creacion` date DEFAULT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `total` decimal(10,0) NOT NULL,
+  `orderNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carrito_producto`
+-- Estructura de tabla para la tabla `carritoproductos`
 --
 
-CREATE TABLE `carrito_producto` (
+CREATE TABLE `carritoproductos` (
   `id` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `precio_congelado` int(11) NOT NULL,
-  `carrito_id` int(11) NOT NULL,
-  `producto_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `precio` decimal(10,0) NOT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT '1',
+  `subTotal` int(255) NOT NULL,
+  `carritoId` int(11) DEFAULT NULL,
+  `productoId` int(11) NOT NULL,
+  `usuarioId` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `carritoproductos`
+--
+
+INSERT INTO `carritoproductos` (`id`, `precio`, `estado`, `subTotal`, `carritoId`, `productoId`, `usuarioId`, `cantidad`) VALUES
+(6, '1320', 1, 3960, 0, 11, 8, 3),
+(7, '900', 1, 900, 0, 10, 8, 1),
+(8, '50', 1, 250, 0, 14, 8, 5),
+(9, '850', 1, 4250, 0, 8, 8, 5),
+(12, '900', 1, 1800, NULL, 10, 9, 2);
 
 -- --------------------------------------------------------
 
@@ -118,7 +131,7 @@ INSERT INTO `productos` (`id`, `precio`, `descripcion`, `imagen`, `pintado`, `me
 (11, 1320, 'X-WING STAR WARS BATTLE', '\\uploads\\image-1604875465321.png', 'si', 1, 1),
 (12, 690, 'CASA MINIATURA', '\\uploads\\image-1604875506095.png', 'si', 2, 1),
 (13, 1400, 'CHIMUELO', '\\uploads\\image-1604875532004.png', 'si', 1, 1),
-(14, 50, 'Producto para pruebas', '\\uploads\\image-1604875857409.jpg', 'no', 3, 4);
+(14, 50, 'Producto para pruebas', '\\uploads\\image-1605098949810.jpg', 'no', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -128,6 +141,8 @@ INSERT INTO `productos` (`id`, `precio`, `descripcion`, `imagen`, `pintado`, `me
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
+  `activo` int(1) NOT NULL DEFAULT '1',
+  `admin` int(1) NOT NULL DEFAULT '0',
   `nombreApellido` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` text NOT NULL,
@@ -140,10 +155,11 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombreApellido`, `email`, `password`, `telefono`, `domicilio`, `localidad`) VALUES
-(1, 'Diego Alejandro Neustadt              ', 'dialneus@gmail.com', '$2b$10$hPHMCXPrTQ/MCOpVyW34YeryaFIlmw.OZ4zG4b/SycR5cUq2mpUm6', 1145232551, 'Ceretti 2161     ', 'Buenos Aires          CABA'),
-(2, 'Mariano Jerez             ', 'mariano@jerez.com', '$2b$10$yshrV1wQwHVjrHKstRN3KOgVTHxw1IKuBEA52Yq.jZQdls2o1NoY.', 40108200, 'Monroe 5500      ', 'Buenos Aires, Quilmes '),
-(3, 'Kevin Schild         ', 'kevin@schild.com.ar', '$2b$10$pyFlNaSKzRLVy//83bM9BuYFs.2hLOBBQpYKbdUwMR4gGq3WP3z1u', 33333333, ' Av. Monroe 1940        ', 'Posadas, Misiones        ');
+INSERT INTO `usuarios` (`id`, `activo`, `admin`, `nombreApellido`, `email`, `password`, `telefono`, `domicilio`, `localidad`) VALUES
+(8, 1, 0, 'Kevin Schild  ', '1994@gmail.com', '$2b$10$btQcDhY./sjbqXziu3qAwuZGR0wlRrcOVS8kfKzFZsZgMfX1D/7kO', 3455, NULL, ' BCX '),
+(9, 1, 0, 'Ale', 'dialneus@me.com', '$2b$10$sDE1YuXtixnQwAIZ7MK25.oT/NwCdvLIJTbf4hrHsMAwozORsboEG', NULL, NULL, NULL),
+(10, 1, 2, 'Administrador', 'admin@3dz.com', '$2b$10$9YMbWdK/bT0hhiz.scVAc.kblnHfKGUY3pjFO6vofQadeankI.n1G', NULL, NULL, NULL),
+(11, 1, 0, 'Supervisor', 'supervisor@3dz.com', '$2b$10$aBSpyKb8XwTh/kiXlAyxI.Gh24NvPT/ZE5GhMkrIw82MzINyI5Yn2', NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -157,14 +173,13 @@ ALTER TABLE `carrito`
   ADD KEY `usuario_id` (`usuario_id`);
 
 --
--- Indices de la tabla `carrito_producto`
+-- Indices de la tabla `carritoproductos`
 --
-ALTER TABLE `carrito_producto`
+ALTER TABLE `carritoproductos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `carrito_id` (`carrito_id`),
-  ADD KEY `producto_id` (`producto_id`),
-  ADD KEY `carrito_id_2` (`carrito_id`),
-  ADD KEY `producto_id_2` (`producto_id`);
+  ADD KEY `carritoId` (`carritoId`),
+  ADD KEY `productoId` (`productoId`),
+  ADD KEY `usuarioId` (`usuarioId`);
 
 --
 -- Indices de la tabla `materials`
@@ -203,10 +218,10 @@ ALTER TABLE `carrito`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `carrito_producto`
+-- AUTO_INCREMENT de la tabla `carritoproductos`
 --
-ALTER TABLE `carrito_producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `carritoproductos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `materials`
@@ -224,13 +239,13 @@ ALTER TABLE `medidas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -240,14 +255,15 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`id`) REFERENCES `carritoproductos` (`carritoId`);
 
 --
--- Filtros para la tabla `carrito_producto`
+-- Filtros para la tabla `carritoproductos`
 --
-ALTER TABLE `carrito_producto`
-  ADD CONSTRAINT `carrito_producto_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carrito` (`id`),
-  ADD CONSTRAINT `carrito_producto_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`);
+ALTER TABLE `carritoproductos`
+  ADD CONSTRAINT `carritoproductos_ibfk_1` FOREIGN KEY (`productoId`) REFERENCES `productos` (`id`),
+  ADD CONSTRAINT `carritoproductos_ibfk_2` FOREIGN KEY (`usuarioId`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `productos`
