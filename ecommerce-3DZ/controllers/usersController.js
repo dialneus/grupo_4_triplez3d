@@ -79,7 +79,8 @@ const usersController = {
   list: (req, res, next) => {
     db.Usuarios.findAll()
     .then((usuarios) => {
-      res.render('users/usersList', {usuarios: usuarios})
+      let user = req.session.userLogueado;
+      res.render('users/usersList', {usuarios: usuarios, user})
     })
   },
   detail: (req, res, next) => {
@@ -107,7 +108,7 @@ const usersController = {
     }
     //Grabo los datos en la base de Datos:
     db.Usuarios.update({
-      admin: user.user_admin,
+      //admin: user.user_admin,
       nombreApellido: user.user_name,
       email: user.user_email,
       domicilio: user.user_domicilio,
@@ -119,6 +120,40 @@ const usersController = {
       }
     });
     res.redirect('/users/' + req.params.id)
+  },
+  destroy: (req, res, next) => {
+    //Grabo los datos en la base de Datos:
+    db.Usuarios.update({
+      activo: 0,
+    }, {
+      where: {
+        id: req.params.id
+      }
+    });
+    res.redirect('/users/listado')
+  },
+  activate: (req, res, next) => {
+    //Grabo los datos en la base de Datos:
+    db.Usuarios.update({
+      activo: 1,
+    }, {
+      where: {
+        id: req.params.id
+      }
+    });
+    res.redirect('/users/listado')
+  },
+  permission: (req, res, next) => {
+    //Grabo los datos en la base de Datos:
+    console.log('El tipo de usuario será: ' + req.body.userType);
+    db.Usuarios.update({
+      admin: req.body.userType,
+    }, {
+      where: {
+        id: req.params.id
+      }
+    });
+    res.redirect('/users/listado')
   },
   checkout: (req,res,next) => {
     req.session.destroy((err) => {

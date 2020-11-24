@@ -12,36 +12,96 @@
 </head>
 <body>
   <section class="customerUsers">
-    <h1>Listado de Clientes Registrados</h1>
-    <table>
-      <tr>
-        <th>Id</th>
-        <th>Nombre y Apellido</th>
-        <th>Correo Electrónico</th>
-        <th>Acción</th>
-      </tr>
-      <% for(usuario of usuarios) { %>
-        <% if(usuario.admin == 0) {%>
-      <tr>
-        <td>
-          <%= usuario.id %>
-        </td>
-        <td> 
-          <%= usuario.nombreApellido %>
-        </td>
-        <td> 
-          <%= usuario.email %>
-        </td>
-        <td>
-          <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
-          <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
-          <button><a href="/users/edit/<%= usuario.id %> ">Eliminar</a></button>
-        </td>  
-        <% } %> 
-      </tr>
-        <% } %>
-        </table>
-    </section>
+    <section class="activos">
+      <h1>Listado de Usuarios Activos</h1>
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>Nombre y Apellido</th>
+          <th>Correo Electrónico</th>
+          <th>Acción</th>
+          <% if (user.admin == 2) { %>
+            <th>Cambiar Nivel Auth</th>
+          <% } %> 
+        </tr>
+        <% for(usuario of usuarios) { %>
+          <% if(usuario.admin == 0 && usuario.activo ==1) {%>
+        <tr>
+          <td>
+            <%= usuario.id %>
+          </td>
+          <td> 
+            <%= usuario.nombreApellido %>
+          </td>
+          <td> 
+            <%= usuario.email %>
+          </td>
+          <td>
+            <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
+            <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
+            <form action="/users/destroy/<%= usuario.id %> " method="POST">
+              <button>Eliminar</button>
+            </form>
+          </td>
+          <% if (user.admin == 2) { %>
+            <td>
+              <form action="/users/permission/<%= usuario.id %> " method="POST">
+                <input type="radio" id="admin" name="userType" value="0" checked>
+                <label class="userType" for="admin">Usr</label>
+                <input type="radio" id="consumer" name="userType" value="1" checked>
+                <label class="userType" for="consumer">SUP</label>
+                <button>Actualiza</button>
+              </form>
+            </td>  
+             <% } %>   
+          <% } %> 
+        </tr>
+          <% } %>
+          </table>
+      </section>
+      <section class="inactivos">
+        <h1>Listado de Usuarios Eliminados</h1>
+        <table>
+          <tr>
+            <th>Id</th>
+            <th>Nombre y Apellido</th>
+            <th>Correo Electrónico</th>
+            <th>Nivel</th>
+            <th>Acción</th>
+          </tr>
+          <% for(usuario of usuarios) { %>
+            <% if(usuario.activo == 0) {%>
+          <tr>
+            <td>
+              <%= usuario.id %>
+            </td>
+            <td> 
+              <%= usuario.nombreApellido %>
+            </td>
+            <td> 
+              <%= usuario.email %>
+            </td>
+            <td>
+              <% if(usuario.admin == 0) {%>
+                Usuario
+              <% } else if (usuario.admin == 1) { %> 
+                Supervisor
+              <% } else { %> 
+                Administrador
+              <% } %> 
+            </td>
+            <td>
+              <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
+              <form action="/users/activate/<%= usuario.id %> " method="POST">
+                <button>Activar</button>
+              </form>
+            </td>  
+            <% } %> 
+            </tr>
+            <% } %>
+            </table>
+        </section>
+  </section>
     <section class="adminUsers">
       <h1>Administradores Activos</h1>
       <table>
@@ -51,9 +111,12 @@
           <th>Correo Electrónico</th>
           <th>Nivel</th>
           <th>Acción</th>
+          <% if (user.admin == 2) { %>
+            <th>Cambiar Nivel Auth</th>
+          <% } %>  
         </tr>
         <% for(usuario of usuarios) { %>
-          <% if(usuario.admin != 0) {%>
+          <% if(usuario.admin != 0 && usuario.activo != 0) {%>
         <tr>
           <td>
             <%= usuario.id %>
@@ -72,10 +135,25 @@
             <% } %> 
           </td>
           <td>
-            <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
+          <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
           <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
-          <button><a href="/users/edit/<%= usuario.id %> ">Eliminar</a></button>
+          <form action="/users/destroy/<%= usuario.id %> " method="POST">
+            <button>Eliminar</button>
+          </form>
+          </td>
+          <% if (user.admin == 2) { %>
+          <td>
+            <form action="/users/permission/<%= usuario.id %> " method="POST">
+              <input type="radio" id="consumer" name="userType" value="0" checked>
+              <label class="userType" for="consumer">Usr</label>
+              <input type="radio" id="superv" name="userType" value="1" checked>
+              <label class="userType" for="superv">SUP</label>
+              <input type="radio" id="admin" name="userType" value="2" checked>
+              <label class="userType" for="admin">ADM</label>
+              <button>Actualiza</button>
+            </form>
           </td>  
+           <% } %> 
           <% } %> 
         </tr>
           <% } %>
