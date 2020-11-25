@@ -232,7 +232,7 @@ const usersController = {
     //busco la ultima compra para tomar sus datos
     .then(() => {
       return db.Carrito.findOne({
-        order: [["createdAt", "DESC"]],
+        order: [["id", "DESC"]],
       })
     })
     //asigno el ID de la ultima compra a los productos que se cerraron
