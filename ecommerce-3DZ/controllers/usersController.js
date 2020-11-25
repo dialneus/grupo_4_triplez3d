@@ -11,6 +11,7 @@ const db = require('../database/models');
 //Requiero Express-Validator para validar los datos de los formularios:
 var{check, validationResult, body} = require('express-validator');
 const { log } = require('console');
+const CarritoProducto = require('../database/models/CarritoProducto');
 
 
 const usersController = {
@@ -161,7 +162,6 @@ const usersController = {
     });
   },  
   carrito: function(req, res, next) {
-    console.log(req.session.userLogueado);
     db.CarritoProducto.findAll({
       where : {
         usuarioId : req.session.userLogueado.id,
@@ -203,6 +203,46 @@ const usersController = {
     })
       .then(() => res.redirect("/chart"))
       .catch((e) => console.log(e));
+  },
+  purchase: function(req,res,next){
+    let productos;
+    //busco los productos que el usuario tiene abiertos
+    db.CarritoProducto.findAll({
+      where : {
+        usuarioId: req.session.userLogueado.id,
+        estado: 1
+      }
+    })
+    //cierro la compra (estado =0)
+    .then((productosEncontrados)=>{
+      productos = productosEncontrados;
+      return db.CarritoProducto.closeProductState(req.session.userLogueado.id);
+    })
+    //registro la compra (tabla carritos de la BD)
+    .then(()=>{
+      return db.Carrito.create({
+        orderNumber : Math.round(100000000*(Math.random())),
+        total : productos.reduce(
+          (total, producto) => (total = total + producto.subTotal),
+          0
+        ),
+        usuario_id: req.body.userID
+      });
+    })
+    //busco la ultima compra para tomar sus datos
+    .then(() => {
+      return db.Carrito.findOne({
+        order: [["id", "DESC"]],
+      })
+    })
+    //asigno el ID de la ultima compra a los productos que se cerraron
+    .then((nuevoCarrito)=>{
+      return db.CarritoProducto.asignChartId(req.session.userLogueado.id,nuevoCarrito.id);
+    })
+    .then(()=>{
+      res.send('Talvez funciono');
+    })
+    .catch((e) => console.log(e));
   }
 
 };

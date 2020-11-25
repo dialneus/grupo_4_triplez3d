@@ -6,16 +6,16 @@ module.exports = (sequelize, dataTypes) => {
         primaryKey: true,
         autoIncremental: true
       },
-      fecha_compra : dataTypes.DATE,
-      fecha_creacion : dataTypes.DATE,
+      createdAt : dataTypes.DATE,
+      updatedAt : dataTypes.DATE,
       orderNumber : dataTypes.INTEGER,
       total : dataTypes.INTEGER,
       usuario_id : dataTypes.INTEGER
     }
   
     let config = {
-      tablename: 'carrito',
-      timestamps: false
+      tablename: 'carritos',
+      timestamps: true
     }
   
     const Carrito = sequelize.define(alias, cols, config);
