@@ -1,11 +1,11 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password":"root",
+    "password":"root",//si tiene claves
     "database": "eCommerce-3DZ",
     "host": "localhost",
     "dialect": "mysql",
-    "port" : "8889"
+    "port" : "8889" //habilitarlo para mac
   },
   "test": {
     "username": "root",
