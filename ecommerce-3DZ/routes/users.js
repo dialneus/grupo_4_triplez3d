@@ -28,7 +28,12 @@ router.post('/login', [
     }).then((newUser) => {
       if (!newUser) {
         return Promise.reject('Usuario no registrado. Por favor registrese');
-    }})
+    } else {
+      if (newUser.activo == 0) {
+        return Promise.reject('Usuario bloqueado. Comuniquese con el administrador');
+      }
+    }
+  })
   }),
 ] ,usersController.processLogin);
 
@@ -68,6 +73,15 @@ router.get('/:id', usersController.detail);
 
 router.get('/edit/:id', usersController.edit);
 router.post('/edit/:id', usersController.update);
+
+//Ruta a Eliminar usuario:
+router.post('/destroy/:id', usersController.destroy);
+
+//Ruta a activar usuario:
+router.post('/activate/:id', usersController.activate);
+
+//Ruta a cambiar permisos:
+router.post('/permission/:id', usersController.permission);
 
 //Eliminar Session:
 
