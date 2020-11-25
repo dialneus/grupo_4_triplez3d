@@ -22,17 +22,17 @@ module.exports = (sequelize, dataTypes) => {
   
     const CarritoProducto = sequelize.define(alias, cols, config);
   
-    // CarritoProducto.closeItems = function (idUser) {
-    //   return sequelize.query(
-    //     `UPDATE carritoproductos SET estado = 0 WHERE usuario_id = ${idUser} AND estado = 1`
-    //   );
-    // };
+    CarritoProducto.closeProductState = function (idUser) {
+      return sequelize.query(
+        `UPDATE carritoproductos SET estado = 0 WHERE usuarioId = ${idUser} AND estado = 1`
+      );
+    };
   
-    // CarritoProducto.assignItems = function (idUser, idCart) {
-    //   return sequelize.query(
-    //     `UPDATE carritoproductos SET carrito_id = ${idCart} WHERE usuario_id = ${idUser} AND carrito_id IS NULL`
-    //   );
-    // };
+    CarritoProducto.asignChartId = function (idUser, idCart) {
+      return sequelize.query(
+        `UPDATE carritoproductos SET carritoId = ${idCart} WHERE usuarioId = ${idUser} AND carritoId IS NULL`
+      );
+    };
   
     CarritoProducto.associate = function(models){
       CarritoProducto.belongsTo(models.Usuarios, {as: "usuario", foreignkey: "usuarioId"});

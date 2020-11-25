@@ -67,7 +67,10 @@
           <p class="number"><%= Total %></p> 
         </article>
         <article class="money_chart_button">
-          <button type="submit">comprar</button>
+          <form action="/purchase" method="POST" enctype="application/json">
+            <input type="hidden" name="userID" value="<%= user.id %>">
+            <button type="submit">comprar</button>
+          </form>
         </article>
         <article class="continue_shop">
           <a href="/">Seguir Comprando</a>
