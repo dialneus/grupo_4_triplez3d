@@ -1,4 +1,8 @@
 /* AQUI COMIENZA LA BARRA DE NAVEGACION*/
+html{
+  height: 100vh;
+}
+
 header{
   font-family: 'Roboto', sans-serif;
 /*  font-size: 14px;*/

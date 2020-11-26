@@ -230,6 +230,7 @@ const usersController = {
   },
   purchase: function(req,res,next){
     let productos;
+    let carrito;
     //busco los productos que el usuario tiene abiertos
     db.CarritoProducto.findAll({
       where : {
@@ -261,11 +262,12 @@ const usersController = {
     })
     //asigno el ID de la ultima compra a los productos que se cerraron
     .then((nuevoCarrito)=>{
+      carrito = nuevoCarrito;
       return db.CarritoProducto.asignChartId(req.session.userLogueado.id,nuevoCarrito.id);
     })
     .then(()=>{
       let user = req.session.userLogueado;
-      res.render('users/detalleCompra', {user});
+      res.render('users/detalleCompra', {user, carrito});
     })
     .catch((e) => console.log(e));
   }

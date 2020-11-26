@@ -10,7 +10,7 @@
 <body>
   <%-include('../partials/header') %>
     <main>
-        <% console.log(producto) %>
+        
         <img src="<%=producto.imagen%>" alt="<% producto.descripcion %>"> 
         <div class="formulario">
           <form action="/addToCart" method="POST" enctype="application/json" class="formInterno">
