@@ -1,17 +1,27 @@
 var express = require('express');
 var router = express.Router();
+
+//Requiero los controladores:
 var indexController = require('../controllers/indexController');
 var usersController = require('../controllers/usersController');
+//Requiero los middlewares:
 var logMiddleware = require('../middlewares/logMiddleware');
+//var indexMiddleware = require('../middlewares/indexMiddleware');
+var usersMiddleware = require('../middlewares/usersMiddleware');
 
 /* GET home page. */
 router.get('/', indexController.homePage);
+
+/* GET Error page. */
+router.get('/error', function(req, res, next) {
+  res.render('error', { title: 'error' });
+});
 
 /* GET Modelado page. */
 router.get('/modelado',indexController.modelado);
 
 /* GET Admin page. */
-router.get('/admin',indexController.admin);
+router.get('/admin', usersMiddleware.adminAccess, indexController.admin);
 
 
 //Cierre Session:

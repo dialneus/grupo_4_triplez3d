@@ -77,6 +77,32 @@ const usersController = {
         return res.render('users/login', {errors: errors.errors})
       };
   },
+  newPass: (req, res, next) => {
+    res.render('users/newPass');
+  },
+  updateNewPass: (req,res) => {
+    //Capturo los errores del formulario y analizo su existencia:
+    let errors = (validationResult(req));
+    console.log(errors);
+    // Continuo con las validaciones:
+    if(errors.isEmpty()) {
+    //Capturo los datos que vienen del formulario:
+    let user = {
+      user_email: req.body.email,
+      user_password: bcrypt.hashSync(req.body.password, 10),
+    }
+    //Escribo la base de datos con el nuevo usuario:
+    db.Usuarios.update({
+      password: user.user_password 
+    }, {
+      where: {
+        email: req.body.email
+      }
+    });
+    res.render('users/login');
+  }
+},
+
   list: (req, res, next) => {
     db.Usuarios.findAll()
     .then((usuarios) => {
@@ -109,7 +135,6 @@ const usersController = {
     }
     //Grabo los datos en la base de Datos:
     db.Usuarios.update({
-      //admin: user.user_admin,
       nombreApellido: user.user_name,
       email: user.user_email,
       domicilio: user.user_domicilio,
@@ -146,7 +171,6 @@ const usersController = {
   },
   permission: (req, res, next) => {
     //Grabo los datos en la base de Datos:
-    console.log('El tipo de usuario será: ' + req.body.userType);
     db.Usuarios.update({
       admin: req.body.userType,
     }, {

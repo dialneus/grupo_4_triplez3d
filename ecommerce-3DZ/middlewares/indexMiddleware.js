@@ -12,20 +12,17 @@ var{check, validationResult, body} = require('express-validator');
 const db = require('../database/models'); 
 
 
-const usersMiddleware = {
+const indexMiddleware = {
   adminAccess: (req, res, next) => {
     let user = req.session.userLogueado;
     if(user == undefined) {
       res.render('users/login', {errors: [{msg: 'ACCESO DENEGADO. Debe estar logueado y poseer permisos de administración'}]});
-    } else {
-      if(user.admin == 0) {
-      res.render('error', {message: 'ACCESO DENEGADO. No posee permisos de administración para acceder.'})
-      
-        /*res.send('ACCESO DENEGADO. No posee los permisos necesarios para poder acceder a la pagina solicitada.');*/
-    }
-  }
+    } else {     
+    if (user.admin == 0) {
+      res.send('ACCESO DENEGADO. No posee los permisos necesarios para poder acceder a la pagina solicitada.');
+  }}
     next();
   }  
 };
 
-module.exports = usersMiddleware;
+module.exports = indexMiddleware;
