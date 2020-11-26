@@ -240,7 +240,8 @@ const usersController = {
       return db.CarritoProducto.asignChartId(req.session.userLogueado.id,nuevoCarrito.id);
     })
     .then(()=>{
-      res.send('Talvez funciono');
+      let user = req.session.userLogueado;
+      res.render('users/detalleCompra', {user});
     })
     .catch((e) => console.log(e));
   }
