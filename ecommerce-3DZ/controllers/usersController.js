@@ -231,6 +231,7 @@ const usersController = {
   purchase: function(req,res,next){
     let productos;
     let carrito;
+    let user = req.session.userLogueado;
     //busco los productos que el usuario tiene abiertos
     db.CarritoProducto.findAll({
       where : {
@@ -241,7 +242,7 @@ const usersController = {
     //cierro la compra (estado =0)
     .then((productosEncontrados)=>{
       productos = productosEncontrados;
-      return db.CarritoProducto.closeProductState(req.session.userLogueado.id);
+        return db.CarritoProducto.closeProductState(req.session.userLogueado.id);
     })
     //registro la compra (tabla carritos de la BD)
     .then(()=>{
@@ -266,10 +267,26 @@ const usersController = {
       return db.CarritoProducto.asignChartId(req.session.userLogueado.id,nuevoCarrito.id);
     })
     .then(()=>{
-      let user = req.session.userLogueado;
       res.render('users/detalleCompra', {user, carrito});
     })
     .catch((e) => console.log(e));
+  },
+  buyHistory : function(req,res,next){
+    db.Carrito.findAll({
+      where : {
+        usuario_id : req.session.userLogueado.id
+      },
+      include : {
+        all : true,
+        nested : true
+      },
+      order : [["createdAt","DESC"]]
+    })
+    .then((compras)=>{
+      let detalleCompras = compras;
+      let user = req.session.userLogueado;
+      res.render('users/buyHistory',{detalleCompras, user});
+    }).catch((e) => console.log(e));
   }
 
 };
