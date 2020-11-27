@@ -2,30 +2,24 @@
 const path = require('path');
 const fs = require('fs');
 
-//Defino una variable con la ruta y archivo donde se almacenaran los usuarios:
-const usersDataBase = path.join(__dirname,'..','data','usersDataBase.json');
-
-//Leo la base de datos de users:
-let usersDB = fs.readFileSync(usersDataBase,{encoding: 'utf-8'});
+//Requiero los modelos de Bases de Datos:
+const db = require('../database/models');
 
 function rememberMiddleware(req, res, next) {
+  if(req.cookies.recordame != undefined && req.session.userLogueado == undefined) {
+      //console.log("a buscar el usuario " + req.cookies.recordame)
+      let userFind;
+      db.Usuarios.findOne({
+        where: {
+          email: req.cookies.recordame
+        }
+      }).then(logUser => {
+        return req.session.userLogueado.email = logUser;
+        /*userFind = logUser
+        req.session.userLogueado = userFind;*/
+        });
+  };
   next();
-  if(req.cookies.recordame != undefined && req.session.userFind == undefined) {
-    //Valido el contenido de la base de datos de usuarios:
-    if(usersDB == '') {
-      users = [];
-    } else {
-      users = JSON.parse(usersDB);
-    }
-    let userFind;
-    for(var i = 0; i <users.length; i++) {
-      if(users[i].user_email == req.cookies.recordame) {
-          userFind = users[i];
-          break;
-        }  
-      }
-    req.session.userLogueado = userFind;
-    }
 };
 
 module.exports = rememberMiddleware;

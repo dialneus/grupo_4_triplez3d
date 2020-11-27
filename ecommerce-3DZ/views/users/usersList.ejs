@@ -8,12 +8,71 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <!--Iconos Fontawesome-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <title>Lista de Usuarios Activos</title>
+  <title>Administración de Usuarios</title>
 </head>
 <body>
+  <%-include('../partials/headerAdmin')%>
+  <main>
+  <section class="adminUsers">
+    <h1>Detalle de Administradores Activos</h1>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Nombre y Apellido</th>
+        <th>Correo Electrónico</th>
+        <th>Nivel</th>
+        <th>Acción</th>
+        <% if (user.admin == 2) { %>
+          <th>Cambiar Nivel Auth</th>
+        <% } %>  
+      </tr>
+      <% for(usuario of usuarios) { %>
+        <% if(usuario.admin != 0 && usuario.activo != 0) {%>
+      <tr>
+        <td>
+          <%= usuario.id %>
+        </td>
+        <td> 
+          <%= usuario.nombreApellido %>
+        </td>
+        <td> 
+          <%= usuario.email %>
+        </td>
+        <td>
+          <% if(usuario.admin == 1) {%>
+            Supervisor
+          <% } else { %> 
+            Administrador
+          <% } %> 
+        </td>
+        <td class="options">
+        <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
+        <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
+        <form action="/users/destroy/<%= usuario.id %> " method="POST">
+          <button>Eliminar</button>
+        </form>
+        </td>
+        <% if (user.admin == 2) { %>
+          <td class="auth">
+          <form action="/users/permission/<%= usuario.id %> " method="POST">
+            <input type="radio" id="consumer" name="userType" value="0" checked>
+            <label class="userType" for="consumer">User</label>
+            <input type="radio" id="superv" name="userType" value="1" checked>
+            <label class="userType" for="superv">Sup</label>
+            <input type="radio" id="admin" name="userType" value="2" checked>
+            <label class="userType" for="admin">Admin</label>
+            <button>Actualiza</button>
+          </form>
+        </td>  
+         <% } %> 
+        <% } %> 
+      </tr>
+        <% } %>
+        </table>
+    </section>
   <section class="customerUsers">
     <section class="activos">
-      <h1>Listado de Usuarios Activos</h1>
+      <h1>Detalle de Usuarios Activos</h1>
       <table>
         <tr>
           <th>Id</th>
@@ -36,7 +95,7 @@
           <td> 
             <%= usuario.email %>
           </td>
-          <td>
+          <td class="options">
             <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
             <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
             <form action="/users/destroy/<%= usuario.id %> " method="POST">
@@ -44,12 +103,12 @@
             </form>
           </td>
           <% if (user.admin == 2) { %>
-            <td>
+            <td class="auth">
               <form action="/users/permission/<%= usuario.id %> " method="POST">
                 <input type="radio" id="admin" name="userType" value="0" checked>
                 <label class="userType" for="admin">Usr</label>
                 <input type="radio" id="consumer" name="userType" value="1" checked>
-                <label class="userType" for="consumer">SUP</label>
+                <label class="userType" for="consumer">Sup</label>
                 <button>Actualiza</button>
               </form>
             </td>  
@@ -60,7 +119,7 @@
           </table>
       </section>
       <section class="inactivos">
-        <h1>Listado de Usuarios Eliminados</h1>
+        <h1>Detalle de Usuarios Eliminados</h1>
         <table>
           <tr>
             <th>Id</th>
@@ -90,7 +149,7 @@
                 Administrador
               <% } %> 
             </td>
-            <td>
+            <td class="options">
               <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
               <form action="/users/activate/<%= usuario.id %> " method="POST">
                 <button>Activar</button>
@@ -102,62 +161,6 @@
             </table>
         </section>
   </section>
-    <section class="adminUsers">
-      <h1>Administradores Activos</h1>
-      <table>
-        <tr>
-          <th>Id</th>
-          <th>Nombre y Apellido</th>
-          <th>Correo Electrónico</th>
-          <th>Nivel</th>
-          <th>Acción</th>
-          <% if (user.admin == 2) { %>
-            <th>Cambiar Nivel Auth</th>
-          <% } %>  
-        </tr>
-        <% for(usuario of usuarios) { %>
-          <% if(usuario.admin != 0 && usuario.activo != 0) {%>
-        <tr>
-          <td>
-            <%= usuario.id %>
-          </td>
-          <td> 
-            <%= usuario.nombreApellido %>
-          </td>
-          <td> 
-            <%= usuario.email %>
-          </td>
-          <td>
-            <% if(usuario.admin == 1) {%>
-              Supervisor
-            <% } else { %> 
-              Administrador
-            <% } %> 
-          </td>
-          <td>
-          <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
-          <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
-          <form action="/users/destroy/<%= usuario.id %> " method="POST">
-            <button>Eliminar</button>
-          </form>
-          </td>
-          <% if (user.admin == 2) { %>
-          <td>
-            <form action="/users/permission/<%= usuario.id %> " method="POST">
-              <input type="radio" id="consumer" name="userType" value="0" checked>
-              <label class="userType" for="consumer">Usr</label>
-              <input type="radio" id="superv" name="userType" value="1" checked>
-              <label class="userType" for="superv">SUP</label>
-              <input type="radio" id="admin" name="userType" value="2" checked>
-              <label class="userType" for="admin">ADM</label>
-              <button>Actualiza</button>
-            </form>
-          </td>  
-           <% } %> 
-          <% } %> 
-        </tr>
-          <% } %>
-          </table>
-      </section>
+  </main>
 </body>
 </html>

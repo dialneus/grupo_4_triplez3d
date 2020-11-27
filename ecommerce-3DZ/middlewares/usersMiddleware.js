@@ -20,12 +20,10 @@ const usersMiddleware = {
     } else {
       if(user.admin == 0) {
       res.render('error', {message: 'ACCESO DENEGADO. No posee permisos de administración para acceder.'})
-      
-        /*res.send('ACCESO DENEGADO. No posee los permisos necesarios para poder acceder a la pagina solicitada.');*/
     }
   }
     next();
-  }  
+  }
 };
 
 module.exports = usersMiddleware;

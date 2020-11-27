@@ -35,7 +35,7 @@ router.post('/login', [
     }
   })
   }),
-] ,usersController.processLogin);
+], usersController.processLogin);
 
 // Rutas a Registro Usuario:
 router.get('/register', usersController.register);
@@ -63,7 +63,6 @@ router.post('/register', [
 
 //Rutas a Cambio de Contraseña:
 router.get('/newPass', usersController.newPass);
-
 router.post('/newPass', [
   check('email').isEmail().withMessage('El mail debe ser válido y debe estar completo.') ,
   check('password').isLength({min:4}).withMessage('La constraseña debe tener al menos 4 carácteres.') ,
@@ -91,7 +90,12 @@ router.post('/newPass', [
 
 //Ruta a Listado Usuarios:
 
-router.get('/listado',usersMiddleware.adminAccess, usersController.list);
+router.get('/listado', usersMiddleware.adminAccess, usersController.list);
+
+/* GET Error page. */
+router.get('/error', function(req, res, next) {
+  res.render('error', { title: 'error' });
+});
 
 //Ruta a Detalle de Usuario:
 
@@ -114,6 +118,7 @@ router.post('/permission/:id', usersController.permission);
 //Eliminar Session:
 
 router.post('/checkout/', usersController.checkout);
+
 
 //Ruta al carrito:
 

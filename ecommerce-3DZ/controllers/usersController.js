@@ -24,7 +24,6 @@ const usersController = {
   create: (req,res) => {
   //Capturo los errores del formulario y analizo su existencia:
   let errors = (validationResult(req));
-  console.log(errors);
   // Continuo con las validaciones:
   if(errors.isEmpty()) {
   //Capturo los datos que vienen del formulario:
@@ -39,16 +38,25 @@ const usersController = {
     email: user.user_email,
     password: user.user_password 
   }).then(() => {
-    req.session.userLogueado = user;
-    res.redirect('/');
-  });
-  } else {
-  res.render('users/register', {errors: errors.errors});
-  };
-},
+    let userFind;
+    db.Usuarios.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(logUser => {
+        userFind = logUser 
+        //Configuro Session:
+        req.session.userLogueado = userFind;
+        res.redirect('/');
+        }    
+      );
+    });
+    } else {
+      res.render('users/register', {errors: errors.errors});
+    };
+  },
   processLogin: (req, res, next) => {
     let errors = (validationResult(req));
-      
     if(errors.isEmpty()) {
       //Validacion de contraseña:
       let userFind;
@@ -65,10 +73,12 @@ const usersController = {
         } else {
           //Configuro Session y Cookies:
           req.session.userLogueado = userFind;
-          console.log('En login el id del usuario en session es: ' + req.session.userLogueado.id);
+          //console.log('En login el id del usuario en session es: ' + req.session.userLogueado.id);
           if(req.body.recordame != undefined) {
-            res.cookie('recordame', userFind.email, {maxAge: 8.64e+7});
+            res.cookie('recordame', userFind.email, {maxAge: 10000000000});
+            console.log('El usuario en cookies es: ' + req.cookies.recordame);
         }
+          console.log('el usuario en cookie es: ' + req.body.recordame);
           res.redirect('/');
         }    
       });
@@ -100,14 +110,16 @@ const usersController = {
       }
     });
     res.render('users/login');
+  } else {
+    return res.render('users/newPass', {errors: errors.errors})
   }
 },
-
   list: (req, res, next) => {
+    let url = req.url;
     db.Usuarios.findAll()
     .then((usuarios) => {
       let user = req.session.userLogueado;
-      res.render('users/usersList', {usuarios: usuarios, user})
+      res.render('users/usersList', {usuarios: usuarios, user, url})
     })
   },
   detail: (req, res, next) => {
@@ -242,7 +254,7 @@ const usersController = {
     //cierro la compra (estado =0)
     .then((productosEncontrados)=>{
       productos = productosEncontrados;
-        return db.CarritoProducto.closeProductState(req.session.userLogueado.id);
+      return db.CarritoProducto.closeProductState(req.session.userLogueado.id);
     })
     //registro la compra (tabla carritos de la BD)
     .then(()=>{

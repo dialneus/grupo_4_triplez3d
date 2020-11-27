@@ -4,6 +4,30 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 0px;
   background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
+}
+
+/*Estilos Main*/
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10%;
+}
+
+main a {
+  width: 20%;
+  background-color: brown;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border:rgb(177, 176, 176) 2px solid;
+  border-radius: 5px;
+}
+
+main a section {
+ 
+  color: white;
 }

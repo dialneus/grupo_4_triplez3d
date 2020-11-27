@@ -11,8 +11,9 @@ const indexController = {
     res.render('modelado',{title: 'Formulario de Servicio de modelado', user})
   },
   admin: (req, res, next) => {
+    let url = req.url;
     let user = req.session.userLogueado;
-    res.render('admin',{title: 'Administración del Sitio 3DZ', user})
+    res.render('admin',{title: 'Administración del Sitio 3DZ', user, url})
   },
     nosotros: function (req,res,next){
     let user = req.session.userLogueado;
