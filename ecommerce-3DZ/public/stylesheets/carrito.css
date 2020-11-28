@@ -20,6 +20,8 @@ html {
   background-color: whitesmoke;
   width: 750px;
   border: solid 3px gray;
+  
+  
 }
 
 /*Estilos Header*/
@@ -197,6 +199,9 @@ button .fa-trash:hover{
 .pInfo{
 
   font-weight: bold;
+}
+.footercarrito{
+  padding-top: 180px;
 }
 
 

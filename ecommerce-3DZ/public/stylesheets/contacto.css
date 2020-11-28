@@ -11,13 +11,15 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;*/
+    
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+   
     background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg" );
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    
 }
 .losdosbloques{
     
@@ -26,7 +28,8 @@ body{
     display: flex;
     flex-wrap: wrap;
     padding-top: 50px;
-    padding-bottom: 50px;  
+    padding-bottom: 50px;
+    
     
     
 }
@@ -43,12 +46,8 @@ body{
 .formulariobloque{
     
    
-    width: 50%;
-    
-          
-        
-    
-   /* background-color: blueviolet;*/
+    width: 50%;  
+         /* background-color: blueviolet;*/
     
 }
 .wmlbloque{
@@ -76,7 +75,7 @@ li{
     width: 200px;
 }
 #mensaje{
-    width: 600px;
+    width: 380px;
     height: 155px;/*326px;<-Valor de Mariano*/
     text-align: left;
     padding-top: 30px;
@@ -116,6 +115,42 @@ ul{
   
   div.banner img {
     width: 100%;
+  }
+  .footercontacto{
+      padding-top: 157px;
+  }
+  @media(max-width:768px){
+    .losdosbloques{
+        
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+      
+    }
+    .contactobloque{
+        width: auto;
+        text-align: center;
+        
+    }
+    .formulariobloque{
+        width: auto;
+        padding-top: 30px;
+        
+        
+        
+        
+    }
+    .footercontacto{
+        padding-top: 10px;
+    }
+    
+    
+
+
+
   }
   
 
