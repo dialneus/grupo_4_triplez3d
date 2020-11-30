@@ -144,8 +144,9 @@ const productsController = {
         where: {
           id: req.params.id
         }
-      });
-      res.redirect('/products/listado')
+      }).then(() =>{
+        res.redirect('/products/listado')
+      }).catch((err) => { console.log(err) });
       //res.render('products/productsList', {user, url});
     },
     activate: function(req,res,next){
@@ -158,8 +159,9 @@ const productsController = {
          where: {
            id: req.params.id
          }
-       });
-       res.redirect('/products/listado')
+       }).then(()=>{
+        res.redirect('/products/listado');
+       }).catch((err) => { console.log(err) });
        //res.render('products/productsList', {user, url});
      },
     list: (req, res, next) => {
@@ -168,8 +170,8 @@ const productsController = {
         .then((productos) => {
           let user = req.session.userLogueado;
           res.render('products/productsList', {productos: productos, user, url})
-        })
-        },
+        }).catch((err) => { console.log(err) });
+    },
 };
 
 module.exports = productsController;

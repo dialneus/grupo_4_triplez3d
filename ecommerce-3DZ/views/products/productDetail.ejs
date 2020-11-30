@@ -9,6 +9,7 @@
 </head>
 <body>
   <%-include('../partials/header') %>
+  <div class="container">
     <main>
         <% console.log(producto) %>
         <img src="<%=producto.imagen%>" alt="<% producto.descripcion %>"> 
@@ -30,6 +31,7 @@
           </form>
         </div>
     </main>
+  </div>
     <%-include('../partials/footer')%>
 </body>
 </html>

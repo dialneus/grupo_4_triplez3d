@@ -10,73 +10,68 @@
 </head>
 <body>
     <%-include('./partials/header') %>
-    <div class="banner" >
-        <img src="/images/IMAGENESEDITADAS/banner.jpg">
-    </div>
-    <div class="losdosbloques">
-        <div class="contactobloque">
-            <div class="wmlbloque">
-                <h2 class="textocontacto">Envienos tu consulta y te contestaremos a la brevedad</h2>
-                <ul class="wml">
-                    <li class="icon">
-                        <img src="/images/IMAGENESEDITADAS/whatsapp.png" alt="" ><p>+54 9 11 3306-6351</p>
-                    </li>
-                    <li class="icon">
-                        <img src="/images/IMAGENESEDITADAS/mail.png" alt="" class="mail"><p>mariotaebox08@gmail.com</p>
-                    </li>
-                    <li class="icon">
-                        <img src="/images/IMAGENESEDITADAS/localization.png" alt="" class="mail"><p>Antonio Rocca 4538 - Quilmes Oeste</p>
-                    </li>     
-                </ul>
-            </div>                                                                                      
+    <div class="container">
+        <div class="banner" >
+            <img src="/images/IMAGENESEDITADAS/banner.jpg">
         </div>
-        <div class="formulariobloque">
-            <div id="contact-form" class="m-bottom">
-                <form action="mailto:mariotaebox08@gmail.com" method="POST" onsubmit="">
-                    <ul>
-                        <% if(user == undefined) {%> 
-                        <li>
-                            <label for="nombre"></label>
-                            <input type="nombre" name="nombre" id="nomb" placeholder="Nombre">
+        <div class="losdosbloques">
+            <div class="contactobloque">
+                <div class="wmlbloque">
+                    <h2 class="textocontacto">Envienos tu consulta y te contestaremos a la brevedad</h2>
+                    <ul class="wml">
+                        <li class="icon">
+                            <img src="/images/IMAGENESEDITADAS/whatsapp.png" alt="" ><p>+54 9 11 3306-6351</p>
                         </li>
-                        <li>
-                            <label for="mail"></label>
-                            <input type="mail" name="mail" id="email" placeholder="E-mail">  
+                        <li class="icon">
+                            <img src="/images/IMAGENESEDITADAS/mail.png" alt="" class="mail"><p>mariotaebox08@gmail.com</p>
                         </li>
-                        <li>
-                            <label for="telefono"></label>
-                            <input type="tel" name="tel" id="tel" placeholder="Tel.">  
-                        </li>
-                        <% } else {%>
+                        <li class="icon">
+                            <img src="/images/IMAGENESEDITADAS/localization.png" alt="" class="mail"><p>Antonio Rocca 4538 - Quilmes Oeste</p>
+                        </li>     
+                    </ul>
+                </div>                                                                                      
+            </div>
+            <div class="formulariobloque">
+                <div id="contact-form" class="m-bottom">
+                    <form action="mailto:mariotaebox08@gmail.com" method="POST" onsubmit="">
+                        <ul>
+                            <% if(user == undefined) {%> 
                             <li>
                                 <label for="nombre"></label>
-                                <input type="nombre" name="nombre" id="nomb" value="<%= user.nombreApellido %>">
+                                <input type="nombre" name="nombre" id="nomb" placeholder="Nombre">
                             </li>
                             <li>
                                 <label for="mail"></label>
-                                <input type="mail" name="mail" id="email" value="<%= user.email %>">  
+                                <input type="mail" name="mail" id="email" placeholder="E-mail">  
                             </li>
                             <li>
                                 <label for="telefono"></label>
-                                <input type="tel" name="tel" id="tel" value="<%= user.telefono %>">  
+                                <input type="tel" name="tel" id="tel" placeholder="Tel.">  
                             </li>
-                        <% } %>  
-                        <li>
-                            <label for="mensaje"></label>
-                            <input type="mensaje" name="mensaje" id="mensaje" placeholder="Escribanos su mensaje aquí..">  
-                        </li>
-                        <section class="enviar">
-                            <button type="submit">Enviar</button>
-                        </section>
-                    </ul>
-                    
-                    
-                    
-
-
-
-
-                </form>
+                            <% } else {%>
+                                <li>
+                                    <label for="nombre"></label>
+                                    <input type="nombre" name="nombre" id="nomb" value="<%= user.nombreApellido %>">
+                                </li>
+                                <li>
+                                    <label for="mail"></label>
+                                    <input type="mail" name="mail" id="email" value="<%= user.email %>">  
+                                </li>
+                                <li>
+                                    <label for="telefono"></label>
+                                    <input type="tel" name="tel" id="tel" value="<%= user.telefono %>">  
+                                </li>
+                            <% } %>  
+                            <li>
+                                <label for="mensaje"></label>
+                                <input type="mensaje" name="mensaje" id="mensaje" placeholder="Escribanos su mensaje aquí..">  
+                            </li>
+                            <section class="enviar">
+                                <button type="submit">Enviar</button>
+                            </section>
+                        </ul>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

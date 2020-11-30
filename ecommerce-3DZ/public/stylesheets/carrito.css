@@ -10,8 +10,16 @@ html {
     background-position: center;
 }
 /*Estilos Body*/
+html,body{
+  height: 100%;
+}
 
 .container{
+  min-height: 100%;
+  padding-bottom: 130px;
+}
+
+.containerCarrito{
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   margin: auto;
@@ -20,8 +28,6 @@ html {
   background-color: whitesmoke;
   width: 750px;
   border: solid 3px gray;
-  
-  
 }
 
 /*Estilos Header*/
@@ -31,10 +37,14 @@ header{
 
 .headerTitulo {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   background-color: whitesmoke;
   border-radius: 8px 8px 0px 0px;
+}
+.headerTitulo a{
+  text-decoration: none;
+  color: crimson;
+  font-weight: bold;
 }
 
 .headerTitulo img {
@@ -200,16 +210,13 @@ button .fa-trash:hover{
 
   font-weight: bold;
 }
-.footercarrito{
-  padding-top: 180px;
-}
 
 
 /*Responsive*/
 
 @media (max-width:768px) {
 
-.container {
+.containerCarrito {
     height: auto;
     width: 100%;
     border-radius: 8px;
@@ -241,5 +248,11 @@ button .fa-trash:hover{
     font-size: 16px;
     font-weight: bold;
   }
+
+@media (max-width:400px){
+ .prd_main section{
+   flex-direction: column;
+ }
+}
   
 }

@@ -45,7 +45,7 @@ router.get('/chart', logMiddleware, usersController.carrito);
 router.post('/addToCart', logMiddleware, usersController.addToCart);
 router.post('/deleteFromChart', logMiddleware, usersController.deleteFromChart);
 router.post('/purchase',logMiddleware, usersController.purchase);
-
+router.get('/buyHistory',logMiddleware, usersController.buyHistory);
 
 //Ruta a activar producto:
 //router.post('/products/activate/:id', productsController.activate);

@@ -3,10 +3,26 @@
     margin: 0px;
     padding: 0px;
 }
+html {
+    background-image:url("/images/IMAGENESEDITADAS/fondoopacidad60.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-  }
+}
+html,body{
+  height: 100%;
+}
+
+.container{
+  min-height: 100%;
+  padding-bottom: 130px;
+}
+
 li{
     list-style: none;
 }
@@ -17,8 +33,9 @@ a{
 /* CUERPO */
 
 .texto-superior-producto{
-    margin: 3vw;
+    padding: 3vw;
     font-size: 18px;
+    background-color: white;
 }
 .texto-superior-producto h5{
     margin-top: 5px;
@@ -144,6 +161,9 @@ button .buscar{
 }
 .sinProductos img{
     width: 50%;
+}
+.imagenes-productos{
+    padding-bottom: 15px;
 }
 }
 

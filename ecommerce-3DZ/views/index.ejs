@@ -9,14 +9,15 @@
 </head>
 <body>
   <%-include('./partials/header')%>
-  <div class="banner" >
-    <img src="/images/IMAGENESEDITADAS/banner.jpg">
+  <div class="container">
+    <div class="banner" >
+      <img src="/images/IMAGENESEDITADAS/banner.jpg">
+    </div>
+    <div class="carousel">
+      <%-include('./partials/carousel')%>
+    </div>
   </div>
-  <div class="carousel"><%-include('./partials/carousel')%></div>
+  <%-include('./partials/footer')%>
 </body>
-<footer>
-  <div class="footerhome"><%-include('./partials/footer')%></div>
-</footer>
   
-
 </html>
