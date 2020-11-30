@@ -23,11 +23,11 @@
         <input type="text" name="search" id="search"><i class="fas fa-search"></i><br>
         <button type="submit" class="buscar">Buscar</button>
       </form>
-
+    
     <% if (productos.length >0) { %>
       <div class="imagenes-productos">
         <% for (i=0; i < productos.length; i++){ %>
-          <% if (productos[i]) { %>
+          <% if (productos[i] && productos[i].activo != 0) { %>
           <div class="producto">
   
             <img src="<%=productos[i].imagen%>" alt="<%= productos[i].descripcion %>"> 

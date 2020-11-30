@@ -11,6 +11,10 @@ h1 {
   color: red;
 }
 
+img {
+  width: 35%;
+}
+
 div {
   display: flex;
   justify-content: center;

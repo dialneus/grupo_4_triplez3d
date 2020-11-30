@@ -19,10 +19,10 @@ const usersMiddleware = {
       res.render('users/login', {errors: [{msg: 'ACCESO DENEGADO. Debe estar logueado y poseer permisos de administración'}]});
     } else {
       if(user.admin == 0) {
-      res.render('error', {message: 'ACCESO DENEGADO. No posee permisos de administración para acceder.'})
+      res.render('deniedAcces', {message: 'ACCESO DENEGADO. No posee permisos de administración para acceder.'})
     }
   }
-    next();
+    next()
   }
 };
 

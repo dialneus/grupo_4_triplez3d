@@ -128,13 +128,48 @@ const productsController = {
         }).catch((err) => { console.log(err) })
     },
     destroy : function(req,res,next){
-       db.Producto.destroy({
+       /*Eliminando el registro de la BD:
+        db.Producto.destroy({
            where : {
                id : req.params.id
            }
-       })
-       res.redirect('/products');
-    }
+       });
+       res.redirect('/products');*/
+       //Modificando el campo activo:
+       let url = req.url;
+       let user = req.session.userLogueado;    
+       db.Producto.update({
+        activo: 0,
+      }, {
+        where: {
+          id: req.params.id
+        }
+      });
+      res.redirect('/products/listado')
+      //res.render('products/productsList', {user, url});
+    },
+    activate: function(req,res,next){
+        let url = req.url;
+        let user = req.session.userLogueado;
+        //Modificando el campo activo:
+        db.Producto.update({
+         activo: 1,
+       }, {
+         where: {
+           id: req.params.id
+         }
+       });
+       res.redirect('/products/listado')
+       //res.render('products/productsList', {user, url});
+     },
+    list: (req, res, next) => {
+        let url = req.url;
+        db.Producto.findAll()
+        .then((productos) => {
+          let user = req.session.userLogueado;
+          res.render('products/productsList', {productos: productos, user, url})
+        })
+        },
 };
 
 module.exports = productsController;

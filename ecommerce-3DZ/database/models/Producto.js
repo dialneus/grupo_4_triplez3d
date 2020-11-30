@@ -12,7 +12,8 @@ module.exports = (sequelize, dataTypes) => {
     imagen : dataTypes.STRING,
     pintado : dataTypes.STRING,
     material_id : dataTypes.INTEGER,
-    medida_id : dataTypes.INTEGER
+    medida_id : dataTypes.INTEGER,
+    activo: dataTypes.INTEGER
   }
 
   let config = {

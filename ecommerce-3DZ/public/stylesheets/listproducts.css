@@ -12,6 +12,18 @@ main {
   margin-bottom: 2%;
 }
 
+.create {
+  width: 30%;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  border:rgb(177, 176, 176) 2px solid;
+  border-radius: 5px;
+  margin: auto;
+  background-color: lightyellow;
+  color: brown;
+}
+
 table {
   width: auto;
   border: 1px solid #000;
@@ -62,3 +74,11 @@ a {
 button {
   color: blue;
 }
+
+.number:before{ 
+  content:'$'; 
+}
+
+/*.number:after{ 
+  content: '.00'; 
+}*/

@@ -6,6 +6,10 @@ var path = require('path');
 /* GET products listing. */
 const productsController = require('../controllers/productsController');
 
+var usersMiddleware = require('../middlewares/usersMiddleware');
+
+/*var usersMiddleware = require('../middlewares/usersMiddleware');*/
+
 /*MULTER y Path. Luego de aplicar upload.any() a la ruta que lo necesite configuramos en el controller el objeto para tomar la imagen*/
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -17,6 +21,13 @@ var storage = multer.diskStorage({
   })
    
 var upload = multer({ storage: storage });
+
+//Ruta a Listado Productos:
+
+router.get('/listado', usersMiddleware.adminAccess, productsController.list);
+
+//Ruta a activar producto:
+router.post('/activate/:id', productsController.activate);
 
 /*CLASICO AMB:*/
 /* DAR DE ALTA*/
@@ -41,4 +52,7 @@ router.get('/:id',productsController.id);
 //router.get('/carrito', productsController.carrito);
 
 
+
+//Ruta a activar producto:
+router.post('/activate/:id', productsController.activate);
 module.exports = router;

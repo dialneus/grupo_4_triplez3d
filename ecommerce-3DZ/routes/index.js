@@ -4,17 +4,19 @@ var router = express.Router();
 //Requiero los controladores:
 var indexController = require('../controllers/indexController');
 var usersController = require('../controllers/usersController');
+var productsController = require('../controllers/productsController');
+
 //Requiero los middlewares:
 var logMiddleware = require('../middlewares/logMiddleware');
-//var indexMiddleware = require('../middlewares/indexMiddleware');
+var indexMiddleware = require('../middlewares/indexMiddleware');
 var usersMiddleware = require('../middlewares/usersMiddleware');
 
 /* GET home page. */
 router.get('/', indexController.homePage);
 
 /* GET Error page. */
-router.get('/error', function(req, res, next) {
-  res.render('error', { title: 'error' });
+router.get('/deniedAcces', function(req, res, next) {
+  res.render('deniedAcces', { title: 'Acceso Denegado' });
 });
 
 /* GET Modelado page. */
@@ -43,6 +45,10 @@ router.get('/chart', logMiddleware, usersController.carrito);
 router.post('/addToCart', logMiddleware, usersController.addToCart);
 router.post('/deleteFromChart', logMiddleware, usersController.deleteFromChart);
 router.post('/purchase',logMiddleware, usersController.purchase);
+
+
+//Ruta a activar producto:
+//router.post('/products/activate/:id', productsController.activate);
 
 
 
