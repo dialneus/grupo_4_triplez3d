@@ -20,6 +20,7 @@ const usersController = {
     db.Usuarios.findAll()
     .then((usuarios) => {
       let user = req.session.userLogueado;
+      
       for (let i = 0; i < usuarios.length; i++) {
         usuarios[i].setDataValue('endpoint', '/api/users/' + usuarios[i].id)
       }
@@ -32,7 +33,7 @@ const usersController = {
         data : usuarios
       }
       res.json(usersResponse);
-    })
+    }).catch((err) => { console.log(err) });
   }
 };
 

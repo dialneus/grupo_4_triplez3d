@@ -16,6 +16,7 @@ var logMiddleware = require('./middlewares/logMiddleware');
 
 //Api's:
 var apiUsersRouter = require('./routes/api/users');
+var apiProductsRouter = require('./routes/api/products');
 
 var app = express();
 
@@ -33,7 +34,7 @@ app.use(session({secret: 'eCommerce3DZ'}));
 //Rutas Generales:
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/products',productsRouter);
+app.use('/products', productsRouter);
 
 //Middlewares:
 app.use(rememberMiddleware);
@@ -41,6 +42,7 @@ app.use(logMiddleware);
 
 //Rutas a Api's:
 app.use('/api/users', apiUsersRouter);
+app.use('/api/products', apiProductsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
