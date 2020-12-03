@@ -15,7 +15,7 @@ html {
 }
 .container{
     min-height: 100%;
-  }
+}
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -31,8 +31,8 @@ a{
 /*CUERPO*/
 main{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
 }
 main img{
     width: 300px;
@@ -74,11 +74,15 @@ main img{
 }
 /*VISTA TELEFONO RESOLUCION MAXIMA 768PX*/
 @media(max-width:768px){
-body{
-    min-width: 542px;
-    display: flex;
+main{
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
+.formulario{
+    max-width: 250px;
+}
+.container{
+    padding-bottom: 140px;
+  }
 }
 

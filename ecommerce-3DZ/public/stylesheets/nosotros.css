@@ -124,26 +124,13 @@ body {
 div.banner img {
   width: 100%;
 }
-
-  
-  
-  
-  
-  
-  
-  
-  
-  @media(max-width:768px){
-      .descripcion{
-          padding: 30px;
-      }
-      .muestras{
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-      }
-      
-
-
-
-    }
+@media(max-width:768px){
+.descripcion{
+  padding: 30px;
+}
+.muestras{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+}

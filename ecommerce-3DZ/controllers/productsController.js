@@ -95,37 +95,27 @@ const productsController = {
 
     },
     update : function(req,res,next){
-        // products.forEach(product => { 
-        //     if (product.id == req.params.id){
-        //         OJO QUE EL POST ES CON BODY Y EL GET CON PARAMS
-        //         product.name = req.body.name;
-        //         product.dimension = req.body.dimension;
-        //         product.price = req.body.price;
-        //         product.Material = req.body.Material;
-        //         if (typeof req.files[0] == 'undefined'){
-        //             product.image = product.image;
-        //         }else{
-        //             product.image = req.files[0].filename;
-        //         }
-        //         product.pintado = req.body.pintado;
-        //         }
-        //     });
-        //     fs.writeFileSync(__dirname + '/../data/productsDataBase.json',JSON.stringify(products));
-        //     res.send('actualizado exitosamente!');
-        db.Producto.update({
-            descripcion: req.body.name,
-            precio: Number(req.body.price),
-            imagen : path.normalize("/uploads/" + req.files[0].filename),
-            pintado : req.body.pintado,
-            material_id : req.body.Material,
-            medida_id : req.body.dimension
-        },{
-            where : {
-                id : req.params.id
-            }
-        }).then(()=>{
-            res.redirect('/products');
-        }).catch((err) => { console.log(err) })
+        db.Producto.findByPk(req.params.id)
+            .then((producto) =>{
+
+                let toUpdate = req.body;
+                
+                toUpdate.descripcion = req.body.name;
+                toUpdate.precio = Number(req.body.price);
+                toUpdate.imagen = req.files[0] != undefined ? path.normalize("/uploads/" + req.files[0].filename) : producto.imagen,
+                toUpdate.pintado = req.body.pintado;
+                toUpdate.material_id = req.body.Material;
+                toUpdate.medida_id = req.body.dimension;
+
+                return db.Producto.update(toUpdate,{
+                    where: {
+                        id : req.params.id
+                    }
+                })
+            })
+            .then(()=>{
+                res.redirect('/products');
+            }).catch((err) => { console.log(err) })
     },
     destroy : function(req,res,next){
        /*Eliminando el registro de la BD:
