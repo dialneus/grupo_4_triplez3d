@@ -5,11 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
+//Routers:
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
+
+//Middlewares:
 var rememberMiddleware = require('./middlewares/rememberMiddleware');
 var logMiddleware = require('./middlewares/logMiddleware');
+
+//Api's:
+var apiUsersRouter = require('./routes/api/users');
 
 var app = express();
 
@@ -24,12 +30,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'eCommerce3DZ'}));
 
+//Rutas Generales:
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products',productsRouter);
 
+//Middlewares:
 app.use(rememberMiddleware);
 app.use(logMiddleware);
+
+//Rutas a Api's:
+app.use('/api/users', apiUsersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
