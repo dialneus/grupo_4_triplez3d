@@ -31,11 +31,11 @@
               <a href="/users/login"><i class="fas fa-portrait"></i></a>
             <!-- start menu desplegable -->
             <% } else { %> 
-              <a href=""><i class="fas fa-portrait"></i></a>
+              <i class="fas fa-portrait"></i>
               <ul class="userMenu">
                   <li>
                   <% if(user.admin == 0) {%> 
-                  <a class="userMenu" href="/users/<%= user.id %> ">
+                  <a class="userMenu" id="misDatos" href="/users/<%= user.id %> ">
                       <i class="fas fa-user-cog"></i>
                       Mis Datos
                     </a>
@@ -48,7 +48,7 @@
                   </li>
                   <% } %> 
                   <li>
-                    <form action="/users/checkout" method="POST">
+                    <form action="/users/checkout" method="POST" id="cerrarSesion">
                       <button class="userMenu" type="submit">
                         <i class="fas fa-sign-out-alt"></i>
                         Cerrar sesión
