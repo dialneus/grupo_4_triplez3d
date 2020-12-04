@@ -17,12 +17,16 @@ const db = require('../../database/models');
 const usersController = {
   list: (req, res, next) => {
     let url = req.url;
-    db.Usuarios.findAll()
+    db.Usuarios.findAll({
+      where: {
+        admin: 0,
+        activo: 1
+      }
+   })
     .then((usuarios) => {
       let user = req.session.userLogueado;
-      
-      for (let i = 0; i < usuarios.length; i++) {
-        usuarios[i].setDataValue('endpoint', '/api/users/' + usuarios[i].id)
+      for (usuario of usuarios) {
+        usuario.setDataValue('endpoint', '/api/users/' + usuario.id)
       }
       let usersResponse = {
         meta : {
@@ -30,7 +34,13 @@ const usersController = {
           total: usuarios.length,
           url: '/api/users'
         },
-        data : usuarios
+        data : usuarios/*{
+          email: usuario.email,
+          localidad: usuario.localidad,
+          activo: usuario.activo,
+          administrador: usuario.admin,
+          //endpoint: '/api/users/' + usuario.id
+        }*/
       }
       res.json(usersResponse);
     }).catch((err) => { console.log(err) });

@@ -12,8 +12,8 @@ const productsController = {
     .then((productos) => {
       let user = req.session.userLogueado;
       
-      for (let i = 0; i < productos.length; i++) {
-        productos[i].setDataValue('endpoint', '/api/products/' + productos[i].id)
+      for (producto of productos) {
+        producto.setDataValue('endpoint', '/api/products/' + producto.id)
       }
       let productsResponse = {
         meta : {
