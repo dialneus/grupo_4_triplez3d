@@ -31,14 +31,14 @@ router.post('/activate/:id', productsController.activate);
 
 /*CLASICO AMB:*/
 /* DAR DE ALTA*/
-router.get('/create',productsController.create);
+router.get('/create', usersMiddleware.adminAccess, productsController.create);
 router.post('/create',upload.any(),productsController.store);
 
 /* DAR DE BAJA*/
-router.get('/destroy/:id',productsController.destroy);
+router.get('/destroy/:id', usersMiddleware.adminAccess,productsController.destroy);
 
 /* MODIFICAR*/
-router.get('/edit/:id',productsController.edit);
+router.get('/edit/:id', usersMiddleware.adminAccess,productsController.edit);
 router.post('/edit/:id',upload.any(),productsController.update);
 
 /*VER - 
