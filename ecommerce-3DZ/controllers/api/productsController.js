@@ -15,8 +15,11 @@ const productsController = {
    })
     .then((productos) => {
       let user = req.session.userLogueado;
-      
       for (producto of productos) {
+        //Elimino campos que no quiero enviar a la API:
+        delete producto.dataValues.material_id;
+        delete producto.dataValues.medida_id;
+        delete producto.dataValues.activo;
         producto.setDataValue('endpoint', '/api/products/' + producto.id)
       }
       let productsResponse = {

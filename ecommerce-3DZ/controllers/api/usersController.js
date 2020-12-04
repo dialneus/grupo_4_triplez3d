@@ -8,6 +8,7 @@ const fs = require('fs');
 //Requiero los modelos de Bases de Datos:
 const db = require('../../database/models'); 
 
+
 const usersController = {
   list: (req, res, next) => {
     let url = req.url;
@@ -20,21 +21,21 @@ const usersController = {
     .then((usuarios) => {
       let user = req.session.userLogueado;
       for (usuario of usuarios) {
-        usuario.setDataValue('endpoint', '/api/users/' + usuario.id)
+        usuario.setDataValue('endpoint', '/api/users/' + usuario.id);
+        //Elimino campos que no quiero enviar a la API:
+        delete usuario.dataValues.admin;
+        delete usuario.dataValues.password;
+        delete usuario.dataValues.telefono;
+        delete usuario.dataValues.domicilio;
       }
+            
       let usersResponse = {
         meta : {
           status: 200,
           total: usuarios.length,
           url: '/api/users'
         },
-        data : usuarios/*{
-          email: usuario.email,
-          localidad: usuario.localidad,
-          activo: usuario.activo,
-          administrador: usuario.admin,
-          //endpoint: '/api/users/' + usuario.id
-        }*/
+        data : usuarios
       }
       res.json(usersResponse);
     }).catch((err) => { console.log(err) });
@@ -43,6 +44,8 @@ const usersController = {
     db.Usuarios.findByPk(req.params.id)
       .then((usuario) => {
         userId = req.params.id;
+        //Elimino campos que no quiero enviar a la API:
+        delete usuario.dataValues.password;
         res.json(usuario);
       })
   },
