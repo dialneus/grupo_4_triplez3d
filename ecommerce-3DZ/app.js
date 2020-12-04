@@ -12,7 +12,7 @@ var productsRouter = require('./routes/products');
 
 //Middlewares:
 var rememberMiddleware = require('./middlewares/rememberMiddleware');
-var logMiddleware = require('./middlewares/logMiddleware');
+//var logMiddleware = require('./middlewares/logMiddleware');
 
 //Api's:
 var apiUsersRouter = require('./routes/api/users');
@@ -38,7 +38,7 @@ app.use('/products', productsRouter);
 
 //Middlewares:
 app.use(rememberMiddleware);
-app.use(logMiddleware);
+//app.use(logMiddleware);
 
 //Rutas a Api's:
 app.use('/api/users', apiUsersRouter);

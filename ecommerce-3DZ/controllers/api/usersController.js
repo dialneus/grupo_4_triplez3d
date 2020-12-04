@@ -8,12 +8,6 @@ const fs = require('fs');
 //Requiero los modelos de Bases de Datos:
 const db = require('../../database/models'); 
 
-//Requiero Express-Validator para validar los datos de los formularios:
-//var{check, validationResult, body} = require('express-validator');
-//const { log } = require('console');
-//const CarritoProducto = require('../../database/models/CarritoProducto');
-
-
 const usersController = {
   list: (req, res, next) => {
     let url = req.url;
@@ -44,7 +38,14 @@ const usersController = {
       }
       res.json(usersResponse);
     }).catch((err) => { console.log(err) });
-  }
+  },
+  detail: (req, res, next) => {
+    db.Usuarios.findByPk(req.params.id)
+      .then((usuario) => {
+        userId = req.params.id;
+        res.json(usuario);
+      })
+  },
 };
 
 module.exports = usersController;

@@ -8,7 +8,11 @@ const db = require('../../database/models');
 const productsController = {
   list: (req, res, next) => {
     let url = req.url;
-    db.Producto.findAll()
+    db.Producto.findAll({
+      where: {
+        activo: 1
+      }
+   })
     .then((productos) => {
       let user = req.session.userLogueado;
       
@@ -25,7 +29,13 @@ const productsController = {
       }
       res.json(productsResponse);
     }).catch((err) => { console.log(err) });
-  }
+  },
+  detail : function(req,res,next){
+    db.Producto.findByPk(req.params.id)
+    .then((producto) =>{
+      res.json(producto)
+    }).catch(err => {console.log(err)})
+},
 };
 
 module.exports = productsController;
