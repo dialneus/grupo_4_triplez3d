@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var usersController = require('../controllers/usersController');
 var usersMiddleware = require('../middlewares/usersMiddleware');
+var userOnMiddleware = require('../middlewares/userOnMiddleware');
 
 //Requiero path y fs para trabajar con archivos:
 const path = require('path');
@@ -14,7 +15,7 @@ var{check, validationResult, body} = require('express-validator');
 const db = require('../database/models');
 
 // Rutas a  LogIn:
-router.get('/login', usersController.logIn);
+router.get('/login', userOnMiddleware ,usersController.logIn);
 
 router.post('/login', [
   check('email').isEmail().withMessage('El mail debe ser válido y debe estar completo.') ,
@@ -38,7 +39,7 @@ router.post('/login', [
 ], usersController.processLogin);
 
 // Rutas a Registro Usuario:
-router.get('/register', usersController.register);
+router.get('/register', userOnMiddleware ,usersController.register);
 router.post('/register', [
   check('userName').isLength({min:1}).withMessage('El nombre debe estar completo.') ,
   check('email').isEmail().withMessage('El mail debe ser válido.') ,

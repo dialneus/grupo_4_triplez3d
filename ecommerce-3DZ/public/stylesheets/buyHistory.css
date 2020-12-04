@@ -44,3 +44,22 @@ h1{
     display: flex;
     justify-content: space-between;
 }
+
+#mensajeVacio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#mensajeVacio img{
+    max-width: 450px;
+    margin-top: 35px;
+    border: white 2px solid;
+    border-radius: 50%;
+    align-content: center;
+}
+#mensajeVacio h1{
+    font-size: 22px;
+    border: darkgray solid 2px;
+    background-color: brown;
+    color: white;
+}
