@@ -111,6 +111,22 @@ header section img {
     justify-content: center;
   }
 
+  .datoUser {
+    background-color: lightgray;
+    color: grey;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 8px;
+    border-radius: 6px;
+  }
+
+  .datoUser:hover {
+    color: brown;
+    }
+
   .salir {
     margin-left: 20px;
   }

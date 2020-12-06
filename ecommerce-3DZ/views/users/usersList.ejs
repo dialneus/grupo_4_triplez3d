@@ -14,8 +14,7 @@
   <%-include('../partials/headerAdmin')%>
   <main>
   <section class="adminUsers">
-    <h1>Detalle de Administradores Activos</h1>
-    <p><%= usuarios.lenght %> </p>
+    <h1>Detalle de Administradores Activos <%= usuarios.length %></h1>
     <table>
       <tr>
         <th>Id</th>
@@ -47,10 +46,12 @@
           <% } %> 
         </td>
         <td class="options">
-        <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
-        <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
+        <button><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
+        <!--
+          <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
+        -->
         <form action="/users/destroy/<%= usuario.id %> " method="POST">
-          <button>Eliminar</button>
+          <button><i class="fas fa-trash-alt"></i></button>
         </form>
         </td>
         <% if (user.admin == 2) { %>
@@ -62,7 +63,7 @@
             <label class="userType" for="superv">Sup</label>
             <input type="radio" id="admin" name="userType" value="2" checked>
             <label class="userType" for="admin">Admin</label>
-            <button>Actualiza</button>
+            <button><i class="fas fa-save"></i></button>
           </form>
         </td>  
          <% } %> 
@@ -97,10 +98,12 @@
             <%= usuario.email %>
           </td>
           <td class="options">
-            <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
+            <button><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
+            <!--
             <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
+            -->
             <form action="/users/destroy/<%= usuario.id %> " method="POST">
-              <button>Eliminar</button>
+              <button><i class="fas fa-trash-alt"></i></button>
             </form>
           </td>
           <% if (user.admin == 2) { %>
@@ -110,7 +113,7 @@
                 <label class="userType" for="admin">Usr</label>
                 <input type="radio" id="consumer" name="userType" value="1" checked>
                 <label class="userType" for="consumer">Sup</label>
-                <button>Actualiza</button>
+                <button><i class="fas fa-save"></i></button>
               </form>
             </td>  
              <% } %>   
@@ -151,9 +154,9 @@
               <% } %> 
             </td>
             <td class="options">
-              <button><a href="/users/<%= usuario.id %> ">Ver</a></button>
+              <button><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
               <form action="/users/activate/<%= usuario.id %> " method="POST">
-                <button>Activar</button>
+                <button><i class="fas fa-folder-plus"></i></button>
               </form>
             </td>  
             <% } %> 

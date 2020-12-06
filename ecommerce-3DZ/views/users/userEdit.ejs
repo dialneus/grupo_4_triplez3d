@@ -24,7 +24,12 @@
     <ul>
       <li>
         <label class="titulo" for="userName">Nombre y Apellido</label>
-        <input class="dato" type="text" name="userName" id="user" value="<%= usuario.nombreApellido %> ">
+        <!--<input class="dato" type="text" name="userName" id="user" value="<%= usuario.nombreApellido %> ">-->
+        <p class="datoUser"> <%= usuario.nombreApellido %></p>
+      </li>
+      <li>
+        <p class="titulo">Correo Electrónico</p>
+      <p class="datoUser"><%= usuario.email %></p>
       </li>
       <li>
         <label class="titulo" for="Telefono">Teléfono</label>
@@ -37,9 +42,9 @@
       <li>
         <label class="titulo" for="Localidad">Localidad</label>
         <input class="dato" type="text" name="localidad" id="localidad" value="<%= usuario.localidad %> " required>
-      </li>
+      <!--</li>
         <p>Cuenta vinculada al mail: <%= usuario.email %></p>
-      </li>
+      </li>-->
     </ul>
     <section class="actualizar">
     <button class="actualiza" type="submit">Actualizar</button>
