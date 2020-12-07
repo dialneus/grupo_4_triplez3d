@@ -83,3 +83,20 @@ button.activate {
   color: white;
 }
 
+/*VISTA TELEFONO RESOLUCION MAXIMA 768PX*/
+@media(max-width:768px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  td, th {
+    font-size: 12px;
+  }
+}
+
