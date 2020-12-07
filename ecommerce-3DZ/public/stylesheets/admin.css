@@ -38,6 +38,18 @@ main a {
 }
 
 main a section {
- 
   color: white;
+}
+
+/*VISTA TELEFONO RESOLUCION MAXIMA 768PX*/
+@media(max-width:768px) {
+  main {
+    flex-direction: column;
+    }
+
+  main a {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

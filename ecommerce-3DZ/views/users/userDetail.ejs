@@ -42,9 +42,11 @@
     </li>
   </ul>
   <section class="botones">
-  <a class="edit" href="/users/edit/<%= usuario.id %> ">
-    <button>Editar</button>
-  </a>
+    <% if(idSession == usuario.id) { %> 
+      <a class="edit" href="/users/edit/<%= usuario.id %> ">
+        <button>Editar</button>
+      </a>
+    <% } %> 
   <a class="salir" href="/">
     <button>Salir</button>
   </a>

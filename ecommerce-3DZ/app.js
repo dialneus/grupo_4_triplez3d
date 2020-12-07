@@ -11,8 +11,7 @@ var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 
 //Middlewares:
-var rememberMiddleware = require('./middlewares/rememberMiddleware');
-//var logMiddleware = require('./middlewares/logMiddleware');
+var logMiddleware = require('./middlewares/logMiddleware');
 
 //Api's:
 var apiUsersRouter = require('./routes/api/users');
@@ -31,18 +30,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'eCommerce3DZ'}));
 
+//Middlewares de cookies para rutas generales:
+var rememberMiddleware = require('./middlewares/rememberMiddleware');
+app.use(rememberMiddleware);
+
 //Rutas Generales:
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 
-//Middlewares:
-app.use(rememberMiddleware);
-//app.use(logMiddleware);
-
 //Rutas a Api's:
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductsRouter);
+
+//Middlewares de APis:
+app.use(logMiddleware);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
