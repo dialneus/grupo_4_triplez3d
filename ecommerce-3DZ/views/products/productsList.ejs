@@ -56,9 +56,11 @@
           <%= producto.medida_id  %>  
         </td>
         <td class="options">
-          <button><a href="/products/<%= producto.id %> ">Ver</a></button>
-          <button><a href="/products/edit/<%= producto.id %> ">Modificar</a></button>
-          <button><a href="/products/destroy/<%=producto.id%>">Eliminar</a></button>
+          <button class="ver"><a href="/products/edit/<%= producto.id %> "><i class="far fa-eye"></i></a></button>
+        <!--
+          <button class="edit"><a href="/products/edit/<%= producto.id %> ">Modificar</a></button>
+        -->
+          <button class="delete"><a href="/products/destroy/<%=producto.id%>"><i class="fas fa-trash-alt"></i></a></button>
         </td>
       <% } %>
       <% } %>
@@ -99,7 +101,7 @@
         </td>
         <td class="options">
           <form action="/products/activate/<%= producto.id %> " method="POST">
-            <button>Activar</button>
+            <button class="activate"><i class="fas fa-folder-plus"></i></button>
           </form>
         </td>
       <% } %>

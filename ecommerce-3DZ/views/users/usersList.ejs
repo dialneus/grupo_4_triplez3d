@@ -14,7 +14,7 @@
   <%-include('../partials/headerAdmin')%>
   <main>
   <section class="adminUsers">
-    <h1>Detalle de Administradores Activos <%= usuarios.length %></h1>
+    <h1>Detalle de Administradores Activos</h1>
     <table>
       <tr>
         <th>Id</th>
@@ -46,12 +46,12 @@
           <% } %> 
         </td>
         <td class="options">
-        <button><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
+        <button class="ver"><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
         <!--
           <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
         -->
         <form action="/users/destroy/<%= usuario.id %> " method="POST">
-          <button><i class="fas fa-trash-alt"></i></button>
+          <button class="delete"><i class="fas fa-trash-alt"></i></button>
         </form>
         </td>
         <% if (user.admin == 2) { %>
@@ -98,12 +98,12 @@
             <%= usuario.email %>
           </td>
           <td class="options">
-            <button><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
+            <button class="ver"><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
             <!--
             <button><a href="/users/edit/<%= usuario.id %> ">Modificar</a></button>
             -->
             <form action="/users/destroy/<%= usuario.id %> " method="POST">
-              <button><i class="fas fa-trash-alt"></i></button>
+              <button class="delete"><i class="fas fa-trash-alt"></i></button>
             </form>
           </td>
           <% if (user.admin == 2) { %>
@@ -154,9 +154,9 @@
               <% } %> 
             </td>
             <td class="options">
-              <button><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
+              <button class="ver"><a href="/users/<%= usuario.id %> "><i class="far fa-eye"></i></a></button>
               <form action="/users/activate/<%= usuario.id %> " method="POST">
-                <button><i class="fas fa-folder-plus"></i></button>
+                <button class="activate"><i class="fas fa-folder-plus"></i></button>
               </form>
             </td>  
             <% } %> 

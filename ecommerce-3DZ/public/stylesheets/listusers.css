@@ -52,6 +52,7 @@ h1 {
 .options {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 a {
@@ -59,6 +60,26 @@ a {
   color: blue;
 }
 
-button {
-  color: blue;
+button.ver {
+  background-color: blue;
+  border: blue solid 1px;
+  border-radius: 5px;
+  margin-right: 5px;
 }
+
+button.delete {
+  background-color: red;
+  border: red solid 1px;
+  border-radius: 5px;
+}
+
+button.activate {
+  background-color: green;
+  border: green solid 1px;
+  border-radius: 5px;
+}
+
+.fa-eye , .fa-trash-alt, .fa-folder-plus {
+  color: white;
+}
+
