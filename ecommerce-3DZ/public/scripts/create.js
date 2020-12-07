@@ -20,13 +20,10 @@ window.addEventListener("load",function(){
                 errores.push("Con esta inflacion no vas a tener un precio de 2 digitos, pone mas!")
             }
         
-        let inputImage = document.querySelector('input#image');
-            if(typeof inputImage == undefined){
-                errores.push("Se te olvido cargar la imagen");
-            }
         
         if(errores.length > 0){
             let divErrores = document.querySelector('div.errores ul');
+            divErrores.innerHTML = "";
             for(i=0; i<errores.length; i++){
                 divErrores.innerHTML += "<li>" + errores[i] + "</li>"
             }
