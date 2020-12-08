@@ -11,7 +11,8 @@ const productsController = {
     db.Producto.findAll({
       where: {
         activo: 1
-      }
+      },
+      include : [{association:"medidas"},{association:"materials"}]
    })
     .then((productos) => {
       let user = req.session.userLogueado;
@@ -30,15 +31,38 @@ const productsController = {
         },
         data : productos
       }
+      //si quiero el material del producto:
+      //console.log(productsResponse.data[0].materials.dataValues.tipomaterial);
       res.json(productsResponse);
     }).catch((err) => { console.log(err) });
   },
   detail : function(req,res,next){
-    db.Producto.findByPk(req.params.id)
+    db.Producto.findByPk(req.params.id,{
+      include : [{association:"medidas"},{association:"materials"}]
+    })
     .then((producto) =>{
       res.json(producto)
     }).catch(err => {console.log(err)})
-},
+  },
+  materiales : function(req,res,next){
+    db.Material.findAll()
+      .then((materiales) => {
+        console.log(materiales);
+        res.json(materiales);
+      })
+      .catch(err => {console.log(err)})
+  },
+  lastOne : function(req,res,next){
+    db.Producto.findOne({
+      where : {
+        activo : 1
+      },
+      order: [["id", "DESC"]]
+    }).then((producto)=>{
+        res.json(producto);
+    })
+    .catch(err => {console.log(err)})
+  }
 };
 
 module.exports = productsController;
