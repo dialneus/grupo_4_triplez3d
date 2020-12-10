@@ -1,8 +1,7 @@
 window.addEventListener("load",function(){
     
     let formulario = document.querySelector(".formulario");
-    formulario.addEventListener('submit',function(e){
-        e.preventDefault(); 
+    formulario.addEventListener('submit',function(e){ 
 
         let errores = [];
 
@@ -22,6 +21,7 @@ window.addEventListener("load",function(){
         
         
         if(errores.length > 0){
+            e.preventDefault();
             let divErrores = document.querySelector('div.errores ul');
             divErrores.innerHTML = "";
             for(i=0; i<errores.length; i++){

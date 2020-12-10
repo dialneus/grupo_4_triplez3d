@@ -114,7 +114,7 @@ const productsController = {
                 })
             })
             .then(()=>{
-                res.redirect('/products');
+                res.redirect('/products/listado');
             }).catch((err) => { console.log(err) })
     },
     destroy : function(req,res,next){
