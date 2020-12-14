@@ -46,7 +46,6 @@ class Content extends React.Component{
     }
     
     verLastProduct = (dataLastProduct) => {
-        console.log(dataLastProduct);
         this.setState(
             {
                 name : dataLastProduct.descripcion,

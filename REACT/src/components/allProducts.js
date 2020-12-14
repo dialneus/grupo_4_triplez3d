@@ -2,36 +2,41 @@ import React from 'react';
 import './styles/allProducts.css';
 import TableRow from './tableRow';
 
-const rowContent = [
-    {
-        name : "Richard Nixon",
-        description : "System Architect",
-        price : 320800,
-        categories : ['Category 01','Category 02','Category 03'],
-        colors : ['red','blue','green'],
-        stock : 245
-    },
-    {
-        name : "Jane Doe",
-        description : "Fullstack Developer",
-        price : 220800,
-        categories : ['Category 04','Category 05','Category 06'],
-        colors : ['red','blue','green'],
-        stock : 385
-    },
-    {
-        name : "De Prueba",
-        description : "Albañil",
-        price : 220800,
-        categories : ['Category 04','Category 05','Category 06'],
-        colors : ['gray','violet','black'],
-        stock : 385
-    }
-];
 
 class AllProducts extends React.Component{
 
-    render(){
+    constructor(props){
+        super(props);
+        this.state = {
+            products : []
+        }
+    }
+
+    apiCallProduct(url,handler){
+        fetch(url)
+			.then((response) => response.json())
+			.then((dataProduct) => handler(dataProduct))
+			.catch((e) => console.log(e));
+    }
+
+    verProduct = (dataProduct) => {
+        let arrayProduct = [];
+        for(let i=0; i<dataProduct.data.length; i++){
+            arrayProduct.push(dataProduct.data[i])
+        }
+        this.setState(
+            {
+                products : arrayProduct
+            }
+        )
+    }
+
+    componentDidMount(){
+        this.apiCallProduct('http://localhost:3000/api/products',this.verProduct);
+    }
+
+    render(props){
+        let prods = this.state.products;
         return(
         <div>
             <h1 className="h3 mb-2 text-gray-800">All the products in the Database</h1>    
@@ -42,31 +47,27 @@ class AllProducts extends React.Component{
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Price</th>
-                                    <th>Categories</th>
-                                    <th>Colors</th>
-                                    <th>Stock</th>
+                                    <th>Category</th>
+                                    <th>Colored</th>
+                                    
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Price</th>
-                                    <th>Categories</th>
-                                    <th>Colors</th>
-                                    <th>Stock</th>
+                                    <th>Category</th>
+                                    <th>Colored</th>
+                                    
                                 </tr>
                             </tfoot>
-                            {rowContent.map( (item,i) => 
+                            {prods.map( (item,i) => 
                                 item ? <TableRow key={i} 
-                                    name={item.name} 
-                                    description={item.description} 
-                                    price={item.price} 
-                                    categories={item.categories} 
-                                    colors={item.colors}
-                                    stock={item.stock}
+                                    name={item.descripcion} 
+                                    price={item.precio} 
+                                    categories={item.materials.tipomaterial} 
+                                    colors={item.pintado}
                                     /> : ''
                             )}              
                         </table>

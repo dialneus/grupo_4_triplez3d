@@ -8,23 +8,13 @@ class TableRow extends React.Component{
             <tbody>
                 <tr>
                     <td> {this.props.name} </td>
-                    <td> {this.props.description} </td>
                     <td>${this.props.price} </td>
                     <td>
-                        <ul>
-                            {this.props.categories.map( (element) =>
-                                element ? <li> {element} </li> : ''
-                            )}
-                        </ul>
+                        {this.props.categories}
                     </td>
                     <td>
-                        <ul>
-                            {this.props.colors.map( (element) =>
-                                element ? <li style={{color: element }}> {element.toUpperCase()} </li> : ''
-                            )}
-                        </ul>
+                        {this.props.colors}
                     </td>
-                    <td> { this.props.stock } </td>
                 </tr>
             </tbody>
         );
