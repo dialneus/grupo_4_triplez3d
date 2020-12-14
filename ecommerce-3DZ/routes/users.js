@@ -100,7 +100,7 @@ router.get('/error', function(req, res, next) {
 
 //Ruta a Detalle de Usuario:
 
-router.get('/:id', usersController.detail);
+router.get('/:id', usersMiddleware.edit, usersController.detail);
 
 //Ruta a Actualización de Datos Usuario:
 

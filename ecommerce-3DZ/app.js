@@ -17,6 +17,7 @@ var logMiddleware = require('./middlewares/logMiddleware');
 //Api's:
 var apiUsersRouter = require('./routes/api/users');
 var apiProductsRouter = require('./routes/api/products');
+var apiIndexRouter = require('./routes/api/index');
 
 var app = express();
 
@@ -46,6 +47,8 @@ app.use('/products', productsRouter);
 //Rutas a Api's:
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductsRouter);
+app.use('/api/chart', apiIndexRouter);
+
 
 //Middlewares de APis:
 app.use(logMiddleware);

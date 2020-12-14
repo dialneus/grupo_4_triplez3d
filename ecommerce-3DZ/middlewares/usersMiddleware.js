@@ -19,9 +19,17 @@ const usersMiddleware = {
       res.render('users/login', {errors: [{msg: 'ACCESO DENEGADO. Debe estar logueado y poseer permisos de administración'}]});
     } else {
       if(user.admin == 0) {
-      res.render('deniedAcces', {message: 'ACCESO DENEGADO. No posee permisos de administración para acceder.'})
+        res.render('deniedAcces', {message: 'ACCESO DENEGADO. No posee permisos de administración para acceder.'})
     }
   }
+    next()
+  },
+  edit: (req, res, next) => {
+    let user = req.session.userLogueado;
+    //console.log('El id en session es: ' + user.id + 'y el id de params es: ' + req.params.id);
+    if (user.id != req.params.id) {
+      res.render('deniedAcces', {message: 'ACCESO DENEGADO. No es posible acceder a la ruta solicitada.'})
+    }
     next()
   }
 };

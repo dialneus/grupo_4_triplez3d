@@ -48,7 +48,7 @@ const usersController = {
         delete usuario.dataValues.password;
         res.json(usuario);
       })
-  },
+  }
 };
 
 module.exports = usersController;
