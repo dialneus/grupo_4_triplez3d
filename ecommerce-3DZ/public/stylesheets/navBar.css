@@ -220,7 +220,7 @@ header{
       bottom: 11px;
       border: solid 1px white;
     }
-    .opciones li:nth-child(7) a{
+    .opciones li:nth-child(6) a{
       border: none;
       color: brown;
       background-color: lightgray;
