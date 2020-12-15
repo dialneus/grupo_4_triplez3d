@@ -50,11 +50,16 @@ h1{
     flex-direction: column;
     align-items: center;
 }
-#mensajeVacio img{
+#gif{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#gif img{
     max-width: 450px;
     margin-top: 35px;
-    border: white 2px solid;
-    border-radius: 50%;
+    border: white 5px solid;
+    border-radius: 25%;
     align-content: center;
 }
 #mensajeVacio h1{

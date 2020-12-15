@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/buyHistory.css">
     <title>Historial de Compras</title>
+    <script src="/scripts/buyHistory.js" ></script>
 </head>
 <body>
     <%-include('../partials/header')%>
@@ -28,7 +29,9 @@
         <% } else { %>
             <div id="mensajeVacio">
                 <h1>Aun no cerraste ninguna compra!</h1>
-                <img src="https://i.giphy.com/media/9GLiEBLM0qiSQ/giphy.webp" alt="Gif">
+            </div>
+            <div id="gif">
+                
             </div>
         <% } %>
     </div>
