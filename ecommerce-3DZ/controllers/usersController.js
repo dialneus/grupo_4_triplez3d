@@ -219,16 +219,44 @@ const usersController = {
   addToCart: function(req,res,next){
     db.Producto.findByPk(req.body.producto_id)
     .then((producto) =>{
-      db.CarritoProducto.create({
-        productoId : producto.id,
-        usuarioId : req.session.userLogueado.id,
-        precio : producto.precio,
-        cantidad : req.body.cantidad,
-        estado : 1,
-        subTotal : producto.precio*req.body.cantidad
-      })
-      .then(() => res.redirect('/chart'))
-      .catch((e) => {console.log(e)});
+      db.CarritoProducto.findOne({
+        where : {
+          usuarioId : req.session.userLogueado.id,
+          carritoId : null,
+          productoId : req.body.producto_id
+        }
+      }).then((prod) => {
+          console.log(prod)
+          if(prod != null){
+            let cantidadExistente = Number(prod.dataValues.cantidad);
+            let cantidadAgregar = Number(req.body.cantidad);
+            let total = cantidadExistente + cantidadAgregar;
+            db.CarritoProducto.update(
+              {
+                cantidad : total,
+                subTotal : total*prod.dataValues.precio 
+              },
+              {where : {
+                usuarioId : req.session.userLogueado.id,
+                carritoId : null,
+                productoId : req.body.producto_id
+              }}
+            )
+            .then(() => res.redirect('/chart'))
+            .catch((e) => {console.log(e)});
+          } else {
+            db.CarritoProducto.create({
+              productoId : producto.id,
+              usuarioId : req.session.userLogueado.id,
+              precio : producto.precio,
+              cantidad : req.body.cantidad,
+              estado : 1,
+              subTotal : producto.precio*req.body.cantidad
+            })
+            .then(() => res.redirect('/chart'))
+            .catch((e) => {console.log(e)});
+          }
+      }).catch((e) => {console.log(e)});
     }).catch((e) => {console.log(e)});
   },
   deleteFromChart: function(req,res,next){
