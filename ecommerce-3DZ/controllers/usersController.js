@@ -7,11 +7,12 @@ const bcrypt = require('bcrypt');
 
 //Requiero los modelos de Bases de Datos:
 const db = require('../database/models'); 
+const CarritoProducto = require('../database/models/CarritoProducto');
 
 //Requiero Express-Validator para validar los datos de los formularios:
 var{check, validationResult, body} = require('express-validator');
 const { log } = require('console');
-const CarritoProducto = require('../database/models/CarritoProducto');
+
 
 
 const usersController = {
@@ -137,28 +138,35 @@ const usersController = {
       })
   },
   update: (req, res, next) => {
-    //Capturo los datos que vienen del formulario:
-    let user = {
-      user_name: req.body.userName,
-      user_email: req.body.email,
-      user_domicilio: req.body.domicilio,
-      user_localidad: req.body.localidad,
-      user_telefono: Number(req.body.telefono),
-      user_admin: Number(req.body.userType),
-    }
-    //Grabo los datos en la base de Datos:
-    db.Usuarios.update({
-      nombreApellido: user.user_name,
-      email: user.user_email,
-      domicilio: user.user_domicilio,
-      localidad: user.user_localidad,
-      telefono: user.user_telefono
-    }, {
-      where: {
-        id: req.params.id
+    let user = req.session.userLogueado;
+    //Capturo los errores del formulario y analizo su existencia:
+    let errors = (validationResult(req));
+    console.log(errors);
+    // Continuo con las validaciones:
+    if(errors.isEmpty()) {
+      //Capturo los datos que vienen del formulario:
+      let user = {
+        user_name: req.body.userName,
+        user_email: req.body.email,
+        user_domicilio: req.body.domicilio,
+        user_localidad: req.body.localidad,
+        user_telefono: Number(req.body.telefono),
+        user_admin: Number(req.body.userType),
       }
-    });
-    res.redirect('/users/' + req.params.id)
+      //Grabo los datos en la base de Datos:
+      db.Usuarios.update({
+        domicilio: user.user_domicilio,
+        localidad: user.user_localidad,
+        telefono: user.user_telefono
+      }, {
+        where: {
+          id: req.params.id
+        }
+      });
+      res.redirect('/users/' + req.params.id)
+    } else {
+      return res.render('users/userEdit', {errors: errors.errors, usuario: user})
+    }
   },
   destroy: (req, res, next) => {
     //Grabo los datos en la base de Datos:

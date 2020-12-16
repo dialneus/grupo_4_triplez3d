@@ -58,6 +58,22 @@ header section img {
     flex-direction: column;
     text-align: center;
   }
+
+  h1.errores {
+    text-align: center;
+    text-decoration: underline red;
+    font-weight: 900;
+  }
+  
+  .errores {
+    list-style-type: decimal;
+    color: red;
+    background-color: rgb(248, 227, 91);
+    margin-left:10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    }
+  
   
   .titulo {
       font-style: oblique;
