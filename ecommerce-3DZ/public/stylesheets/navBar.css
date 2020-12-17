@@ -220,9 +220,13 @@ header{
       bottom: 11px;
       border: solid 1px white;
     }
+    .user{
+      top: 99px;
+      left: 7px;
+    }
     .opciones li:nth-child(6) a{
-      border: none;
-      color: brown;
+      margin-top: 42px;
+      padding-right: 5px;
       background-color: lightgray;
     }
 
