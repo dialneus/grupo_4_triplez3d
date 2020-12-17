@@ -6,6 +6,8 @@ const Op = Sequelize.Op;
 
 //Requiero Express-Validator para validar los datos de los formularios:
 var{check, validationResult, body} = require('express-validator');
+const { log } = require('console');
+
 
 
 //Requiero la Base de Datos:
@@ -68,7 +70,7 @@ const productsController = {
         res.send('Producto cargado!');
     },*/
     store : function(req, res, next) {
-        let user = req.session.userLogueado;
+    let user = req.session.userLogueado;
         db.Producto.create({
             descripcion: req.body.name,
             precio: Number(req.body.price),
@@ -94,13 +96,14 @@ const productsController = {
             .then(([medidas,materials,producto]) =>{
                 res.render('products/edit', {medidas:medidas,materials:materials, producto:producto});
             }).catch((err) => {console.log(err)})
+
     },
     update : function(req,res,next){
-        console.log(req.body);
-        console.log(validationResult(req));
         db.Producto.findByPk(req.params.id)
             .then((producto) =>{
+
                 let toUpdate = req.body;
+                
                 toUpdate.descripcion = req.body.name;
                 toUpdate.precio = Number(req.body.price);
                 toUpdate.imagen = req.files[0] != undefined ? path.normalize("/uploads/" + req.files[0].filename) : producto.imagen,
@@ -113,7 +116,8 @@ const productsController = {
                         id : req.params.id
                     }
                 })
-            }).then(()=>{
+            })
+            .then(()=>{
                 res.redirect('/products/listado');
             }).catch((err) => { console.log(err) })
     },

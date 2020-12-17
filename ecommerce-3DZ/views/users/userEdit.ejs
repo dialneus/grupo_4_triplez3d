@@ -19,6 +19,18 @@
   <main>
   <section class="idVista">
     <h2>Edición de Usuario</h2>
+  </section>
+  <section class="errores">
+    <% if(typeof errors != 'undefined') { %>
+      <h1 class="errores">Errores Detectados</h1>
+      <ul class="errores">
+        <% for(let i = 0; i < errors.length; i++) {%> 
+          <li class="errores">
+            <%= errors[i].msg %> 
+          </li>
+          <% } %>
+      </ul>
+    <% } %>  
   </section>  
   <form class= "formularioedit" action="/users/edit/<%= usuario.id %> " method="POST">
     <ul>
@@ -33,15 +45,15 @@
       </li>
       <li>
         <label class="titulo" for="Telefono">Teléfono</label>
-        <input class="dato" type="text" name="telefono" id="telefono" value="<%= usuario.telefono %> " required>
+        <input class="dato" type="text" name="telefono" id="telefono" value="<%= usuario.telefono %> ">
       </li>
       <li>
         <label class="titulo" for="Domicilio">Domicilio</label>
-        <input class="dato" type="text" name="domicilio" id="domicilio" value="<%= usuario.domicilio %> " required>
+        <input class="dato" type="text" name="domicilio" id="domicilio" value="<%= usuario.domicilio %> ">
       </li>
       <li>
         <label class="titulo" for="Localidad">Localidad</label>
-        <input class="dato" type="text" name="localidad" id="localidad" value="<%= usuario.localidad %> " required>
+        <input class="dato" type="text" name="localidad" id="localidad" value="<%= usuario.localidad %> " >
       <!--</li>
         <p>Cuenta vinculada al mail: <%= usuario.email %></p>
       </li>-->

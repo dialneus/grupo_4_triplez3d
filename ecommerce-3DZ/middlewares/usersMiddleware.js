@@ -54,6 +54,27 @@ const usersMiddleware = {
       }})  
     })
   ],
+  store: [
+    body("telefono")
+      .notEmpty()
+      .withMessage("Tel: Campo obligatorio")
+      .isLength({min:10})
+      .withMessage("Tel: Debe indicar el código de area + número local")
+      .isNumeric()
+      .withMessage("Tel: Solo se aceptan números"),
+    body('domicilio')
+      .notEmpty()
+      .withMessage('Dom: Campo obligatorio')
+      .isLength({min:10, max:40})
+      .withMessage('Dom: Debe indicar al menos 10 letras y/o números'),
+    body('localidad')
+      .notEmpty()
+      .withMessage('Loc: Campo obligatorio')
+      .isLength({min:2, max:30})
+      .withMessage('Loc: Debe indicar al menos 2 letras')
+      .isAlpha()
+      .withMessage('Loc: No debe completar con espacios'),
+  ],
   newpass: [
     check('email').isEmail().withMessage('El mail debe ser válido y debe estar completo.') ,
     check('password').isLength({min:4}).withMessage('La contraseña debe tener al menos 4 carácteres.') ,

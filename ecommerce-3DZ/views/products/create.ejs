@@ -8,14 +8,25 @@
     <script src="/scripts/create.js"></script>
 </head>
 <body>
-    <div class="errores">
-        <ul></ul>
-    </div>
+<!--
+    <section class="errores">
+        <% if(typeof errors != 'undefined') { %>
+          <h1 class="errores">Errores Detectados en la Carga</h1>
+          <ul class="errores">
+            <% for(let i = 0; i < errors.length; i++) {%> 
+              <li class="errores">
+                <%= errors[i].msg %> 
+              </li>
+              <% } %>
+          </ul>
+        <% } %>  
+      </section>
+-->
     <div class="container">
         <form class="formulario" action="/products/create" method="POST" enctype="multipart/form-data">
             <a href="/"><img class="logo"src="/images/LOGO/LOGOPNG.png"></a>
             <label for="name">Nombre de producto</label>
-            <input type="text" name="name" id="name"><br>
+            <input type="text" name="name" id="name" placeholder="Nombre del Producto">
             
             <label for="dimension">Dimensiones (cm)</label>
             <select name="dimension" id="dimension">
@@ -50,7 +61,5 @@
             <button type="submit">CREAR</button>
         </form>
     </div>
-   
-
 </body>
 </html>

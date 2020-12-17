@@ -7,11 +7,22 @@
     <title>Edicion de producto</title>
 </head>
 <body>
+    <section class="errores">
+        <% if(typeof errors != 'undefined') { %>
+          <h1 class="errores">Errores Detectados</h1>
+          <ul class="errores">
+            <% for(let i = 0; i < errors.length; i++) {%> 
+              <li class="errores">
+                <%= errors[i].msg %> 
+              </li>
+              <% } %>
+          </ul>
+        <% } %>  
+      </section> 
     <form class= "formularioedit" action="/products/edit/<%=producto.id%>" method="POST" enctype="multipart/form-data">
         <img class="logo"src="/images/LOGO/LOGOPNG.png">
         <label for="name">Nombre de producto</label>
-        <input type="text" name="name" value="<%= producto.descripcion %>"><br>
-        
+        <input type="text" name="name" id="name" value="<%= producto.descripcion %>"><br>
         <label for="dimension">Dimensiones</label>
         <select name="dimension" id="dimension">
             <% for(let i = 0; i < medidas.length; i++){ %>
@@ -41,7 +52,6 @@
                 <% } %>
            <% } %>
         </select><br>
-
         <label for="pintado">Pintado</label>
         <input type="text" name="pintado"  value="<%= producto.pintado %>"><br>
 
@@ -51,7 +61,10 @@
         <label for="image">Imagen</label>
         <input type="file" name="image"><br>
 
-        <button type="submit">EDITAR</button><button><a href="/products/destroy/<%=producto.id%>">ELIMINAR</a></button>
+        <button type="submit">Actualizar</button>
+        <button>
+            <a href="/products/destroy/<%=producto.id%>">Eliminar</a>
+        </button>
     </form>
 </body>
 </html>

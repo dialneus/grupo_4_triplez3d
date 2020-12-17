@@ -42,7 +42,7 @@ router.get('/:id', usersMiddleware.edit, usersController.detail);
 //Ruta a Actualización de Datos Usuario:
 
 router.get('/edit/:id', usersController.edit);
-router.post('/edit/:id', usersController.update);
+router.post('/edit/:id', usersMiddleware.store ,usersController.update);
 
 //Ruta a Eliminar usuario:
 router.post('/destroy/:id', usersController.destroy);
