@@ -8,57 +8,57 @@
     <script src="/scripts/create.js"></script>
 </head>
 <body>
-<!--
-    <section class="errores">
-        <% if(typeof errors != 'undefined') { %>
-          <h1 class="errores">Errores Detectados en la Carga</h1>
-          <ul class="errores">
-            <% for(let i = 0; i < errors.length; i++) {%> 
-              <li class="errores">
-                <%= errors[i].msg %> 
-              </li>
-              <% } %>
-          </ul>
-        <% } %>  
-      </section>
--->
     <div class="container">
         <form class="formulario" action="/products/create" method="POST" enctype="multipart/form-data">
+            <div class="errores">
+                <ul></ul>
+            </div>
             <a href="/"><img class="logo"src="/images/LOGO/LOGOPNG.png"></a>
             <label for="name">Nombre de producto</label>
-            <input type="text" name="name" id="name" placeholder="Nombre del Producto">
+            <input type="text" name="name" id="name" placeholder="Nombre del Producto"><br>
             
-            <label for="dimension">Dimensiones (cm)</label>
-            <select name="dimension" id="dimension">
-                <% for(let i = 0; i < medidas.length; i++){ %>
-                <option value="<%= medidas[i].id %>">
-                    <%= medidas[i].tamanios %>
-                </option>
-            <% } %>
-            </select><br>
-
-            <label for="Material">Material</label>
-            <select name="Material" id="Material">
-                <% for(let i = 0; i < materials.length; i++){ %>
-                <option value="<%= materials[i].id %>">
-                    <%= materials[i].tipomaterial %>
-                </option>
-            <% } %>
-            </select><br>
-
-            <label for="pintado">Pintado</label>
-            <select name="pintado" id="pintado">
-                <option value="no">no</option>
-                <option value="si">si</option>
-            </select><br>
-
             <label for="price">Importe $</label>
             <input type="number" name="price" id="price" ><br>
+            <section class="select">
+                <div>
+                <label for="dimension"></label>
+                <p>Dimensiones</p>
+                <select name="dimension" id="dimension">
+                    <% for(let i = 0; i < medidas.length; i++){ %>
+                    <option value="<%= medidas[i].id %>">
+                        <%= medidas[i].tamanios %>
+                    </option>
+                <% } %>
+                </select>
+                </div>
+                <div>
+                <label for="Material"></label>
+                <p>Material</p>
+                <select name="Material" id="Material">
+                    <% for(let i = 0; i < materials.length; i++){ %>
+                    <option value="<%= materials[i].id %>">
+                        <%= materials[i].tipomaterial %>
+                    </option>
+                <% } %>
+                </select>
+                </div>
+                <div>
+                <label for="pintado"></label>
+                <p>Pintado</p>
+                <select name="pintado" id="pintado">
+                    <option value="no">no</option>
+                    <option value="si">si</option>
+                </select>
+                </div>  
+            </section>
 
             <label for="image">Imagen</label>
             <input type="file" name="image" id="image" required><br>
-
-            <button type="submit">CREAR</button>
+            <section class="crear">
+            <button class="create" type="submit">Crear</button>
+            <a class="salir" href="/admin">
+                <button>Salir</button>
+            </section>
         </form>
     </div>
 </body>
