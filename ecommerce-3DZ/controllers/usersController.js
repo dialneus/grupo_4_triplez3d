@@ -328,8 +328,63 @@ const usersController = {
       let user = req.session.userLogueado;
       res.render('users/buyHistory',{detalleCompras, user});
     }).catch((e) => console.log(e));
+  },
+  sumarUno : function(req,res,next){
+    db.CarritoProducto.findOne({
+      where : {
+        usuarioId : req.session.userLogueado.id,
+        carritoId : null,
+        id : req.body.IDsuma
+      }
+    }).then((producto)=>{
+      console.log(producto);
+      let cantidadExistente = Number(producto.dataValues.cantidad);
+      let cantidadNueva = cantidadExistente + 1;
+      db.CarritoProducto.update(
+      {
+        cantidad : cantidadNueva,
+        subTotal : cantidadNueva*producto.dataValues.precio
+      },
+      {where : {
+        usuarioId : req.session.userLogueado.id,
+        carritoId : null,
+        id : req.body.IDsuma
+      }
+      }).then(()=> res.redirect("/chart"))
+        .catch((e) => console.log(e));
+    })
+    .catch((e) => console.log(e));
+  },
+  restarUno : function(req,res,next){
+    db.CarritoProducto.findOne({
+      where : {
+        usuarioId : req.session.userLogueado.id,
+        carritoId : null,
+        id : req.body.IDresta
+      }
+    }).then((producto)=>{
+      console.log(producto);
+      let cantidadExistente = Number(producto.dataValues.cantidad);
+      let cantidadNueva = cantidadExistente - 1;
+      if(cantidadNueva < 0){
+        return res.redirect("/chart");
+      }else{
+        db.CarritoProducto.update(
+        {
+          cantidad : cantidadNueva,
+          subTotal : cantidadNueva*producto.dataValues.precio
+        },
+        {where : {
+          usuarioId : req.session.userLogueado.id,
+          carritoId : null,
+          id : req.body.IDresta
+        }
+        }).then(()=> res.redirect("/chart"))
+          .catch((e) => console.log(e));
+      } 
+    })
+    .catch((e) => console.log(e));
   }
-
 };
 
 module.exports = usersController;

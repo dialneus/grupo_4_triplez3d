@@ -34,7 +34,17 @@
                 </div>
                 <div class="prd_cantidad">
                   <p class="pInfo">Cantidad</p>
-                  <%= respuesta[i].cantidad %>
+                  <div class="addition">
+                    <form action="/restarUnProducto" class="formAdd" method="POST" enctype="application/json">
+                      <input type="hidden" name="IDresta" value="<%= respuesta[i].id %>">
+                      <button type="submit" class="operator">-</button>
+                    </form>
+                    <%= respuesta[i].cantidad %>
+                    <form action="/sumarUnProducto" class="formAdd" method="POST" enctype="application/json">
+                      <input type="hidden" name="IDsuma" value="<%= respuesta[i].id %>">
+                      <button type="submit" class="operator">+</button>
+                    </form>
+                  </div>
                 </div>
                 <div class="prd_subTotal">
                   <p class="pInfo">SubTotal</p>

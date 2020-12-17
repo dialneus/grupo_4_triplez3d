@@ -211,6 +211,17 @@ button .fa-trash:hover{
   font-weight: bold;
 }
 
+.addition{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.operator{
+  width: 16px;
+  height: 17px;
+}
+
 
 /*Responsive*/
 

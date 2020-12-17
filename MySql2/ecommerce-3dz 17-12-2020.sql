@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2020 a las 02:10:45
+-- Tiempo de generación: 17-12-2020 a las 18:49:38
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.2.31
 
@@ -45,7 +45,18 @@ CREATE TABLE `carritoproductos` (
 INSERT INTO `carritoproductos` (`id`, `precio`, `estado`, `subTotal`, `carritoId`, `productoId`, `usuarioId`, `cantidad`) VALUES
 (12, '900', 1, 1800, NULL, 10, 9, 2),
 (23, '1400', 0, 4200, 6, 13, 8, 3),
-(24, '50', 0, 250, 9, 14, 12, 5);
+(24, '50', 0, 250, 9, 14, 12, 5),
+(28, '900', 0, 900, 13, 10, 8, 1),
+(29, '1100', 0, 1100, 14, 9, 8, 1),
+(30, '1400', 0, 1400, 15, 13, 12, 1),
+(31, '900', 0, 1800, 16, 10, 10, 2),
+(32, '1400', 0, 1400, 17, 13, 10, 1),
+(33, '850', 0, 850, 17, 8, 10, 1),
+(34, '50', 0, 200, 17, 14, 10, 4),
+(35, '850', 1, 1700, NULL, 8, 8, 2),
+(43, '850', 1, 8500, NULL, 8, 13, 10),
+(44, '1100', 1, 2200, NULL, 9, 13, 2),
+(46, '3200', 1, 0, NULL, 17, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -58,7 +69,7 @@ CREATE TABLE `carritos` (
   `usuario_id` int(11) NOT NULL,
   `total` decimal(10,0) NOT NULL,
   `orderNumber` int(11) NOT NULL,
-  `createdAt` date DEFAULT current_timestamp(),
+  `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -69,7 +80,12 @@ CREATE TABLE `carritos` (
 INSERT INTO `carritos` (`id`, `usuario_id`, `total`, `orderNumber`, `createdAt`, `updatedAt`) VALUES
 (6, 8, '4200', 85706798, '2020-11-24', '2020-11-24'),
 (8, 8, '4200', 37896081, '2020-11-24', '2020-11-24'),
-(9, 12, '250', 96139808, '2020-11-25', '2020-11-25');
+(9, 12, '250', 96139808, '2020-11-25', '2020-11-25'),
+(13, 8, '900', 80688926, '2020-11-25', '2020-11-25'),
+(14, 8, '1100', 4866021, '2020-11-25', '2020-11-25'),
+(15, 12, '1400', 49902114, '2020-11-25', '2020-11-25'),
+(16, 10, '1800', 47130261, '2020-11-29', '2020-11-29'),
+(17, 10, '2450', 7539867, '2020-11-29', '2020-11-29');
 
 -- --------------------------------------------------------
 
@@ -125,21 +141,24 @@ CREATE TABLE `productos` (
   `imagen` text NOT NULL,
   `pintado` varchar(10) NOT NULL DEFAULT 'no',
   `medida_id` int(11) NOT NULL,
-  `material_id` int(11) NOT NULL
+  `material_id` int(11) NOT NULL,
+  `activo` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `precio`, `descripcion`, `imagen`, `pintado`, `medida_id`, `material_id`) VALUES
-(8, 850, 'MATE SITH LORD: DARTH VADER', '\\uploads\\image-1604874805228.png', 'si', 2, 1),
-(9, 1100, 'Walker Juego PC \"War Thunder\"', '\\uploads\\image-1604875376010.png', 'si', 2, 1),
-(10, 900, 'MASCARA', '\\uploads\\image-1604875418954.png', 'si', 1, 1),
-(11, 1320, 'X-WING STAR WARS BATTLE', '\\uploads\\image-1604875465321.png', 'si', 1, 1),
-(12, 690, 'CASA MINIATURA', '\\uploads\\image-1604875506095.png', 'si', 2, 1),
-(13, 1400, 'CHIMUELO', '\\uploads\\image-1604875532004.png', 'si', 1, 1),
-(14, 50, 'Producto para pruebas', '\\uploads\\image-1605098949810.jpg', 'no', 3, 4);
+INSERT INTO `productos` (`id`, `precio`, `descripcion`, `imagen`, `pintado`, `medida_id`, `material_id`, `activo`) VALUES
+(8, 850, 'MATE SITH LORD: DARTH VADER', '\\uploads\\image-1604874805228.png', 'si', 2, 1, 1),
+(9, 1100, 'Walker Juego PC \"War Thunder\"', '\\uploads\\image-1604875376010.png', 'si', 2, 1, 1),
+(10, 900, 'MASCARA', '\\uploads\\image-1604875418954.png', 'si', 1, 1, 1),
+(11, 1320, 'X-WING STAR WARS BATTLE', '\\uploads\\image-1604875465321.png', 'si', 1, 1, 1),
+(12, 690, 'CASA MINIATURA', '\\uploads\\image-1604875506095.png', 'si', 2, 1, 1),
+(13, 1400, 'CHIMUELO', '\\uploads\\image-1604875532004.png', 'si', 1, 1, 1),
+(14, 6200, 'Ornamento', '\\uploads\\image-1608174423523.png', 'no', 3, 4, 1),
+(16, 1500, 'Busto Walter White', '/uploads/image-1606660118192.jpeg', 'si', 3, 4, 1),
+(17, 3200, 'Horse Head', '\\uploads\\image-1608175192644.jpg', 'no', 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -164,11 +183,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `activo`, `admin`, `nombreApellido`, `email`, `password`, `telefono`, `domicilio`, `localidad`) VALUES
-(8, 1, 0, 'Kevin Schild  ', '1994@gmail.com', '$2b$10$btQcDhY./sjbqXziu3qAwuZGR0wlRrcOVS8kfKzFZsZgMfX1D/7kO', 3455, NULL, ' BCX '),
-(9, 1, 0, 'Ale', 'dialneus@me.com', '$2b$10$sDE1YuXtixnQwAIZ7MK25.oT/NwCdvLIJTbf4hrHsMAwozORsboEG', NULL, NULL, NULL),
-(10, 1, 2, 'Administrador', 'admin@3dz.com', '$2b$10$9YMbWdK/bT0hhiz.scVAc.kblnHfKGUY3pjFO6vofQadeankI.n1G', NULL, NULL, NULL),
-(11, 1, 0, 'Supervisor', 'supervisor@3dz.com', '$2b$10$aBSpyKb8XwTh/kiXlAyxI.Gh24NvPT/ZE5GhMkrIw82MzINyI5Yn2', NULL, NULL, NULL),
-(12, 1, 0, 'Un Flaco Que Prueba', 'pichon@algo.com', '$2b$10$sXVEvsYGqDlAjwUnF5jAIuyZ32SpeZZBf6Xl.RoW57ACH/2hzdOc.', NULL, NULL, NULL);
+(8, 1, 2, 'Kevin Schild  ', '1994@gmail.com', '$2b$10$btQcDhY./sjbqXziu3qAwuZGR0wlRrcOVS8kfKzFZsZgMfX1D/7kO', 3455, ' ', ' BCX  '),
+(9, 1, 0, 'Ale ', 'dialneus@me.com', '$2b$10$sDE1YuXtixnQwAIZ7MK25.oT/NwCdvLIJTbf4hrHsMAwozORsboEG', 40102111, 'Monroe 5500', 'CABA'),
+(10, 1, 2, 'Administrador', 'admin@3dz.com', '$2b$10$isV0r4AHry6D./qcJHUER.nOy3khEEbhbR0pN.dbOH02owNw/9qtG', NULL, NULL, NULL),
+(11, 1, 1, 'Supervisor', 'supervisor@3dz.com', '$2b$10$aBSpyKb8XwTh/kiXlAyxI.Gh24NvPT/ZE5GhMkrIw82MzINyI5Yn2', NULL, NULL, NULL),
+(12, 1, 0, 'Un Flaco Que Prueba', 'pichon@algo.com', '$2b$10$sXVEvsYGqDlAjwUnF5jAIuyZ32SpeZZBf6Xl.RoW57ACH/2hzdOc.', NULL, NULL, NULL),
+(13, 1, 0, 'asdasd', 'KS@hotmail.com', '$2b$10$jVemzLrxbmCs8OexOjrY2uk5vzp.NjCQQ4SnAr.nqJAa1e9qwgZmy', NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -224,13 +244,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carritoproductos`
 --
 ALTER TABLE `carritoproductos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `materials`
@@ -248,13 +268,13 @@ ALTER TABLE `medidas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
