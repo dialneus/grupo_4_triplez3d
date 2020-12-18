@@ -95,8 +95,8 @@ header section img {
   }
 
   
-  .salir {
-    margin-left: 20px;
+  .edit {
+    margin-right: 20px;
   }
   
   main section.botones a.edit button:hover {

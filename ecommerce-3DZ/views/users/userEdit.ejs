@@ -45,24 +45,26 @@
       </li>
       <li>
         <label class="titulo" for="Telefono">Teléfono</label>
-        <input class="dato" type="text" name="telefono" id="telefono" value="<%= usuario.telefono %> ">
+        <input class="dato" type="text" name="telefono" id="telefono" value="<%= usuario.telefono %>">
       </li>
       <li>
         <label class="titulo" for="Domicilio">Domicilio</label>
-        <input class="dato" type="text" name="domicilio" id="domicilio" value="<%= usuario.domicilio %> ">
+        <input class="dato" type="text" name="domicilio" id="domicilio" value="<%= usuario.domicilio %>">
       </li>
       <li>
         <label class="titulo" for="Localidad">Localidad</label>
-        <input class="dato" type="text" name="localidad" id="localidad" value="<%= usuario.localidad %> " >
+        <input class="dato" type="text" name="localidad" id="localidad" value="<%= usuario.localidad %>" >
       <!--</li>
         <p>Cuenta vinculada al mail: <%= usuario.email %></p>
       </li>-->
     </ul>
     <section class="actualizar">
-    <button class="actualiza" type="submit">Actualizar</button>
-    <a class="salir" href="/admin">
-      <button>Salir</button>
-    </a>
+      <button class="actualiza" type="submit">Actualizar</button>
+    </section>
+      <button class="salir">
+        <a href="/users/listado"></a>
+        Salir
+      </button>  
     </section>
   </form>
   </main>

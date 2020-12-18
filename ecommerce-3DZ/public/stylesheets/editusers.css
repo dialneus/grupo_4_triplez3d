@@ -143,11 +143,20 @@ header section img {
     color: brown;
     }
 
-  .salir {
+  button.salir {
     margin-left: 20px;
   }
 
-  .salir button:hover {
+  button.salir a {
+    text-decoration: none;
+  }
+
+  button.salir a:hover {
+    color: white;
+    font-weight: bold;
+  }
+
+  button.salir:hover {
     background-color: red;
     color: white;
     font-weight: bold;

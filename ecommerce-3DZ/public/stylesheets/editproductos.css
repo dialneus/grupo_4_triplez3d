@@ -99,7 +99,7 @@ input:invalid:required {
     font-weight: bold;
 }
 
-.salir button:hover {
+button.salir:hover {
     background-color: green;
     color: yellow;
     font-weight: bold;
