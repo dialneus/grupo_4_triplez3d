@@ -141,7 +141,6 @@ const usersController = {
     let user = req.session.userLogueado;
     //Capturo los errores del formulario y analizo su existencia:
     let errors = (validationResult(req));
-    console.log(errors);
     // Continuo con las validaciones:
     if(errors.isEmpty()) {
       //Capturo los datos que vienen del formulario:

@@ -15,7 +15,7 @@ const indexController = {
     let user = req.session.userLogueado;
     res.render('admin',{title: 'Administración del Sitio 3DZ', user, url})
   },
-    nosotros: function (req,res,next){
+  nosotros: function (req,res,next){
     let user = req.session.userLogueado;
     res.render('nosotros',{title: 'nosotros', user})
   },

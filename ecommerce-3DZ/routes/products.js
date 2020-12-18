@@ -42,7 +42,7 @@ router.get('/destroy/:id', usersMiddleware.adminAccess,productsController.destro
 
 /* MODIFICAR*/
 router.get('/edit/:id', usersMiddleware.adminAccess,productsController.edit);
-router.post('/edit/:id', productsMiddleware.validation, upload.any(), productsController.update);
+router.post('/edit/:id', productsMiddleware.validar, upload.any(), productsController.update);
 
 /*VER - 
 PONGO POR ULTIMO PORQUE EJECUTA DESDE ARRIBA HACIA ABAJO, SI TOMO UNA RUTA MUY GENERAL LA EJECUTA PRIMERO Y ARRUINA LO QUE ESTE MAS ABAJO*/
