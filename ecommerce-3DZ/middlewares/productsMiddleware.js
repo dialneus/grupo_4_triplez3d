@@ -16,8 +16,6 @@ const productsMiddleware = {
     body('name')
       .notEmpty()
       .withMessage("Nombre: Campo obligatorio")
-      .isAlpha()
-      .withMessage('Nombre: No se admiten números')
       .isLength({min:5})
       .withMessage("Nombre: Debe indicar al menos una descripción de 5 letras"),
     body('price')
@@ -26,7 +24,7 @@ const productsMiddleware = {
       .isNumeric()
       .withMessage("Precio: Solo se aceptan números")
       .custom((value, { req }) => req.body.price > 0)
-      .withMessage("No se aceptan números negativos"),
+      .withMessage("Precio: No se aceptan números negativos"),
   ]
 }
 

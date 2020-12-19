@@ -97,7 +97,11 @@ const productsController = {
     },
     update : function(req,res,next){
         console.log(req.body);
+        //Capturo los errores del formulario y analizo su existencia:
+        let errors = (validationResult(req));
         console.log(validationResult(req));
+        // Continuo con las validaciones:
+        if(errors.isEmpty()) {
         db.Producto.findByPk(req.params.id)
             .then((producto) =>{
                 let toUpdate = req.body;
@@ -116,6 +120,18 @@ const productsController = {
             }).then(()=>{
                 res.redirect('/products/listado');
             }).catch((err) => { console.log(err) })
+        } else {
+            let promesaProducto = db.Producto.findByPk(req.params.id,{
+                include : [{association:"medidas"},{association:"materials"}]
+            });
+            let promesaMedidas = db.Medida.findAll();
+            let promesaMaterial = db.Material.findAll();
+    
+            Promise.all([promesaMedidas, promesaMaterial, promesaProducto])
+                .then(([medidas,materials,producto]) =>{
+                    res.render('products/edit', {medidas:medidas,materials:materials, producto:producto, errors: errors.errors});
+                }).catch((err) => {console.log(err)})
+        };
     },
     destroy : function(req,res,next){
        /*Eliminando el registro de la BD:
