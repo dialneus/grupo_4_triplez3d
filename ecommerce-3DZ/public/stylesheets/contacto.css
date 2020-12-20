@@ -38,6 +38,8 @@ html,body{
     
    
     width: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    
     
        
     
@@ -48,9 +50,19 @@ html,body{
     
    
     width: 50%;  
-         /* background-color: blueviolet;*/
+    background-color: rgba(128, 0, 32, 0.267);
+    
+
+    
+    
     
 }
+.camposformulario{
+    padding: 10px;
+    
+
+}
+
 .wmlbloque{
     display: flex;
     flex-direction: column;
@@ -58,31 +70,39 @@ html,body{
     
     padding-top: 30px;  
 }
-/*
-li{
-    display: flex;
-    
-}
-*/
 
 #nomb{
     width: 200px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 
 }
 #email{
     width: 200px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 #tel{
     width: 200px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 #mensaje{
     width: 380px;
-    height: 155px;/*326px;<-Valor de Mariano*/
+    height: 155px;
     text-align: left;
     padding-top: 30px;
-    /*justify-content: center;*/
     
 }
+#enviarboton{
+    width: 100px;
+    height: 50px;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(0, 112, 34);
+    border-radius: 10px;
+}
+
 
 ::placeholder {
     vertical-align: bottom;
@@ -99,6 +119,7 @@ ul{
 }
 .textocontacto{
     color: brown;
+    padding: 10px;
 }
 .icon{
     align-items: center;
