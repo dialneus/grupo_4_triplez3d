@@ -5,7 +5,7 @@ html{
 
 header{
   font-family: 'Roboto', sans-serif;
-/*  font-size: 14px;*/
+  padding: 3px 7px 3px 7px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
