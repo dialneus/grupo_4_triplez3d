@@ -206,6 +206,7 @@ header{
 
     .userMenu{
       height: 50px;
+      z-index: 1;
     }
     .userMenu li{
       width: 100px;
@@ -222,8 +223,9 @@ header{
       border: solid 1px white;
     }
     .user{
-      top: 99px;
-      left: 7px;
+      max-width: 120px;
+      top: 102px;
+      left: 10px;
     }
     .opciones li:nth-child(6) a{
       margin-top: 42px;
@@ -235,7 +237,9 @@ header{
       width: 95px;
       border: solid 1px white;
     }
-
+    .opciones li:last-child form button.userMenu {
+     width: 104%;
+    }
     .nav-container input,.nav-container .fa-bars,.nav-container .fa-times{
       position: absolute;  
       box-sizing: border-box;
