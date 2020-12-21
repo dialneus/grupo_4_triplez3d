@@ -47,7 +47,7 @@
         <button>Editar</button>
       </a>
     <% } %> 
-    <% if(usuario.admin == 0) {%> 
+    <% if(adSession == 0) {%> 
     <a class="salir" href="/">
       <% } else { %> 
     <a class="salir" href="/users/listado">
