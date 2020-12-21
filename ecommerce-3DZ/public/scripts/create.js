@@ -18,13 +18,7 @@ window.addEventListener("load",function(){
             } else if (inputPrice.value < 100){
                 errores.push("Con esta inflacion no vas a tener un precio de 2 digitos, pone mas!")
             }
-        
-        let inputImage = document.querySelector('input#image');
-            if (inputImage.value == ""){
-               errores.push("Sin imagen vinculada");
-            } else if (inputName.value.length < 3){
-                errores.push("Debe adjuntar una imagen al producto")
-            }
+
         
         if(errores.length > 0){
             e.preventDefault();
