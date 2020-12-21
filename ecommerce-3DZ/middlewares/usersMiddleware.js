@@ -24,7 +24,7 @@ const usersMiddleware = {
         }
       }).then((newUser) => {
         if (!newUser) {
-          return Promise.reject('Usuario no registrado. Por favor registrese');
+          return Promise.reject('Usuario no registrado al intentar loguearse. Por favor registrese');
       } else {
         if (newUser.activo == 0) {
           return Promise.reject('Usuario bloqueado. Comuniquese con el administrador');
@@ -112,7 +112,6 @@ const usersMiddleware = {
   },
   edit: (req, res, next) => {
     let user = req.session.userLogueado;
-    console.log(user);
     if (user.admin == 0) {
       if (user.id != req.params.id) {
         res.render('deniedAcces', {message: 'ACCESO DENEGADO. No es posible acceder a la ruta solicitada.'})
@@ -125,6 +124,13 @@ const usersMiddleware = {
        return res.redirect('/');
     }
     next();
+  },
+  log : (req, res, next) => {
+    if (!req.session.userLogueado) {
+      return res.redirect('/users/login');
+   }
+
+   return next();
   }
 };
 

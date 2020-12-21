@@ -85,7 +85,7 @@ const usersController = {
       });
       
       } else {
-        return res.render('users/login', {errors: errors.errors})
+        return res.render('users/register', {errors: errors.errors})
       };
   },
   newPass: (req, res, next) => {

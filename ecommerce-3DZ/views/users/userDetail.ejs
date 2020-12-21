@@ -47,7 +47,11 @@
         <button>Editar</button>
       </a>
     <% } %> 
-  <a class="salir" href="/users/listado">
+    <% if(usuario.admin == 0) {%> 
+    <a class="salir" href="/">
+      <% } else { %> 
+    <a class="salir" href="/users/listado">
+      <% } %> 
     <button>Salir</button>
   </a>
   </section>

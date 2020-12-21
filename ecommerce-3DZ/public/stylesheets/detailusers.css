@@ -107,7 +107,17 @@ header section img {
     transition: all 0.2s ease;
   }
 
-  main section.botones a.salir button:hover {
+  a.salir button {
+    font-size: medium;
+    color: rgb(172, 47, 53);
+    background-color:white;
+    border-radius: 6px;
+    border: none;
+    height: 35px;
+  
+  }
+
+  a.salir button:hover {
     background-color: red;
     color: white;
     font-weight: bold;

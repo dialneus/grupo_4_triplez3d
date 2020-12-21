@@ -51,22 +51,6 @@ const productsController = {
                 res.render('products/create', {medidas:medidas,materials:materials});
             })
     },
-    /*store : function(req,res,next){
-        let newProduct = req.body;
-        if(products.length > 0){
-            let ultimoID = products[products.length-1].id;
-            newProduct.id = Number(ultimoID + 1);
-        } else {
-            newProduct.id = 1;
-        }
-        newProduct.price = Number(req.body.price);
-        //objeto para tomar la imagen de multer: (si files no funciona es porque olvidaste el encType en el formulario de carga)
-        newProduct.image = req.files[0].filename;
-        products.push(newProduct);
-        //sobre-escribo-el-archivo-con-el-nuevo-producto 
-        fs.writeFileSync(__dirname + '/../data/productsDataBase.json',JSON.stringify(products));
-        res.send('Producto cargado!');
-    },*/
     store : function(req, res, next) {
         let user = req.session.userLogueado;
         db.Producto.create({
@@ -96,10 +80,8 @@ const productsController = {
             }).catch((err) => {console.log(err)})
     },
     update : function(req,res,next){
-        console.log(req.body);
         //Capturo los errores del formulario y analizo su existencia:
         let errors = (validationResult(req));
-        console.log(validationResult(req));
         // Continuo con las validaciones:
         if(errors.isEmpty()) {
         db.Producto.findByPk(req.params.id)
@@ -111,7 +93,6 @@ const productsController = {
                 toUpdate.pintado = req.body.pintado;
                 toUpdate.material_id = req.body.Material;
                 toUpdate.medida_id = req.body.dimension;
-
                 return db.Producto.update(toUpdate,{
                     where: {
                         id : req.params.id
@@ -134,13 +115,6 @@ const productsController = {
         };
     },
     destroy : function(req,res,next){
-       /*Eliminando el registro de la BD:
-        db.Producto.destroy({
-           where : {
-               id : req.params.id
-           }
-       });
-       res.redirect('/products');*/
        //Modificando el campo activo:
        let url = req.url;
        let user = req.session.userLogueado;    
