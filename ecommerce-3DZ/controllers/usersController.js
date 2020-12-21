@@ -376,7 +376,7 @@ const usersController = {
       console.log(producto);
       let cantidadExistente = Number(producto.dataValues.cantidad);
       let cantidadNueva = cantidadExistente - 1;
-      if(cantidadNueva < 0){
+      if(cantidadNueva < 1){
         return res.redirect("/chart");
       }else{
         db.CarritoProducto.update(
