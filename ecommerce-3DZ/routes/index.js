@@ -19,8 +19,8 @@ router.get('/deniedAcces', function(req, res, next) {
   res.render('deniedAcces', { title: 'Acceso Denegado' });
 });
 
-/* GET Modelado page. */
-router.get('/modelado',indexController.modelado);
+/* GET Modelado page. 
+router.get('/modelado',indexController.modelado);*/
 
 /* GET Admin page. */
 router.get('/admin', usersMiddleware.adminAccess, indexController.admin);

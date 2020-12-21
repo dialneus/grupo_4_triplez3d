@@ -18,7 +18,7 @@ window.addEventListener("load",function(){
             } else if (inputPrice.value < 100){
                 errores.push("Con esta inflacion no vas a tener un precio de 2 digitos, pone mas!")
             }
-        
+
         
         if(errores.length > 0){
             e.preventDefault();

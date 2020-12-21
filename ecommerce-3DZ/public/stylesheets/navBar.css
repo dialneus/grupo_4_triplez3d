@@ -5,7 +5,7 @@ html{
 
 header{
   font-family: 'Roboto', sans-serif;
-/*  font-size: 14px;*/
+  padding: 3px 7px 3px 7px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -91,6 +91,7 @@ header{
   position: absolute;
   right: 0px;
   margin-left: 0px;
+  margin-right: 5px;
 }
 
 

@@ -85,7 +85,7 @@ const usersController = {
       });
       
       } else {
-        return res.render('users/login', {errors: errors.errors})
+        return res.render('users/register', {errors: errors.errors})
       };
   },
   newPass: (req, res, next) => {
@@ -120,21 +120,24 @@ const usersController = {
     db.Usuarios.findAll()
     .then((usuarios) => {
       let user = req.session.userLogueado;
-      res.render('users/usersList', {usuarios: usuarios, user, url})
+      let adSession = user.admin
+      res.render('users/usersList', {usuarios: usuarios, user, url, adSession})
     })
   },
   detail: (req, res, next) => {
     db.Usuarios.findByPk(req.params.id)
       .then((usuario) => {
         let idSession = req.session.userLogueado.id;
+        let adSession = req.session.userLogueado.admin;
         userId = req.params.id;
-        res.render('users/userDetail', {usuario, userId, idSession});
+        res.render('users/userDetail', {usuario, userId, idSession, adSession});
       })
   },
   edit: (req, res, next) => {
     db.Usuarios.findByPk(req.params.id)
       .then((usuario) => {
-        res.render('users/userEdit', {usuario: usuario});
+        let adSession = req.session.userLogueado.admin;
+        res.render('users/userEdit', {usuario: usuario, adSession});
       })
   },
   update: (req, res, next) => {
