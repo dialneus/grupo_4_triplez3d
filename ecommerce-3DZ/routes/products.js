@@ -35,14 +35,14 @@ router.post('/activate/:id', productsController.activate);
 /*CLASICO AMB:*/
 /* DAR DE ALTA*/
 router.get('/create', usersMiddleware.adminAccess, productsController.create);
-router.post('/create', productsMiddleware.validar, upload.any(), productsController.store);
+router.post('/create', upload.any(), productsMiddleware.validar, productsController.store);
 
 /* DAR DE BAJA*/
 router.get('/destroy/:id', usersMiddleware.adminAccess,productsController.destroy);
 
 /* MODIFICAR*/
 router.get('/edit/:id', usersMiddleware.adminAccess,productsController.edit);
-router.post('/edit/:id', productsMiddleware.validar, upload.any(), productsController.update);
+router.post('/edit/:id', upload.any(), productsMiddleware.validar, productsController.update);
 
 /*VER - 
 PONGO POR ULTIMO PORQUE EJECUTA DESDE ARRIBA HACIA ABAJO, SI TOMO UNA RUTA MUY GENERAL LA EJECUTA PRIMERO Y ARRUINA LO QUE ESTE MAS ABAJO*/

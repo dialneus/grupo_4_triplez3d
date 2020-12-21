@@ -8,17 +8,32 @@
     <script src="/scripts/edit.js"></script>
 </head>
 <body>
+<!--
     <div class="errores">
         <ul></ul>
     </div>
+-->
+    
     <form class= "formularioedit" action="/products/edit/<%=producto.id%>" method="POST" enctype="multipart/form-data">
         <img class="logo"src="/images/LOGO/LOGOPNG.png">
+        <section class="errores">
+            <% if(typeof errors != 'undefined') { %>
+              <h1 class="errores">ERROR AL ENVIAR</h1>
+              <ul class="errores">
+                <% for(let i = 0; i < errors.length; i++) {%> 
+                  <li class="errores">
+                    <%= errors[i].msg %> 
+                  </li>
+                  <% } %>
+              </ul>
+            <% } %>
+        </section>
         <label for="name">Nombre de producto</label>
-        <input type="text" name="name" id="name" value="<%= producto.descripcion %>" required><br>
+        <input type="text" name="name" id="name" value="<%= producto.descripcion %>"><br>
         <label for="pintado">Pintado</label>
         <input type="text" name="pintado"  value="<%= producto.pintado %>"><br>
         <label for="price">Importe $</label>
-        <input type="number" name="price"  value="<%= producto.precio %>" required min="0">
+        <input type="number" name="price"  value="<%= producto.precio %>">
         <section class="select">
             <div>
             <label for="dimension"></label>

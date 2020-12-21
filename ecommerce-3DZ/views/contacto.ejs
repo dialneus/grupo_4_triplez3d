@@ -26,7 +26,7 @@
                             <img src="/images/IMAGENESEDITADAS/mail.png" alt="" class="mail"><p>mariotaebox08@gmail.com</p>
                         </li>
                         <li class="icon">
-                            <img src="/images/IMAGENESEDITADAS/localization.png" alt="" class="mail"><p>Antonio Rocca 4538 - Quilmes Oeste</p>
+                            <img src="/images/IMAGENESEDITADAS/localization.png" alt="" class="mail"><p>Antonio Rocca 4538 - Quilmes Oeste - Buenos Aires - Argentina</p>
                         </li>     
                     </ul>
                 </div>                                                                                      
@@ -34,7 +34,7 @@
             <div class="formulariobloque">
                 <div id="contact-form" class="m-bottom">
                     <form action="mailto:mariotaebox08@gmail.com" method="POST" onsubmit="">
-                        <ul>
+                        <ul class="camposformulario">
                             <% if(user == undefined) {%> 
                             <li>
                                 <label for="nombre"></label>
@@ -67,7 +67,7 @@
                                 <input type="mensaje" name="mensaje" id="mensaje" placeholder="Escribanos su mensaje aquí..">  
                             </li>
                             <section class="enviar">
-                                <button type="submit">Enviar</button>
+                                <button type="submit" id="enviarboton">ENVIAR</button>
                             </section>
                         </ul>
                     </form>
